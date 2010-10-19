@@ -1,0 +1,9 @@
+<div class="span-8 column">
+      <div id="user-login">
+        <% if logged_in? -%>
+          <%= link_to t('muck.users.sign_out_title'), logout_path %>
+        <% else -%>
+          <%= link_to t('muck.users.sign_up'), signup_path %> | <%= link_to t('muck.users.sign_in'), login_path %> 
+        <% end -%>
+      </div>
+    </div>
