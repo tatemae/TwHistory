@@ -28,22 +28,37 @@ GEM
       activemodel (= 3.0.1)
       activesupport (= 3.0.1)
     activesupport (3.0.1)
+    acts-as-taggable-on (2.0.6)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     authlogic (2.1.6)
       activesupport
+    awesome_nested_set (1.4.3)
+      activerecord (>= 1.1)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
+    babelphish (0.2.8)
+      ya2yaml
     babosa (0.2.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     columnize (0.3.1)
+    contacts (1.2.4)
+      gdata (= 1.1.1)
+      json (>= 0.4.1)
     crack (0.1.8)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     friendly_id (3.1.7)
       babosa (~> 0.2.0)
+    gdata (1.1.1)
+    geokit (1.5.0)
     hoptoad_notifier (2.3.10)
       activesupport
       builder
+    hpricot (0.8.2)
     httparty (0.6.1)
       crack (= 0.1.8)
     i18n (0.4.1)
@@ -54,16 +69,67 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    muck-activities (3.0.1)
+      muck-comments
+      muck-engine
+      muck-users
+    muck-comments (3.0.2)
+      muck-engine
+      muck-users
+      nested_set
+      sanitize
+    muck-contents (3.0.1)
+      acts-as-taggable-on
+      awesome_nested_set
+      babelphish
+      friendly_id
+      muck-comments
+      muck-engine
+      muck-users
+      sanitize
+      tiny_mce
+      uploader
     muck-engine (3.0.4)
       overlord
       validation_reflection
       will_paginate (~> 3.0.beta)
+    muck-friends (3.0.2)
+      muck-engine
+      muck-profiles
+      muck-users
+    muck-invites (3.0.0)
+      contacts
+      hpricot
+      muck-engine
+    muck-profiles (3.0.1)
+      geokit
+      muck-comments
+      muck-contents
+      muck-engine
+      muck-raker
+      muck-shares
+      muck-solr
+      muck-users
+      paperclip
+      sanitize
+      uploader
+    muck-raker (3.0.0)
+    muck-shares (3.0.1)
+      muck-activities
+      muck-comments
+      muck-engine
+      muck-users
+    muck-solr (0.4.7)
     muck-users (3.0.4)
       authlogic
       bcrypt-ruby
       friendly_id
       muck-engine (>= 3.0.3)
     mysql (2.8.1)
+    nested_set (1.5.2)
+      activerecord (>= 3.0.0)
+      railties (>= 3.0.0)
+    nokogiri (1.4.3.1)
     overlord (3.0.2)
       httparty
       json
@@ -96,26 +162,52 @@ GEM
       ruby-debug-base (~> 0.10.3.0)
     ruby-debug-base (0.10.3)
       linecache (>= 0.3)
+    sanitize (1.2.1)
+      nokogiri (~> 1.4.1)
     thor (0.14.3)
+    tiny_mce (0.1.4)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    uploader (3.0.2)
+      aws-s3
+      mime-types
+      paperclip
+      rack
     validation_reflection (1.0.0)
     will_paginate (3.0.pre2)
+    xml-simple (1.0.12)
+    ya2yaml (0.30)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   authlogic
+  babelphish
   bcrypt-ruby (>= 2.1.1)
   friendly_id
+  geokit
   hoptoad_notifier
+  muck-activities
+  muck-comments (>= 3.0.2)
+  muck-contents
   muck-engine (>= 3.0.4)
+  muck-friends
+  muck-invites
+  muck-profiles
+  muck-raker
+  muck-shares
+  muck-solr
   muck-users (>= 3.0.4)
   mysql
+  nested_set
   paperclip
   rails (= 3.0.1)
   recaptcha
   ruby-debug
+  sanitize
+  tiny_mce
+  uploader
   will_paginate

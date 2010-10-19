@@ -13,19 +13,3 @@ test:
   password:
   host: localhost
   encoding: utf8
-
-staging:
-  adapter: mysql
-  database: twhistory_staging
-  username: twhistory
-  password: 
-  host: localhost
-  encoding: utf8
-
-production:
-  adapter: mysql
-  database: twhistory_production
-  username: twhistory
-  password: 
-  host: localhost
-  encoding: utf8

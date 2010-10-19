@@ -1,5 +1,7 @@
 Twhistory::Application.routes.draw do
   root :to => "default#index"
+  resources :comments
+
 
   # top level pages
   match '/contact' => 'default#contact'
