@@ -1,9 +1,17 @@
-<div class="span-8 column">
-      <div id="user-login">
-        <% if logged_in? -%>
-          <%= link_to t('muck.users.sign_out_title'), logout_path %>
-        <% else -%>
-          <%= link_to t('muck.users.sign_up'), signup_path %> | <%= link_to t('muck.users.sign_in'), login_path %> 
-        <% end -%>
+<% if logged_in? -%>
+  <%= link_to t('muck.users.sign_out_title'), logout_path %>
+<% else -%>
+  <%= form_for :user_session, :url => user_session_path do |f| -%>
+    <fieldset>
+      <input type="submit" class="submit" />					
+      <div class="row">								
+        <label for="lbl01" class="text-username"><%= I18n.t('muck.users.username') %></label>							
+        <%= f.text_field :login, :id => "lbl01", :class =>"text" %>
       </div>
-    </div>
+      <div class="row">								
+        <label for="lbl02" class="text-password"><%= I18n.t('muck.users.password') %></label>
+        <%= f.password_field :login, :id => "lbl02", :class =>"text" %>
+      </div>
+    </fieldset>
+  <% end -%>          
+<% end -%>
