@@ -1,5 +1,6 @@
 class Character < ActiveRecord::Base
   has_many :authentications
+  has_many :items
   belongs_to :project
   
   has_attached_file :photo, 

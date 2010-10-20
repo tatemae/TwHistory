@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101019052838) do
+ActiveRecord::Schema.define(:version => 20101019235927) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -96,6 +96,24 @@ ActiveRecord::Schema.define(:version => 20101019052838) do
     t.integer "entry_id"
     t.string  "action_type"
     t.float   "weight"
+  end
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "character_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "characters", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "character_id"
+    t.string   "name"
+    t.text     "bio"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "clicks", :force => true do |t|
@@ -329,6 +347,21 @@ ActiveRecord::Schema.define(:version => 20101019052838) do
 
   add_index "invites", ["inviter_id", "inviter_type"], :name => "index_invites_on_inviter_id_and_inviter_type"
 
+  create_table "items", :force => true do |t|
+    t.integer  "character_id"
+    t.integer  "project_id"
+    t.string   "content"
+    t.text     "source"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.string   "location"
+    t.decimal  "lat",                :precision => 15, :scale => 10
+    t.decimal  "lng",                :precision => 15, :scale => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "languages", :force => true do |t|
     t.string  "name"
     t.string  "english_name"
@@ -450,6 +483,13 @@ ActiveRecord::Schema.define(:version => 20101019052838) do
 
   add_index "profiles", ["lat", "lng"], :name => "index_profiles_on_lat_and_lng"
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "queries", :force => true do |t|
     t.text    "name"
