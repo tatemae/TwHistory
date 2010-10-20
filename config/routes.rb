@@ -1,20 +1,20 @@
 Twhistory::Application.routes.draw do
-  resources :authentications
-
-  resources :items
-
-  resources :characters
-
-  resources :projects
 
   root :to => "default#index"
-  resources :comments
-
 
   # top level pages
+  match '/schedule' => 'default#schedule'
+  match '/search' => 'default#search'
   match '/contact' => 'default#contact'
   match '/sitemap' => 'default#sitemap'
   match '/ping' => 'default#ping'
+
+  resources :comments
+  resources :authentications
+  resources :items
+  resources :characters
+  resources :projects
+
 
 
   # The priority is based upon order of creation:

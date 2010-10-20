@@ -6,6 +6,12 @@ class DefaultController < ApplicationController
     end
   end
 
+  def schedule
+  end
+  
+  def search
+  end
+  
   def contact
     return unless request.post?
     body = []
