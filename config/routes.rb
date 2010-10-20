@@ -1,4 +1,12 @@
 Twhistory::Application.routes.draw do
+  resources :authentications
+
+  resources :items
+
+  resources :characters
+
+  resources :projects
+
   root :to => "default#index"
   resources :comments
 
