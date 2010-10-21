@@ -100,13 +100,14 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "character_id"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "characters", :force => true do |t|
     t.integer  "project_id"
-    t.integer  "character_id"
     t.string   "name"
     t.text     "bio"
     t.string   "photo_file_name"
@@ -360,6 +361,7 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
     t.decimal  "lng",                :precision => 15, :scale => 10
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "occured_at"
   end
 
   create_table "languages", :force => true do |t|
@@ -485,6 +487,7 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "projects", :force => true do |t|
+    t.integer  "user_id"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"

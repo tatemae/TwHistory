@@ -2,6 +2,8 @@ class CreateAuthentications < ActiveRecord::Migration
   def self.up
     create_table :authentications do |t|
       t.integer :character_id
+      t.string :provider
+      t.string :uid
       t.timestamps
     end
   end

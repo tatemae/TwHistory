@@ -3,6 +3,8 @@ class Character < ActiveRecord::Base
   has_many :items
   belongs_to :project
   
+  scope :by_name, order("name ASC")
+  
   has_attached_file :photo, 
                     :styles => { :medium => "300x300>",
                                  :thumb => "100x100>",

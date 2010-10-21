@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  before_filter :login_required, :except => [:index, :show]
+  
   def index
     @per_page = 5
     @projects = Project.by_newest.paginate(:page => @page, :per_page => @per_page)
@@ -25,16 +27,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
   end
 
-  # POST /projects
-  # POST /projects.xml
   def create
-    @project = Project.new(params[:project])
-
+    @project = current_user.projects.build(params[:project])
     respond_to do |format|
       if @project.save
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
@@ -46,8 +44,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PUT /projects/1
-  # PUT /projects/1.xml
   def update
     @project = Project.find(params[:id])
 
@@ -62,8 +58,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE /projects/1
-  # DELETE /projects/1.xml
   def destroy
     @project = Project.find(params[:id])
     @project.destroy

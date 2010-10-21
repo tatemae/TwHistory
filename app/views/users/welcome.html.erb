@@ -1,0 +1,5 @@
+<div id="welcome" class="common-content">
+  <%= output_errors('', {:class => 'help-box'}) %>
+  Welcome to TwHistory
+  <%= link_to translate('muck.users.view_your_account'), user_path(current_user) %>
+</div>

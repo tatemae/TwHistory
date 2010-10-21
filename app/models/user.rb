@@ -1,18 +1,17 @@
 class User < ActiveRecord::Base
-acts_as_tagger
+  acts_as_tagger
   include MuckInvites::Models::MuckInviter
-
   include MuckShares::Models::MuckSharer
-
   include MuckFriends::Models::MuckUser
-
   include MuckProfiles::Models::MuckUser
-
+  include MuckUsers::Models::MuckUser
+  
+  has_many :projects
   
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
   end
-  include MuckUsers::Models::MuckUser
+  
     
   has_friendly_id :login
 
@@ -29,7 +28,7 @@ acts_as_tagger
   end
 
   def display_name
-    h(self.login)
+    self.login
   end
   
 end

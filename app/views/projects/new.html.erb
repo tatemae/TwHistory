@@ -1,5 +1,10 @@
-<h1>New project</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', projects_path %>
+<div class="common-form">
+  <h1>New Re-enactment</h1>
+  <%= muck_form_for :project, :url => projects_path, :html => {:id => "new-project-form", :name => 'new-project-form'} do |f| -%>
+  	<%= output_errors(translate('projects.new_problem'), {:class => 'help-box'}, @project) %>
+    <%= render 'form', :f => f %>
+  	<div class="button form-row">
+    	<%= f.submit 'Create ReEnactment' %>
+    </div>
+  <% end -%>
+</div>

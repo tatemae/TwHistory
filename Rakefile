@@ -5,3 +5,6 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Twhistory::Application.load_tasks
+
+
+require 'acts_as_solr/tasks'

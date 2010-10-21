@@ -18,6 +18,7 @@ a:hover{text-decoration:none;}
 .logo a{display:block;height:100%;position:relative;}
 .slogan{margin:-29px 0 0 4px;float:left;display:inline;width:492px;height:81px;text-indent:-9999px;overflow:hidden;background:url(/images/slogan.png) no-repeat;}
 .form-holder{margin-top:66px;width:258px;float:right;}
+.login-form-spacer{width:222px;height:53px;padding:8px 7px 8px 28px;float:right;margin-bottom:5px;}
 .login-form{width:222px;height:53px;padding:8px 7px 8px 28px;background:url(/images/bg-form.png) no-repeat;float:right;margin-bottom:5px;}
 .login-form fieldset{position:relative;}
 .login-form .submit{margin-top:10px;width:28px;height:29px;float:right;cursor:pointer;text-indent:-9999px;overflow:hidden;padding:29px 0 0;border:0;background:url(/images/btn-submit.gif) no-repeat;}
@@ -56,9 +57,9 @@ a:hover{text-decoration:none;}
 #content .text-battle,
 #content .text-sinking3,
 #content .text-sinking2,
-#content .text-sinking{height:37px;text-indent:-9999px;overflow:hidden;margin-bottom:4px;background:url(/images/text-sinking.gif) no-repeat;}
-#content .text-sinking2{height:41px;margin-bottom:3px;background:url(/images/text-sinking2.gif) no-repeat;}
-#content .text-sinking3{height:27px;background:url(/images/text-sinking3.gif) no-repeat;}
+#content .text-sinking{height:37px;overflow:hidden;margin-bottom:4px;color:#4B3013;}
+#content .text-sinking2{height:41px;margin-bottom:3px;color:#4B3013;}
+#content .text-sinking3{height:27px;color:#4B3013;}
 #content .text-battle{background:url(/images/text-battle.gif) no-repeat;height:27px;}
 #content .text-cuban{height:27px;background:url(/images/text-cuban.gif) no-repeat;}
 #content .text-sinking4{height:25px;width:210px;float:left;background:url(/images/text-sinking4.gif) no-repeat;}
@@ -220,3 +221,24 @@ a:hover{text-decoration:none;}
 #errorExplanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:16px;background-color:#B61E12;color:#fff;}
 #errorExplanation p{color:#333;margin-bottom:0;padding:5px;}
 #errorExplanation ul li{list-style:square;}
+/* forms */
+.common-form h1{font-size:2.6em;margin:10px 0;}
+.common-form form .form-row{margin:10px 0;}
+.common-form form .form-row input{margin:0 10px 5px 0;padding:4px;font-size:1.3em;}
+.common-form form .form-row input[type="text"],input[type="password"]{border:1px solid #8f8685;}
+.common-form form .form-row input[type="checkbox"]{border:none;margin-bottom:0px;}
+.common-form form .form-row input[type="radio"]{border:none;}
+.common-form form .form-row textarea{font-size:1.4em;margin:0 10px 0 0;padding:4px;border:1px solid #8f8685;height:220px;}
+.common-form form .form-row label{font-size:1.5em;font-weight:bold;margin:0 10px 5px 0;padding:0px;display:block;}
+.common-form form em{color:#b61e12;font-style:normal;font-size:90%;}
+.common-form form hr{border:1px solid #e3e0c3;height:1px;margin:15px 0;}
+.common-form form fieldset span.var{margin:2px 5px 5px 18px;display:block;}
+.common-form form fieldset{margin:0 0 2px;padding:0px;}
+.common-form form fieldset input[type="text"],form fieldset input[type="password"]{width:500px;}
+.common-form form .form-row .checklist{padding:0px;margin:0px 0 0 10px;}
+.common-form form .form-row .checkbox, .common-form form .form-row .checklist input[type="checkbox"]{float:left;clear:left;}
+.common-form form .form-row .checkbox, .common-form form .form-row .checklist label{display:inline;}
+
+#sign_in{width:470px;margin:20px auto;}
+#registration h1, #registration p{text-align:center;}
+#register-user-form{width:330px;margin:20px auto;}

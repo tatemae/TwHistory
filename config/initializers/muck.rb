@@ -63,50 +63,53 @@ MuckUsers.configure do |config|
                                                   # users delete their own accounts since the delete can cascade through the system with unknown results.
 end
   
-  MuckContents.configure do |config|
-    # Contents Configuration
-    git_repository = ''                  # Not currently used.  Eventually this will be the path to a git repository that the content system uses to store revisions.
-    content_git_repository = false       # Should be set to false as git integration is not currently working.
-    enable_auto_translations = false     # If true then all content objects will automatically be translated into all languages supported by Google Translate
-    content_enable_solr = true           # Enables solr for the content system.  If you are using solr then set this to true.  If you do not wish to setup and manage solr 
-                                         # then set this value to false (but search will be disabled).
-    content_css = ['/stylesheets/reset.css', '/stylesheets/styles.css'] # CSS files that should be fed into the tiny_mce content editor.  
-                                                                        # Note that Rails will typically generate a single all.css stylesheet.  Setting the stylesheets here let's 
-                                                                        # the site administrator control which css is present in the content editor and thus which css an end 
-                                                                        # user has access to to style their content.
-  end
-  MuckProfiles.configure do |config|
-    config.enable_solr = true           # This enables or disables acts as solr for profiles.
-    config.enable_guess_location = true # If true the profile system will attempt to determine the user's location via IP and populated with the location, lat and lon fields.
-    config.policy = { :public => [:login, :first_name, :last_name, :about],
-                       :authenticated => [:location, :city, :state_id, :country_id, :language_id],
-                       :friends => [:email],
-                       :private => [] }
-    
-  end
-  MuckActivities.configure do |config|
-    config.enable_activity_comments = true     # Enable if you would like to enable comments for your project's activities feeds
-    config.enable_live_activity_updates = true # Turns on polling inside the user's activity feed so they constantly get updates from the site
-    config.live_activity_update_interval = 60  # Time between updates to live activity feed in seconds
-                                               # Note that this will poll the server every 60 seconds and so will increase server load and bandwidth usage.
-    config.enable_activity_shares = true       # Turn on shares in the activity feed
+MuckContents.configure do |config|
+  # Contents Configuration
+  git_repository = ''                  # Not currently used.  Eventually this will be the path to a git repository that the content system uses to store revisions.
+  content_git_repository = false       # Should be set to false as git integration is not currently working.
+  enable_auto_translations = false     # If true then all content objects will automatically be translated into all languages supported by Google Translate
+  content_enable_solr = false           # Enables solr for the content system.  If you are using solr then set this to true.  If you do not wish to setup and manage solr 
+                                       # then set this value to false (but search will be disabled).
+  content_css = ['/stylesheets/reset.css', '/stylesheets/styles.css'] # CSS files that should be fed into the tiny_mce content editor.  
+                                                                      # Note that Rails will typically generate a single all.css stylesheet.  Setting the stylesheets here let's 
+                                                                      # the site administrator control which css is present in the content editor and thus which css an end 
+                                                                      # user has access to to style their content.
+end
 
-    # You can also use the 'contribute' helper method to render a richer status update if you have uploader installed and configured:
-    config.enable_activity_file_uploads = true # Turn on file uploads in the activity feed.  Requires that uploader be installed.
-    config.enable_activity_image_uploads = true # Turn on image uploads in the activity feed.  Requires that uploader and muck_albums be installed.
-    config.enable_activity_video_sharing = true # Turn on video sharing in the activity feed.
-  end
-  MuckFriends.configure do |config|
-    # Friend Configuration
-    # The friend system provides a hybrid friend/follow model.  Either mode can be turned off or both can be enabled
-    # If only following is enabled then users will be provided the ability to follow, unfollow, and block
-    # If only friending is enabled then users will be provided a 'friend request' link and the ability to accept friend requests
-    # If both modes are are enabled then users will be able to follow other users.  A mutual follow results in 'friends'.  An unfollow 
-    # leaves the other party as just a follower.
-    # Note that at least one mode must be enabled.
-    allow_following = true          # Turn on 'following'.  This is similar to the 'follow' functionality on Twitter in that it let's users watch one 
-                                    # another's activities without having explicit permission from the user.  A mutual follow essentially becomes a
-                                    # friendship.
-    enable_friending = true         # Turn on friend system.
-    enable_friend_activity = true   # If true then friend related activity will show up in the activity feed.  Requires muck-activities gem
-  end
+MuckProfiles.configure do |config|
+  config.enable_solr = false           # This enables or disables acts as solr for profiles.
+  config.enable_guess_location = true # If true the profile system will attempt to determine the user's location via IP and populated with the location, lat and lon fields.
+  config.policy = { :public => [:login, :first_name, :last_name, :about],
+                     :authenticated => [:location, :city, :state_id, :country_id, :language_id],
+                     :friends => [:email],
+                     :private => [] }
+  
+end
+
+MuckActivities.configure do |config|
+  config.enable_activity_comments = true     # Enable if you would like to enable comments for your project's activities feeds
+  config.enable_live_activity_updates = true # Turns on polling inside the user's activity feed so they constantly get updates from the site
+  config.live_activity_update_interval = 60  # Time between updates to live activity feed in seconds
+                                             # Note that this will poll the server every 60 seconds and so will increase server load and bandwidth usage.
+  config.enable_activity_shares = true       # Turn on shares in the activity feed
+
+  # You can also use the 'contribute' helper method to render a richer status update if you have uploader installed and configured:
+  config.enable_activity_file_uploads = true # Turn on file uploads in the activity feed.  Requires that uploader be installed.
+  config.enable_activity_image_uploads = true # Turn on image uploads in the activity feed.  Requires that uploader and muck_albums be installed.
+  config.enable_activity_video_sharing = true # Turn on video sharing in the activity feed.
+end
+
+MuckFriends.configure do |config|
+  # Friend Configuration
+  # The friend system provides a hybrid friend/follow model.  Either mode can be turned off or both can be enabled
+  # If only following is enabled then users will be provided the ability to follow, unfollow, and block
+  # If only friending is enabled then users will be provided a 'friend request' link and the ability to accept friend requests
+  # If both modes are are enabled then users will be able to follow other users.  A mutual follow results in 'friends'.  An unfollow 
+  # leaves the other party as just a follower.
+  # Note that at least one mode must be enabled.
+  allow_following = true          # Turn on 'following'.  This is similar to the 'follow' functionality on Twitter in that it let's users watch one 
+                                  # another's activities without having explicit permission from the user.  A mutual follow essentially becomes a
+                                  # friendship.
+  enable_friending = true         # Turn on friend system.
+  enable_friend_activity = true   # If true then friend related activity will show up in the activity feed.  Requires muck-activities gem
+end

@@ -12,6 +12,7 @@ class CreateItems < ActiveRecord::Migration
       t.decimal :lat, :precision => 15, :scale => 10
       t.decimal :lng, :precision => 15, :scale => 10
       t.timestamps
+      t.datetime :occured_at
     end
     add_index  :profiles, [:lat, :lng]
   end

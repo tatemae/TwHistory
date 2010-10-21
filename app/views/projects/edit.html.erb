@@ -1,6 +1,10 @@
-<h1>Editing project</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<div class="common-form">
+  <h1>Edit Re-enactment: <%= @project.name %></h1>
+  <%= muck_form_for @project, :url => project_path(@projec), :html => {:id => "edit-project-form", :name => 'edit-project-form', :class => 'common-form'} do |f| -%>
+  	<%= output_errors(translate('projects.edit_problem'), {:class => 'help-box'}, @project) %>
+    <%= render 'form', :f => f %>
+  	<div class="button form-row">
+    	<%= f.submit 'Create ReEnactment' %>
+    </div>
+  <% end -%>
+</div>

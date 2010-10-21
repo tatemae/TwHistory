@@ -6,10 +6,13 @@ development:
   host: localhost
   encoding: utf8
 
-test:
+test: &test 
   adapter: mysql
   database: twhistory_test
   username: root
   password:
   host: localhost
   encoding: utf8
+
+cucumber: 
+  <<: *test
