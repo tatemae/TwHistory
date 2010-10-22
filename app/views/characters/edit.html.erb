@@ -1,6 +1,10 @@
-<h1>Editing character</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @character %> |
-<%= link_to 'Back', characters_path %>
+<div class="common-form">
+  <h1>Edit Character</h1>
+  <%= muck_form_for :character, :url => project_character_path(@project, @character), :html => {:id => "edit-character-form", :name => 'edit-character-form'} do |f| -%>
+  	<%= output_errors(translate('character.new_problem'), {:class => 'help-box'}, @character) %>
+    <%= render 'form', :f => f %>
+  	<div class="button form-row">
+    	<%= f.submit 'Create' %>
+    </div>
+  <% end -%>
+</div>

@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  has_many :authentications, :as => :authenticatable, :dependent => :destroy
   has_many :characters
   has_many :items
   belongs_to :user

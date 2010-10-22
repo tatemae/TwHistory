@@ -1,11 +1,13 @@
 class CreateAuthentications < ActiveRecord::Migration
   def self.up
     create_table :authentications do |t|
-      t.integer :character_id
+      t.integer :authenticatable_id
+      t.string :authenticatable_type
       t.string :provider
       t.string :uid
       t.timestamps
     end
+    add_index [:authenticatable_id, :authenticatable_type]
   end
 
   def self.down

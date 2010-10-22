@@ -12,9 +12,12 @@ class CreateItems < ActiveRecord::Migration
       t.decimal :lat, :precision => 15, :scale => 10
       t.decimal :lng, :precision => 15, :scale => 10
       t.timestamps
-      t.datetime :occured_at
+      t.datetime :event_date_time
+      t.string :tweet_id
     end
     add_index  :profiles, [:lat, :lng]
+    add_index :character_id
+    add_index :project_id
   end
 
   def self.down

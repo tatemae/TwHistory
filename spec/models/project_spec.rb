@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe Project do
   it { should have_many :items }
   it { should have_many :characters }
+  it { should have_many :authentications }
   it { should belong_to :user }
   
   it { should scope_by_latest }

@@ -1,5 +1,5 @@
 class Character < ActiveRecord::Base
-  has_many :authentications
+  has_many :authentications, :as => :authenticatable, :dependent => :destroy
   has_many :items
   belongs_to :project
   
@@ -8,8 +8,8 @@ class Character < ActiveRecord::Base
   has_attached_file :photo, 
                     :styles => { :medium => "300x300>",
                                  :thumb => "100x100>",
-                                 :icon => "50x50>",
+                                 :icon => "62x62>",
                                  :tiny => "24x24>" },
-                    :default_url => "/images/profile_default.jpg"
+                    :default_url => "/images/character_default.jpg"
   
 end

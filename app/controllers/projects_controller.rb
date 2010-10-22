@@ -4,17 +4,19 @@ class ProjectsController < ApplicationController
   
   def index
     @per_page = 5
-    @projects = Project.by_newest.paginate(:page => @page, :per_page => @per_page)
+    @projects = Project.by_newest.includes(:user).paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.xml  { render :xml => @projects }
     end
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.includes(:characters).find(params[:id])
+    @characters = @project.characters
+    @items = @project.items.includes(:character)
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @project }
     end
   end

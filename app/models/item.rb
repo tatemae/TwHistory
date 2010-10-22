@@ -12,4 +12,11 @@ class Item < ActiveRecord::Base
   validates_presence_of :content
   validates_presence_of :occured_at
   
+  has_attached_file :photo, 
+                    :styles => { :medium => "300x300>",
+                                 :thumb => "100x100>",
+                                 :icon => "62x62>",
+                                 :tiny => "24x24>" },
+                    :default_url => "/images/item_default.jpg"
+                    
 end

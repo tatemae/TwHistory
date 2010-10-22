@@ -9,6 +9,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :photo_file_size
       t.timestamps
     end
+    add_index :project_id
   end
 
   def self.down

@@ -1,21 +1,6 @@
-<h1>Listing projects</h1>
+<h2>Re-enactments <span><strong>showing latest 1-5</strong> of 8</span></h2> 
+<%= render @projects %>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Project', new_project_path %>
+<div class="paging"> 
+	<ul>							<li><a href="#" class="prev">prev</a></li>							<li><a href="#" class="next">next</a></li>						</ul> 
+</div>

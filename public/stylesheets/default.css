@@ -57,9 +57,10 @@ a:hover{text-decoration:none;}
 #content .text-battle,
 #content .text-sinking3,
 #content .text-sinking2,
-#content .text-sinking{height:37px;overflow:hidden;margin-bottom:4px;color:#4B3013;}
-#content .text-sinking2{height:41px;margin-bottom:3px;color:#4B3013;}
-#content .text-sinking3{height:27px;color:#4B3013;}
+#content .text-sinking{overflow:hidden;margin-bottom:4px;color:#4B3013;}
+#content .text-sinking2{margin-bottom:3px;color:#4B3013;}
+#content .text-sinking2 a{font-size:14px;}
+#content .text-sinking3 a{color:#4B3013;text-decoration:none;}
 #content .text-battle{background:url(/images/text-battle.gif) no-repeat;height:27px;}
 #content .text-cuban{height:27px;background:url(/images/text-cuban.gif) no-repeat;}
 #content .text-sinking4{height:25px;width:210px;float:left;background:url(/images/text-sinking4.gif) no-repeat;}
@@ -101,6 +102,7 @@ a:hover{text-decoration:none;}
 .ico-doc,
 .ico-comments,
 .ico-peoples{padding-left:35px;background:url(/images/ico-peoples.gif) no-repeat 0 50%;}
+.ico-comments a, .ico-peoples a{font-size:12px;}
 .ico-comments{background:url(/images/ico-comments2.gif) no-repeat 0 50%;}
 .ico-doc{background:url(/images/ico-doc2.gif) no-repeat 0 50%;}
 .links-list{margin:-6px 0 3px 3px;}

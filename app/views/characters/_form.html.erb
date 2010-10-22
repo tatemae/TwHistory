@@ -1,17 +1,4 @@
-<%= form_for(@character) do |f| %>
-  <% if @character.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>
-
-      <ul>
-      <% @character.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= f.text_field :name, { :label => translate('projects.title') } -%>
+<%= f.text_area :bio, { :label => translate('projects.description') } -%>
+<%= image_tag @character.photo.url(:thumb) if @character && @character.photo_file_name %>
+<%= f.file_field :photo, { :label => 'Upload a Photo (Please use a square image)' } %>
