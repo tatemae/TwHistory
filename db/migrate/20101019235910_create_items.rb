@@ -15,9 +15,9 @@ class CreateItems < ActiveRecord::Migration
       t.datetime :event_date_time
       t.string :tweet_id
     end
-    add_index  :profiles, [:lat, :lng]
-    add_index :character_id
-    add_index :project_id
+    add_index :items, [:lat, :lng]
+    add_index :items, :character_id
+    add_index :items, :project_id
   end
 
   def self.down

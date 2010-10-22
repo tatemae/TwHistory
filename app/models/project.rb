@@ -12,6 +12,12 @@ class Project < ActiveRecord::Base
   
   has_friendly_id :title
   
+  has_attached_file :photo, 
+                    :styles => { :medium => "332x224>",
+                                 :icon => "62x62>",
+                                 :tiny => "24x24>" },
+                    :default_url => "/images/character_default.jpg"
+                    
   def can_edit?(check_user)
     return false if check_user.blank?
     check_user == self.user

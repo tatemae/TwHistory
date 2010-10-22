@@ -102,7 +102,8 @@ a:hover{text-decoration:none;}
 .ico-doc,
 .ico-comments,
 .ico-peoples{padding-left:35px;background:url(/images/ico-peoples.gif) no-repeat 0 50%;}
-.ico-comments a, .ico-peoples a{font-size:12px;}
+.ico-comments a, .ico-peoples a{text-decoration:none;}
+.ico-comments span a, .ico-peoples span a{font-size:12px;text-decoration:underline;}
 .ico-comments{background:url(/images/ico-comments2.gif) no-repeat 0 50%;}
 .ico-doc{background:url(/images/ico-doc2.gif) no-repeat 0 50%;}
 .links-list{margin:-6px 0 3px 3px;}

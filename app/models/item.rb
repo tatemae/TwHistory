@@ -10,13 +10,12 @@ class Item < ActiveRecord::Base
   
   attr_protected :created_at, :updated_at, :lat, :lng
   validates_presence_of :content
-  validates_presence_of :occured_at
+  validates_presence_of :event_date_time
   
   has_attached_file :photo, 
                     :styles => { :medium => "300x300>",
                                  :thumb => "100x100>",
                                  :icon => "62x62>",
-                                 :tiny => "24x24>" },
-                    :default_url => "/images/item_default.jpg"
+                                 :tiny => "24x24>" }
                     
 end

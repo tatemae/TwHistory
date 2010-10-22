@@ -99,7 +99,8 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
   end
 
   create_table "authentications", :force => true do |t|
-    t.integer  "character_id"
+    t.integer  "authenticatable_id"
+    t.string   "authenticatable_type"
     t.string   "provider"
     t.string   "uid"
     t.datetime "created_at"
@@ -116,6 +117,8 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "characters", ["project_id"], :name => "index_characters_on_project_id"
 
   create_table "clicks", :force => true do |t|
     t.integer  "recommendation_id"
@@ -361,8 +364,13 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
     t.decimal  "lng",                :precision => 15, :scale => 10
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "occured_at"
+    t.datetime "event_date_time"
+    t.string   "tweet_id"
   end
+
+  add_index "items", ["character_id"], :name => "index_items_on_character_id"
+  add_index "items", ["lat", "lng"], :name => "index_items_on_lat_and_lng"
+  add_index "items", ["project_id"], :name => "index_items_on_project_id"
 
   create_table "languages", :force => true do |t|
     t.string  "name"
@@ -490,6 +498,9 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

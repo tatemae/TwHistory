@@ -1,6 +1,6 @@
 <div class="common-form">
   <h1>New Character</h1>
-  <%= muck_form_for :character, :url => project_characters_path(@project), :html => {:id => "new-character-form", :name => 'new-character-form'} do |f| -%>
+  <%= muck_form_for :character, :url => project_characters_path(@project), :html => { :multipart => true, :id => "new-character-form", :name => 'new-character-form' } do |f| -%>
   	<%= output_errors(translate('character.new_problem'), {:class => 'help-box'}, @character) %>
     <%= render 'form', :f => f %>
   	<div class="button form-row">

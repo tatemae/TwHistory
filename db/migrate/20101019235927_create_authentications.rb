@@ -7,7 +7,7 @@ class CreateAuthentications < ActiveRecord::Migration
       t.string :uid
       t.timestamps
     end
-    add_index [:authenticatable_id, :authenticatable_type]
+    add_index :authentications, [:authenticatable_id, :authenticatable_type]
   end
 
   def self.down

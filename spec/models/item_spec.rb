@@ -17,6 +17,6 @@ describe Item do
   it { should_not allow_mass_assignment_of :updated_at }
   
   it { should validate_presence_of :content }
-  it { should validate_presence_of :occured_at }
+  it { should validate_presence_of :event_date_time }
   
 end

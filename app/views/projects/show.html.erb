@@ -8,13 +8,13 @@
 </div><!-- broadcast --> 
 <div class="column-holder"> 
 	<div class="column"> 
-		<h3 class="ico-peoples">Historical Figures <%= link_to translate('projects.add'), new_project_character_path(@project) if @project.can_edit?(current_user) %></h3> 
+		<h3 class="ico-peoples"><%= link_to 'Historical Figures', project_characters_path(@project) %> <span><%= link_to translate('projects.add'), new_project_character_path(@project) if @project.can_edit?(current_user) %></span></h3> 
 		<ul class="cite-list light"> 
 			<%= render :partial => 'projects/character', :collection => @characters %>
 		</ul>
 	</div>
 	<div class="column"> 
-		<h3 class="ico-comments">Historical Timeline <%= link_to translate('projects.add'), project_items_path(@project) if @project.can_edit?(current_user) %></h3> 
+		<h3 class="ico-comments"><%= link_to 'Historical Timeline', project_items_path(@project) %> <span><%= link_to translate('projects.add'), project_items_path(@project) if @project.can_edit?(current_user) %></span></h3> 
 		<ul class="cite-list">
 		  <%= render :partial => 'projects/item', :collection => @items %> 
 		</ul><!-- cite list --> 

@@ -1,2 +1,4 @@
 <%= f.text_field :title, { :label => translate('projects.title') } -%>
 <%= f.text_area :description, { :label => translate('projects.description') } -%>
+<%= image_tag @project.photo.url(:thumb) if @project && @project.photo_file_name %>
+<%= f.file_field :photo, { :label => 'Upload a Photo' } %>
