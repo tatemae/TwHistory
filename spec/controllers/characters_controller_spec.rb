@@ -1,7 +1,12 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.expand_path("../../spec_helper", __FILE__)
 
 describe CharactersController do
 
+  before do
+    @user = Factory(:user)
+    @project = Factory(:project, :user => @user)
+  end
+  
   render_views
 
   it { should require_login 'new', :get, '/login' }
@@ -29,8 +34,6 @@ describe CharactersController do
 
   describe "logged in" do
     before do
-      @user = Factory(:user)
-      @project = Factory(:project, :user => @user)
       @user.activate!
       activate_authlogic
       login_as @user
@@ -38,7 +41,7 @@ describe CharactersController do
     
     describe "GET new" do
       before(:each) do
-        get :new
+        get :new, :project_id => @project
       end
       it { should respond_with :success }
       it { should render_template :new }
@@ -46,7 +49,7 @@ describe CharactersController do
 
     describe "POST to create" do
       before(:each) do
-        post :create, :character => Factory.attributes_for(:character, :project => @project)
+        post :create, :character => Factory.attributes_for(:character), :project_id => @project
       end
       it { should redirect_to(character_path(assigns(:character))) }
     end
@@ -54,7 +57,7 @@ describe CharactersController do
     describe "GET edit" do
       before(:each) do
         @character = Factory(:character, :project => @project)
-        get :edit, :id => @character
+        get :edit, :id => @character, :project_id => @project
       end
       it { should respond_with :success }
       it { should render_template :edit }
@@ -63,11 +66,19 @@ describe CharactersController do
     describe "PUT to update" do
       before(:each) do
         @character = Factory(:character, :project => @project)
-        post :create, :id => @character.id, :character => Factory.attributes_for(:character)
+        post :create, :id => @character.id, :character => Factory.attributes_for(:character), :project_id => @project
       end
       it { should redirect_to(character_path(assigns(:character))) }
     end
   
+    describe "DELETE to destroy" do
+      before(:each) do
+        @character = Factory(:character, :project => @project)
+        delete :destroy, :id => @character.id, :project_id => @project
+      end
+      it { should redirect_to(project_path(assigns(:project))) }
+    end
+    
   end
   
 end

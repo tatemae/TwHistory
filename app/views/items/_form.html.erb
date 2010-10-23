@@ -1,4 +1,4 @@
-<%= f.menu_select :character_id, translate('items.character'), @project.characters %>
+<%= f.menu_select :character_id, translate('items.character'), @project.characters, :extra_html => link_to(translate('items.add_character'), new_project_character_path(@project)) %> 
 <div class="form-row date-time">
   <label><%= translate('items.event_date_time') %></label>
   <%= text_field_tag :event_date, just_date(@item.event_date_time), { :class => "date_pick" } -%>
@@ -23,7 +23,9 @@
               yearRange: 'c-200:c+50'
         		});
         		
-    //jQuery('.time_pick').timepickr({ format12: '{h:d}:{m:02.d} {z:s}', convention: 12 });
+    jQuery('.time_pick').timePicker({
+              show24Hours: false,
+              step: 15});
     jQuery('.tweet').keyup(function(){
       limitChars(this, 140, this.siblings('.charlimitinfo'));
     })

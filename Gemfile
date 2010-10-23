@@ -25,11 +25,12 @@ gem "hoptoad_notifier"
 gem "recaptcha", :require => "recaptcha/rails"
 gem "tiny_mce"
 gem "acts-as-taggable-on"
+gem "fastercsv"
 
 gem "geokit"
 gem "babelphish"
 gem "uploader"
-gem "muck-engine", ">=3.0.5"
+#gem "muck-engine", ">=3.0.5"
 gem "muck-users", ">=3.0.5"
 gem "muck-solr", :require => "acts_as_solr"
 gem "muck-raker"
@@ -41,7 +42,7 @@ gem "muck-friends"
 gem "muck-shares"
 gem "muck-invites"
 
-#gem "muck-engine", :path => "~/projects/muck-engine"
+gem "muck-engine", :path => "~/projects/muck-engine"
 #gem "muck-users", :path => "~/projects/muck-users"
 
 group :test, :development do

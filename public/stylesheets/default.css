@@ -60,6 +60,7 @@ a:hover{text-decoration:none;}
 #content .text-sinking{overflow:hidden;margin-bottom:4px;color:#4B3013;}
 #content .text-sinking2{margin-bottom:3px;color:#4B3013;}
 #content .text-sinking2 a{font-size:14px;}
+#content .text-sinking a,
 #content .text-sinking3 a{color:#4B3013;text-decoration:none;}
 #content .text-battle{background:url(/images/text-battle.gif) no-repeat;height:27px;}
 #content .text-cuban{height:27px;background:url(/images/text-cuban.gif) no-repeat;}

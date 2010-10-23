@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.expand_path("../../spec_helper", __FILE__)
 
 describe Project do
   it { should have_many :items }
@@ -36,6 +36,15 @@ describe Project do
     end
     it "should parse a csv file into items" do
       @project.import_items(@items_file)
+      @project.reload
+      # Characters
+      @project.characters.any?{|c| c.name == 'C Lightoller'}.should be_true
+      @project.characters.any?{|c| c.name == 'J Phillips'}.should be_true
+      @project.characters.any?{|c| c.name == 'Capt Smith'}.should be_true
+      # Items
+      @project.items.any?{ |i| i.content == 'Just sent lifeboat 12 away with 40 women and children' && i.event_date_time == DateTime.new("Jun 11, 1912 1:20 AM") }.should be_true
+      @project.items.any?{ |i| i.content == 'Word is we are sinking. Staying at my post. Trying to raise another ship on our wireless' && i.event_date_time == DateTime.new("Jun 11, 1912 1:25 AM") }.should be_true
+      @project.items.any?{ |i| i.content == "Titanic just lurched to port, with the deck tilting. The band is playing for us. Boats No. 9 and No. 10 are lowering." && i.event_date_time == DateTime.new("Jun 11, 1912 1:15 AM") }.should be_true
     end
   end
   

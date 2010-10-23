@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = @project.items.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @item }

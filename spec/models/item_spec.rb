@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.expand_path("../../spec_helper", __FILE__)
 
 describe Item do
   
@@ -18,5 +18,15 @@ describe Item do
   
   it { should validate_presence_of :content }
   it { should validate_presence_of :event_date_time }
+  
+  describe "parse_event_date_time" do
+    setup do
+      @item = Factory(:item)
+    end
+    it "should build event_date_time from params" do
+      @item.parse_event_date_time({:event_date => '10/10/2010', :event_time => '10:10'})
+      @item.event_date_time.should == DateTime.new('10/10/2010 10:10')
+    end
+  end
   
 end

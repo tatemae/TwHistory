@@ -61,7 +61,7 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     @character.destroy
     respond_to do |format|
-      format.html { redirect_to(characters_url) }
+      format.html { redirect_to(@project) }
       format.xml  { head :ok }
     end
   end

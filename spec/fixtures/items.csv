@@ -1,5 +1,4 @@
-Abraham Lincoln, This is awesome, 12/1/2010
-John Doe, This is more awesome, 12/2/2010
-
-col[0])
-self.items.create(:content => col[1], :event_date_time => col[2], :location => col[3], :source=> col[4]
+C Lightoller, Just sent lifeboat 12 away with 40 women and children,"Jun 11, 1912 1:20 AM",North Atlantic Ocean,,,,,,,,
+J Phillips,Word is we are sinking. Staying at my post. Trying to raise another ship on our wireless,"Jun 11, 1912 1:25 AM",North Atlantic Ocean,,,,,,,,
+C Lightoller,I gave them orders to row towards the lights of the ship that was still visible but not responding,"Jun 11, 1912 1:16 AM",North Atlantic Ocean,,,,,,,,
+Capt Smith,"Titanic just lurched to port, with the deck tilting. The band is playing for us. Boats No. 9 and No. 10 are lowering.","Jun 11, 1912 1:15 AM",North Atlantic Ocean,,,,,,,,

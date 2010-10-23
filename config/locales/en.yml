@@ -9,10 +9,11 @@ en:
     event_date_time: Date/Time
     edit_problem: There was a problem editing this event
     new_problem: There was a problem adding the event
+    add_character: Add New
   characters: 
-    title: Title
+    name: Title
     create_problem: There was a problem creating the new character
-    description: Description
+    bio: Bio
     edit_problem: There was a problem editing this character
   contact: 
     subject_help: A simple statement indicating the nature of your feedback.

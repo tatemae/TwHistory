@@ -1,6 +1,8 @@
 class DefaultController < ApplicationController
 
   def index
+    @project = Project.first # TODO make a 'featured project'
+    @items = @project.items
     respond_to do |format|
       format.html { render }
     end
