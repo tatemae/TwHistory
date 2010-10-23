@@ -271,7 +271,6 @@ DEPENDENCIES
   muck-friends
   muck-invites
   muck-profiles
-  muck-raker
   muck-shares
   muck-solr
   muck-users (>= 3.0.5)
@@ -281,7 +280,7 @@ DEPENDENCIES
   rails (= 3.0.1)
   rcov
   recaptcha
-  rspec (>= 2.0.1scr)
+  rspec (>= 2.0.1)
   rspec-rails (>= 2.0.1)
   ruby-debug
   sanitize
