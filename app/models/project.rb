@@ -2,7 +2,10 @@ class Project < ActiveRecord::Base
   has_many :authentications, :as => :authenticatable, :dependent => :destroy
   has_many :characters
   has_many :items
+  has_many :broadcasts
   belongs_to :user
+  
+  has_many :authorized_users, :class_name => 'User', :through => :project_roles
   
   scope :by_newest, order("projects.created_at DESC")
   scope :by_oldest, order("projects.created_at ASC")
@@ -20,7 +23,9 @@ class Project < ActiveRecord::Base
                     
   def can_edit?(check_user)
     return false if check_user.blank?
-    check_user == self.user
+    return true if check_user == self.user
+    return true if self.users.include?(check_user)
+    false
   end
   
   def import_items(file)    

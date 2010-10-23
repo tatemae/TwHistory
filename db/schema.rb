@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101019235927) do
+ActiveRecord::Schema.define(:version => 20101023214148) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -106,6 +106,17 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "broadcasts", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "authenticatable_id"
+    t.string   "authenticatable_type"
+    t.datetime "start_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "broadcasts", ["project_id"], :name => "index_broadcasts_on_project_id"
 
   create_table "characters", :force => true do |t|
     t.integer  "project_id"
@@ -494,6 +505,17 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
   add_index "profiles", ["lat", "lng"], :name => "index_profiles_on_lat_and_lng"
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
+  create_table "project_roles", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_roles", ["project_id"], :name => "index_project_roles_on_project_id"
+  add_index "project_roles", ["user_id"], :name => "index_project_roles_on_user_id"
+
   create_table "projects", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -524,6 +546,14 @@ ActiveRecord::Schema.define(:version => 20101019235927) do
 
   create_table "roles", :force => true do |t|
     t.string   "rolename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scheduled_items", :force => true do |t|
+    t.integer  "broadcast_id"
+    t.integer  "item_id"
+    t.datetime "send_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

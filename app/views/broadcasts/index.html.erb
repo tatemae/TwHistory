@@ -1,0 +1,21 @@
+<h1>Listing broadcasts</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @broadcasts.each do |broadcast| %>
+  <tr>
+    <td><%= link_to 'Show', broadcast %></td>
+    <td><%= link_to 'Edit', edit_broadcast_path(broadcast) %></td>
+    <td><%= link_to 'Destroy', broadcast, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Broadcast', new_broadcast_path %>

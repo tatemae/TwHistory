@@ -74,13 +74,4 @@ class ItemsController < ApplicationController
     end
   end
   
-  protected
-    def setup_project
-      @project = Project.find(params[:project_id])
-      if !@project.can_edit?(current_user)
-        flash[:notice] = translate('projects.edit_permission_denied', :project_title => @project.title)
-        redirect_to @project
-      end
-    end
-    
 end

@@ -4,7 +4,9 @@ describe Project do
   it { should have_many :items }
   it { should have_many :characters }
   it { should have_many :authentications }
+  it { should have_many :broadcasts }
   it { should belong_to :user }
+  it { should have_many :authorized_users }
   
   it { should scope_by_latest }
   it { should scope_by_newest }
@@ -15,14 +17,19 @@ describe Project do
   describe "can_edit?" do
     before do
       @user = Factory(:user)
+      @project_owner = Factory(:user)
+      @project = Factory(:project, :user => @project_owner)
       @project_user = Factory(:user)
-      @project = Factory(:project, :user => @project_user)
+      @project.authorized_users << @project_user
     end
     it "should return false for nil user" do
       @project.can_edit?(nil).should be_false
     end
     it "should return false for non project user" do
       @project.can_edit?(@user).should be_false
+    end
+    it "should return true for project owner" do
+      @project.can_edit?(@project_owner).should be_true
     end
     it "should return true for project user" do
       @project.can_edit?(@project_user).should be_true
