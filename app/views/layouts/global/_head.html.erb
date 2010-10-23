@@ -14,10 +14,13 @@
   <%= google_load_jquery(http_protocol, '1.4.2') %>
   <%= google_load_jquery_ui(http_protocol, '1.8.4') %>
 <% end -%>
-<%= stylesheet_link_tag %W{ default }, :cache => true %>
+<%= stylesheet_link_tag %W{ jquery/jquery.fancybox jquery/jquery.timepickr default }, :cache => true %>
 <%= javascript_include_tag %w{
   jquery/jquery.form.js
+  jquery/jquery.easing.js
+  jquery/jquery.fancybox.js
   jquery/jquery.tips.js
+  jquery/jquery.timepickr.min.js
   jquery/jquery.easing.js
   jquery/jquery.fancybox.js
   muck.js

@@ -1,47 +1,39 @@
 class ItemsController < ApplicationController
-  # GET /items
-  # GET /items.xml
-  def index
-    @items = Item.all
 
+  before_filter :login_required, :except => [:index, :show]
+  before_filter :setup_project
+  
+  def index
+    @items = @project.items.by_newest
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }
     end
   end
 
-  # GET /items/1
-  # GET /items/1.xml
   def show
     @item = Item.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
     end
   end
 
-  # GET /items/new
-  # GET /items/new.xml
   def new
     @item = Item.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @item }
     end
   end
-
-  # GET /items/1/edit
-  def edit
-    @item = Item.find(params[:id])
-  end
-
-  # POST /items
-  # POST /items.xml
+  
   def create
-    @item = Item.new(params[:item])
-
+    if params[:item][:csv]
+      @project.import_items(params[:item][:csv])
+    else
+      @item = Item.new(params[:item])
+      @item.parse_event_date_time(params)
+    end
     respond_to do |format|
       if @item.save
         format.html { redirect_to(@item, :notice => 'Item was successfully created.') }
@@ -53,10 +45,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  # PUT /items/1
-  # PUT /items/1.xml
+  def edit
+    @item = Item.find(params[:id])
+  end
+  
   def update
     @item = Item.find(params[:id])
+    @item.parse_event_date_time(params)
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -69,8 +64,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.xml
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
@@ -80,4 +73,14 @@ class ItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+    def setup_project
+      @project = Project.find(params[:project_id])
+      if !@project.can_edit?(current_user)
+        flash[:notice] = translate('projects.edit_permission_denied', :project_title => @project.title)
+        redirect_to @project
+      end
+    end
+    
 end

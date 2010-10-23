@@ -17,5 +17,9 @@ class Item < ActiveRecord::Base
                                  :thumb => "100x100>",
                                  :icon => "62x62>",
                                  :tiny => "24x24>" }
-                    
+  
+  def parse_event_date_time(params)
+    self.happens_at = DateTime.parse("#{params[:event_date]} #{params[:event_time]}")
+  end
+  
 end

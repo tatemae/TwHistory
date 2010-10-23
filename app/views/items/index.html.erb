@@ -1,21 +1,6 @@
-<h1>Listing items</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @items.each do |item| %>
-  <tr>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Item', new_item_path %>
+<h1>Historical Events for <%= @project.title %></h1>
+<%= link_to '<< Back', @project %>
+<%= link_to translate('projects.add'), new_project_item_path(@project) if @project.can_edit?(current_user) %>
+<div>
+  <%= render @items %>
+</div>

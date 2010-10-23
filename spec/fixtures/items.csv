@@ -1,0 +1,5 @@
+Abraham Lincoln, This is awesome, 12/1/2010
+John Doe, This is more awesome, 12/2/2010
+
+col[0])
+self.items.create(:content => col[1], :event_date_time => col[2], :location => col[3], :source=> col[4]

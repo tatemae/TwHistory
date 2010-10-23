@@ -1,5 +1,14 @@
 --- 
 en: 
+  items:
+    create_problem: There was a problem creating the new event
+    content: Event
+    source: Source
+    location: Location
+    character: Historical Figure
+    event_date_time: Date/Time
+    edit_problem: There was a problem editing this event
+    new_problem: There was a problem adding the event
   characters: 
     title: Title
     create_problem: There was a problem creating the new character

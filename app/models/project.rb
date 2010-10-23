@@ -23,4 +23,11 @@ class Project < ActiveRecord::Base
     check_user == self.user
   end
   
+  def import_items(file)    
+    FasterCSV.parse(file, :headers => true) do |col|
+      character = self.characters.find_or_create_by_name(col[0])
+      self.items.create(:content => col[1], :event_date_time => col[2], :location => col[3], :source=> col[4], :character_id => character.id)
+    end  
+  end
+
 end

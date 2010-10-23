@@ -28,4 +28,15 @@ describe Project do
       @project.can_edit?(@project_user).should be_true
     end
   end
+  
+  describe "import_items" do
+    before do
+      @project = Factory(:project)
+      @items_file = fixture_file_upload("#{::Rails.root}/spec/fixtures/items.csv", 'text/csv')
+    end
+    it "should parse a csv file into items" do
+      @project.import_items(@items_file)
+    end
+  end
+  
 end

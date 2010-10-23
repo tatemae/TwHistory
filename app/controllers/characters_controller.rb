@@ -74,4 +74,5 @@ class CharactersController < ApplicationController
         redirect_to @project
       end
     end
+    
 end

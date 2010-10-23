@@ -226,13 +226,14 @@ a:hover{text-decoration:none;}
 #errorExplanation ul li{list-style:square;}
 /* forms */
 .common-form h1{font-size:2.6em;margin:10px 0;}
-.common-form form .form-row{margin:10px 0;}
+.common-form form .form-row{margin:10px 0;clear:both;}
 .common-form form .form-row input{margin:0 10px 5px 0;padding:4px;font-size:1.3em;}
 .common-form form .form-row input[type="text"],input[type="password"]{border:1px solid #8f8685;}
 .common-form form .form-row input[type="checkbox"]{border:none;margin-bottom:0px;}
 .common-form form .form-row input[type="radio"]{border:none;}
 .common-form form .form-row textarea{font-size:1.4em;margin:0 10px 0 0;padding:4px;border:1px solid #8f8685;height:220px;}
-.common-form form .form-row label{font-size:1.5em;font-weight:bold;margin:0 10px 5px 0;padding:0px;display:block;}
+.common-form form .chooseMenu label,
+.common-form form .form-row label{font-size:1.5em;font-weight:bold;margin:0 10px 5px 0;padding:0px;display:inline-block;}
 .common-form form em{color:#b61e12;font-style:normal;font-size:90%;}
 .common-form form hr{border:1px solid #e3e0c3;height:1px;margin:15px 0;}
 .common-form form fieldset span.var{margin:2px 5px 5px 18px;display:block;}
@@ -245,3 +246,10 @@ a:hover{text-decoration:none;}
 #sign_in{width:470px;margin:20px auto;}
 #registration h1, #registration p{text-align:center;}
 #register-user-form{width:330px;margin:20px auto;}
+#event-upload-form{margin:5px auto;}
+#event-form{margin:40px auto;}
+#event-form textarea{height:60px;width:620px;}
+/* date picker */
+.date_pick{background:transparent url('/images/calender.jpg') no-repeat scroll right bottom;width:150px;}
+.time_pick{background:transparent url('/images/clock.gif') no-repeat scroll right bottom;width:90px;}
+.date-time input, .date-time label{padding:2px;float:left;display:inline-block;height:15px;}

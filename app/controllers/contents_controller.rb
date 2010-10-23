@@ -1,2 +1,2 @@
-  class ContentsController < Muck::ContentsController
-  end
+class ContentsController < Muck::ContentsController
+end

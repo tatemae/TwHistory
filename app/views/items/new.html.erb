@@ -1,5 +1,17 @@
-<h1>New item</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', items_path %>
+<div id="event-upload-form" class="common-form">
+  <h1>Upload a CSV file</h1>
+  <%= form_for :item, :url => project_items_path(@project), :html => { :multipart => true } do |f| -%>
+    <%= f.file_field :csv %>
+    <%= f.submit "Upload", :disable_with => 'Uploading...' %>
+  <% end -%>
+</div>
+<div id="event-form" class="common-form">
+  <h1>Add Single Event</h1>
+  <%= muck_form_for :item, :url => project_items_path(@project), :html => { :multipart => true, :id => "new-item-form", :name => 'new-item-form' } do |f| -%>
+  	<%= output_errors(translate('items.new_problem'), {:class => 'help-box'}, @item) %>
+    <%= render 'form', :f => f %>
+  	<div class="button form-row">
+    	<%= f.submit translate('general.create') %>
+    </div>
+  <% end -%>
+</div>
