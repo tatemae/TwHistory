@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_filter :setup_project
   
   def index
-    @items = @project.items.by_newest
+    @items = @project.items.by_newest.includes(:character).paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }

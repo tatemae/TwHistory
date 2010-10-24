@@ -2,6 +2,20 @@ require File.expand_path("../../spec_helper", __FILE__)
 
 describe ScheduledItemsController do
 
+  render_views
+    
+  before(:each) do
+    @user = Factory(:user)
+    @project = Factory(:project, :user => @user)
+    @broadcast = Factory(:broadcast, :project => @project)
+    @scheduled_item = Factory(:scheduled_item, :broadcast => @broadcast)
+  end
+
+  it { should require_login 'new', :get, '/login' }
+  it { should require_login 'create', :post, '/login' }
+  it { should require_login 'edit', :get, '/login' }
+  it { should require_login 'update', :put, '/login' }
+  
   def mock_scheduled_item(stubs={})
     (@mock_scheduled_item ||= mock_model(ScheduledItem).as_null_object).tap do |scheduled_item|
       scheduled_item.stub(stubs) unless stubs.empty?

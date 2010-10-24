@@ -91,10 +91,11 @@ a:hover{text-decoration:none;}
 #content h3{font-size:28px;line-height:36px;}
 #content h2 span{font-size:14px;color:#9d6d2c;}
 #content h4{font-size:18px;color:#9d6d2c;font-weight:normal;line-height:20px;margin-bottom:8px;}
-#content .author{font-size:16px;display:block;margin-bottom:13px;}
-.broadcast{margin-bottom:14px;}
-.broadcast .heading{width:100%;overflow:hidden;line-height:27px;margin-bottom:16px;}
-.broadcast .heading a{padding-left:38px;color:#f15a24;float:left;background:url(/images/ico-twitter2.gif) no-repeat;}
+#content .author{font-size:16px;display:block;}
+#content .broadcast{margin-bottom:14px;}
+#content .broadcast .heading{width:100%;overflow:hidden;line-height:27px;margin-bottom:16px;}
+#content .broadcast .heading h3{font-size:16px;color:#4B3013;font-weight:bold;}
+#content .broadcast .heading ul li a{color:#4B3013;padding-left:38px;background:url(/images/ico-twitter2.gif) no-repeat;float:left;height:27px;}
 .column-holder{width:708px;margin:0 0 8px -30px;overflow:hidden;}
 .column-holder .cite-list{float:none;padding:0 0 4px 8px;}
 .column-holder .column{width:313px;float:left;padding-left:30px;}
@@ -125,13 +126,6 @@ a:hover{text-decoration:none;}
 .result-box .options-list li .comments{background:url(/images/ico-comments3.gif) no-repeat;}
 .result-box .options-list li .people{background:url(/images/ico-people2.gif) no-repeat;}
 .result-box .options-list li .doc{background:url(/images/ico-doc3.gif) no-repeat;}
-#content .paging{width:100%;overflow:hidden;}
-#content .paging ul{float:right;padding:3px 16px;}
-#content .paging li{float:left;padding-left:7px;}
-#content .paging li a{float:left;}
-#content .paging li .next,
-#content .paging li .prev{float:left;overflow:hidden;text-indent:-9999px;width:36px;height:25px;background:url(/images/bg-btns.gif) no-repeat;}
-#content .paging li .next{background-position:100% 0;}
 .progress-list{margin:-4px 0 27px -17px;}
 .progress-list li{vertical-align:top;width:662px;overflow:hidden;padding:10px 10px 7px;line-height:25px;margin-top:4px;background:url(/images/bg-progress.gif) no-repeat;}
 .progress-list li .date{color:#00a69c;float:left;padding-left:7px;}
@@ -234,7 +228,7 @@ a:hover{text-decoration:none;}
 .common-form form .form-row input[type="radio"]{border:none;}
 .common-form form .form-row textarea{font-size:1.4em;margin:0 10px 0 0;padding:4px;border:1px solid #8f8685;height:220px;}
 .common-form form .chooseMenu label,
-.common-form form .form-row label{font-size:1.5em;font-weight:bold;margin:0 10px 5px 0;padding:0px;display:inline-block;}
+.common-form form .form-row label{font-size:1.5em;font-weight:bold;margin:0 10px 5px 0;padding:0px;display:inline-block;width:140px;}
 .common-form form em{color:#b61e12;font-style:normal;font-size:90%;}
 .common-form form hr{border:1px solid #e3e0c3;height:1px;margin:15px 0;}
 .common-form form fieldset span.var{margin:2px 5px 5px 18px;display:block;}
@@ -243,7 +237,14 @@ a:hover{text-decoration:none;}
 .common-form form .form-row .checklist{padding:0px;margin:0px 0 0 10px;}
 .common-form form .form-row .checkbox, .common-form form .form-row .checklist input[type="checkbox"]{float:left;clear:left;}
 .common-form form .form-row .checkbox, .common-form form .form-row .checklist label{display:inline;}
-
+/*paging*/
+/*
+#content .pagination{overflow:hidden;float:right;padding:3px 16px;display:inline-block;}
+#content .pagination .next_page,
+#content .pagination .prev_page{overflow:hidden;text-indent:-9999px;width:36px;height:25px;background:url(/images/bg-btns.gif) no-repeat;}
+#content .pagination .next_page{background-position:100% 0;}
+*/
+/*forms*/
 #sign_in{width:470px;margin:20px auto;}
 #registration h1, #registration p{text-align:center;}
 #register-user-form{width:330px;margin:20px auto;}
@@ -254,3 +255,5 @@ a:hover{text-decoration:none;}
 .date_pick{background:transparent url('/images/calender.jpg') no-repeat scroll right bottom;width:150px;}
 .time_pick{background:transparent url('/images/clock.gif') no-repeat scroll right bottom;width:90px;}
 .date-time input, .date-time label{padding:2px;float:left;display:inline-block;height:15px;}
+.date-time #date{width:100px;}
+.date-time #time{width:20px;}

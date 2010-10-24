@@ -1,11 +1,20 @@
-<h2 class="text-sinking2"><%= @project.title %> <%= link_to translate('projects.edit'), edit_project_path(@project) if @project.can_edit?(current_user) %></h2>
+<h2 class="text-sinking2">
+  <%= @project.title %> 
+  <% if @project.can_edit?(current_user) -%>
+    <%= link_to translate('projects.edit'), edit_project_path(@project) %>
+    <%= link_to translate('projects.twitter_accounts'), project_authentications_path(@project) %>
+  <% end -%>
+</h2>
 <span class="author"><strong>Recreated by:</strong><%= @project.user.display_name %></span> 
 <div class="broadcast"> 
 	<div class="heading">
-	  <a href="#"><strong>Next Broadcast:</strong> April 9, 2011</a> 
-	</div><!-- heading --> 
+	  <h3>Upcoming Broadcasts:</h3>
+	  <ul>
+	    <li><a href="#"> April 9, 2011</a></li>
+	  </ul>
+	</div>
 	<p><%= @project.description %></p> 
-</div><!-- broadcast --> 
+</div>
 <div class="column-holder"> 
 	<div class="column"> 
 		<h3 class="ico-peoples"><%= link_to 'Historical Figures', project_characters_path(@project) %> <span><%= link_to translate('projects.add'), new_project_character_path(@project) if @project.can_edit?(current_user) %></span></h3> 
@@ -17,13 +26,13 @@
 		<h3 class="ico-comments"><%= link_to 'Historical Timeline', project_items_path(@project) %> <span><%= link_to translate('projects.add'), new_project_item_path(@project) if @project.can_edit?(current_user) %></span></h3> 
 		<ul class="cite-list">
 		  <%= render :partial => 'projects/item', :collection => @items %> 
-		</ul><!-- cite list --> 
+		</ul>
 		<ul class="links">
 		  <li><a href="#">View Full Re-Enactment Archive</a></li>
 		  <li><a href="#">Download Tweets</a></li>
 		</ul> 
-	</div><!-- column --> 
-</div><!-- column holder --> 
+	</div>
+</div>
 <h3 class="ico-doc">Primary Source Links</h3> 
 <ul class="links-list">						
   <li><a href="#"><strong>First Flight - Kittyhawk</strong> by Todd Bartlett</a></li>

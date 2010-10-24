@@ -2,13 +2,13 @@ class DefaultController < ApplicationController
 
   def index
     @project = Project.first # TODO make a 'featured project'
-    @items = @project.items
+    @items = @project.items.by_newest.limit(4)
     respond_to do |format|
       format.html { render }
     end
   end
 
-  def schedule
+  def about
   end
   
   def search

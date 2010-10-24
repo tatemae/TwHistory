@@ -26,8 +26,9 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem "tiny_mce"
 gem "acts-as-taggable-on"
 gem "fastercsv"
-
+gem "omniauth"
 gem "geokit"
+
 gem "babelphish"
 gem "uploader"
 gem "muck-engine", ">=3.0.6"

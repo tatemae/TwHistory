@@ -1,21 +1,14 @@
-<h1>Listing authentications</h1>
-
+<h1>Twitter Accounts Connected to <%= @parent.authentication_name %></h1>
+<%= link_to 'Add Account', "/auth/twitter?parent_id=#{@parent.id}&parent_type=#{@parent.class.to_s}" %>
 <table>
   <tr>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
-
-<% @authentications.each do |authentication| %>
-  <tr>
-    <td><%= link_to 'Show', authentication %></td>
-    <td><%= link_to 'Edit', edit_authentication_path(authentication) %></td>
-    <td><%= link_to 'Destroy', authentication, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @authentications.each do |authentication| %>
+    <tr>
+      <td><%= authentication.uid %></td>
+      <td><%= link_to 'Delete', polymorphic_path([@parent, authentication]), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Authentication', new_authentication_path %>

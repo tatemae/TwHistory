@@ -1,6 +1,3 @@
-<h2>Re-enactments <span><strong>showing latest 1-5</strong> of 8</span></h2> 
+<h2>Re-enactments </h2> <span><%= paging_information(@projects, Project.count).html_safe %></span>
 <%= render @projects %>
-
-<div class="paging"> 
-	<ul>							<li><a href="#" class="prev">prev</a></li>							<li><a href="#" class="next">next</a></li>						</ul> 
-</div>
+<%= will_paginate @projects %>

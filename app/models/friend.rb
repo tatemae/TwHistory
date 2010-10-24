@@ -1,3 +1,3 @@
-  class Friend < ActiveRecord::Base
-    include MuckFriends::Models::Friend
-  end
+class Friend < ActiveRecord::Base
+  include MuckFriends::Models::MuckFriend
+end

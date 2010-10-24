@@ -1,59 +1,38 @@
 class AuthenticationsController < ApplicationController
 
+  before_filter :setup_parent
+  
   def index
-    @authentications = Authentication.all
+    @authentications = @parent.authentications
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.xml  { render :xml => @authentications }
     end
   end
 
-  def show
-    @authentication = Authentication.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @authentication }
-    end
-  end
-
-  def new
-    @authentication = Authentication.new
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @authentication }
-    end
-  end
-
-  def edit
-    @authentication = Authentication.find(params[:id])
-  end
-
   def create
-    @authentication = Authentication.new(params[:authentication])
+    @omniauth = request.env["omniauth.auth"]
+    debugger
+    if @parent.authentications.find_by_provider_and_uid(@omniauth['provider'], @omniauth['uid'])
+      flash[:notice] = "You've already connected to this Twitter account."
+    elsif @parent.authentications.create(:provider => @omniauth['provider'], :uid => @omniauth['uid'], :raw_auth => @omniauth.to_json)
+      flash[:notice] = 'You successfully connected to the Twitter account.'
+    else
+      flash[:notice] = 'Could not connect to Twitter account. Please try again.'
+    end
     respond_to do |format|
-      if @authentication.save
-        format.html { redirect_to(@authentication, :notice => 'Authentication was successfully created.') }
-        format.xml  { render :xml => @authentication, :status => :created, :location => @authentication }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @authentication.errors, :status => :unprocessable_entity }
-      end
+      format.html { redirect_to(polymorhpic_path([@parent, :authentications])) }
     end
   end
 
-  def update
-    @authentication = Authentication.find(params[:id])
+  def failure
+    flash[:notice] = 'Could not connect to Twitter account. Please try again.'
+    debugger
     respond_to do |format|
-      if @authentication.update_attributes(params[:authentication])
-        format.html { redirect_to(@authentication, :notice => 'Authentication was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @authentication.errors, :status => :unprocessable_entity }
-      end
+      format.html { redirect_to(polymorhpic_path([@parent, :authentications])) }
     end
   end
-
+  
   def destroy
     @authentication = Authentication.find(params[:id])
     @authentication.destroy
@@ -62,4 +41,5 @@ class AuthenticationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

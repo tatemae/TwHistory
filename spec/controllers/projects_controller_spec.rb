@@ -8,6 +8,7 @@ describe ProjectsController do
   it { should require_login 'create', :post, '/login' }
   it { should require_login 'edit', :get, '/login' }
   it { should require_login 'update', :put, '/login' }
+  it { should require_login 'destroy', :delete, '/login' }
   
   describe "GET index" do
     before(:each) do

@@ -25,3 +25,15 @@ Factory.define :authentication do |f|
   f.provider { Factory.next(:name) }
   f.uid { Factory.next(:uri) }
 end
+
+Factory.define :broadcast do |f|
+  f.project {|a| a.association(:project) }
+  f.authentication {|a| a.association(:authentication) }
+  f.start_at DateTime.now
+end
+
+Factory.define :sheduled_item do |f|
+  f.broadcast {|a| a.association(:broadcast) }
+  f.item {|a| a.association(:item) }
+  f.send_at DateTime.now
+end

@@ -8,4 +8,5 @@ describe Character do
   
   it { should scope_by_name }
   
+  it { should validate_presence_of :name }
 end

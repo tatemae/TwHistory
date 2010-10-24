@@ -1,18 +1,16 @@
 class BroadcastsController < ApplicationController
 
   before_filter :login_required, :except => [:index, :show]
-  before_filter :setup_project
+  before_filter :setup_project, :except => [:index]
   
   def index
     @broadcasts = Broadcast.all
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.xml  { render :xml => @broadcasts }
     end
   end
 
-  # GET /broadcasts/1
-  # GET /broadcasts/1.xml
   def show
     @broadcast = Broadcast.find(params[:id])
 
@@ -22,8 +20,6 @@ class BroadcastsController < ApplicationController
     end
   end
 
-  # GET /broadcasts/new
-  # GET /broadcasts/new.xml
   def new
     @broadcast = Broadcast.new
 
@@ -33,15 +29,12 @@ class BroadcastsController < ApplicationController
     end
   end
 
-  # GET /broadcasts/1/edit
   def edit
-    @broadcast = Broadcast.find(params[:id])
+    @broadcast = @project.broadcasts.find(params[:id])
   end
 
-  # POST /broadcasts
-  # POST /broadcasts.xml
   def create
-    @broadcast = Broadcast.new(params[:broadcast])
+    @broadcast = @project.broadcasts.build(params[:broadcast])
 
     respond_to do |format|
       if @broadcast.save
@@ -54,8 +47,6 @@ class BroadcastsController < ApplicationController
     end
   end
 
-  # PUT /broadcasts/1
-  # PUT /broadcasts/1.xml
   def update
     @broadcast = Broadcast.find(params[:id])
 

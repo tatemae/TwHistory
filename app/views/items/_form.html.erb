@@ -1,8 +1,8 @@
 <%= f.menu_select :character_id, translate('items.character'), @project.characters, :extra_html => link_to(translate('items.add_character'), new_project_character_path(@project)) %> 
 <div class="form-row date-time">
-  <label><%= translate('items.event_date_time') %></label>
+  <label id="date"><%= translate('items.event_date_time') %></label>
   <%= text_field_tag :event_date, just_date(@item.event_date_time), { :class => "date_pick" } -%>
-  <label>At</label>
+  <label id="time">At</label>
   <%= text_field_tag :event_time, just_time(@item.event_date_time), { :class => 'time_pick' } %>
 </div>
 <%= f.text_area :content, { :label => translate('items.content'),

@@ -55,4 +55,13 @@ describe Project do
     end
   end
   
+  describe "authentication_name" do
+    before(:each) do
+      @project = Factory(:project)
+    end
+    it "should respond to 'authentication_name' with title" do
+      @project.authentication_name.should == @project.title
+    end
+  end
+  
 end

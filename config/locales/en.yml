@@ -36,6 +36,7 @@ en:
     description: Description
     create_problem: There was a problem creating the new re-enactment
     edit_problem: There was a problem editing this re-enactment
+    twitter_accounts: (Twitter Accounts)
   general: 
     thank_you_contact: Thank you for your message.  A member of our team will respond to you shortly.
     save: Save

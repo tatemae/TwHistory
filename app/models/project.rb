@@ -28,11 +28,22 @@ class Project < ActiveRecord::Base
     false
   end
   
-  def import_items(file)    
-    FasterCSV.parse(file, :headers => true) do |col|
-      character = self.characters.find_or_create_by_name(col[0])
-      self.items.create(:content => col[1], :event_date_time => col[2], :location => col[3], :source=> col[4], :character_id => character.id)
-    end  
+  def import_items(file)
+    results = []
+    FasterCSV.parse(file, :headers => true) do |row|
+      character = self.characters.find_or_create_by_name(row[2])
+      item = {:event_date_time => DateTime.parse("#{row[0]} #{row[1]}"), :character_id => character.id, :content => row[3]}
+      item[:location] = row[4] if row[4]
+      item[:source] = row[5] if row[5]
+      if !self.items.create(item)
+        results << "FAILED: #{row.join(',')}"
+      end
+    end
+    results
   end
 
+  def authentication_name
+    self.title
+  end
+  
 end
