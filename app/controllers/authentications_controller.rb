@@ -4,23 +4,30 @@ class AuthenticationsController < ApplicationController
   before_filter :recover_parent, :only => [:create, :failure]
 
   def new
-    redirect_to "/auth/twitter"
+    if @parent.authentication
+      flash[:notice] = translate('authentications.already_connected')
+      redirect_to(@parent)
+    else
+      redirect_to "/auth/twitter"
+    end
   end
   
   def create
     @omniauth = request.env["omniauth.auth"]
-    debugger
-    if @parent.authentications.find_by_provider_and_uid(@omniauth['provider'], @omniauth['uid'])
+    if @parent.authentication
       flash[:notice] = translate('authentications.already_connected')
-    elsif @parent.authentications.create(:provider => @omniauth['provider'], 
-                                         :uid => @omniauth['uid'],
-                                         :name => @omniauth['user_info']['name'],
-                                         :nickname => @omniauth['user_info']['nickname'],
-                                         :token => @omniauth.token,
-                                         :secret => @omniauth.secret)
-      flash[:notice] = translate('authentications.connect_success')
     else
-      flash[:notice] = translate('authentications.connect_error')
+      @authentication = @parent.build_authentication(:provider => @omniauth['provider'], 
+                                     :uid => @omniauth['uid'],
+                                     :name => @omniauth['user_info']['name'],
+                                     :nickname => @omniauth['user_info']['nickname'],
+                                     :token => @omniauth['credentials']['token'],
+                                     :secret => @omniauth['credentials']['secret'])
+      if @authentication.save
+        flash[:notice] = translate('authentications.connect_success')
+      else
+        flash[:notice] = translate('authentications.connect_error', :errors => @authentication.errors.full_messages.to_sentence)
+      end
     end
     respond_to do |format|
       format.html { redirect_to(@parent) }

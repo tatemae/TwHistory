@@ -1,8 +1,13 @@
 <div class="broadcast-twitter">
   <% if @broadcast.authentication -%>
-    <%= authentication.uid %>
-    <%= link_to translate('general.delete'), authentication_path(@broadcast.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
+    <div>
+      <p>
+        Connected to Twitter Account: <%= link_to @broadcast.authentication.nickname, "http://www.twitter.com/#{@broadcast.authentication.nickname}", :target => '_blank' %>
+        <%= link_to translate('general.delete'), authentication_path(@broadcast.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
+      </p>
+      <p>(All tweets for this re-enactment will be sent through this account via a retweet from the characters)</p>
+    </div>
   <% else -%>
-    <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "twitter-ico" %>
+    <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "twitter-ico" %> (Be sure you are logged out of Twitter before performing this step).
   <% end -%>
 </div>

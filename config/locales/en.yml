@@ -49,7 +49,7 @@ en:
     connect_success: You successfully connected to the Twitter account.
     delete_success: Twitter account was succesfully unlinked
     no_parent_error: No Character or Schedule was provided. Unable to connect with Twitter account.
-    connect_error: Could not connect to Twitter account. Please try again.
+    connect_error: Could not connect to Twitter account. Please try again. %{errors}
   broadcasts: 
     new_problem: There was a problem adding the broadcast
     create_success: Broadcast was successfully created. Now connect the broadcast to a Twitter account
