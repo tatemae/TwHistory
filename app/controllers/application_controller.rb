@@ -11,9 +11,16 @@ class ApplicationController < ActionController::Base
     def setup_project
       @project = Project.find(params[:project_id])
       if !@project.can_edit?(current_user)
-        flash[:notice] = translate('projects.edit_permission_denied', :project_title => @project.title)
+        flash[:notice] = translate('general.inline_edit_permission_denied', :project_title => @project.title)
         redirect_to @project
       end
+    end
+    
+    # Get's the project but doesn't redirect if the user doesn't have edit permission
+    def setup_project_not_protected
+      @project = Project.find(params[:project_id])
+      @can_edit_project = false
+      @can_edit_project = @project.can_edit?(current_user) if @project
     end
     
 end

@@ -1,5 +1,10 @@
-<h1>New broadcast</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', broadcasts_path %>
+<div id="new-broadcast" class="common-form">
+  <h1>Add Broadcast</h1>
+  <%= muck_form_for :broadcast, :url => project_broadcasts_path(@project), :html => { :id => "new-broadcast-form", :name => 'new-broadcast-form', :class => 'broadcast-form' } do |f| -%>
+  	<%= output_errors(translate('broadcasts.new_problem'), {:class => 'help-box'}, @broadcast) %>
+    <%= render 'form', :f => f %>
+  	<div class="button form-row">
+    	<%= f.submit translate('general.create') %>
+    </div>
+  <% end -%>
+</div>

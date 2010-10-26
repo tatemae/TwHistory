@@ -1,20 +1,36 @@
 class ItemsController < ApplicationController
 
+  include ::CsvMethods
+  
   before_filter :login_required, :except => [:index, :show]
-  before_filter :setup_project
+  before_filter :setup_project, :except => [:index]
+  before_filter :setup_project_not_protected, :only => [:index]
   
   def index
-    @items = @project.items.by_newest.includes(:character).paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @items }
+      format.html do
+        @items = @project.items.by_event_date_time.includes(:character).paginate(:page => @page, :per_page => @per_page)
+      end
+      format.xml do
+        @items = @project.items.by_event_date_time.includes(:character)
+        render :xml => @items
+      end
+      format.csv do
+        @items = @project.items.by_event_date_time.includes(:character)
+        stream_csv(@project.title) do |csv|
+          csv << csv_header
+          @items.each do |i|
+            csv << csv_item(i)
+          end
+        end
+      end
     end
   end
 
   def show
     @item = Item.find(params[:id])
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @item }
     end
   end
@@ -29,18 +45,27 @@ class ItemsController < ApplicationController
   
   def create
     if params[:item][:csv]
-      @project.import_items(params[:item][:csv])
+      @items, @results = @project.import_items(params[:item][:csv])
+      if @results.empty?
+        respond_to do |format|
+          format.html { redirect_to(@project, :notice => translate('items.csv_import_success')) }
+          format.xml  { render :xml => @items, :status => :created }
+        end
+      else
+        format.html { render :action => "new", :notice => translate('items.csv_import_failure') }
+        format.xml  { render :xml => @results, :status => :unprocessable_entity }
+      end
     else
       @item = Item.new(params[:item])
       @item.parse_event_date_time(params)
-    end
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to(@item, :notice => 'Item was successfully created.') }
-        format.xml  { render :xml => @item, :status => :created, :location => @item }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @item.save
+          format.html { redirect_to(@project, :notice => translate('items.item_create_success')) }
+          format.xml  { render :xml => @item, :status => :created, :location => @item }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
@@ -73,5 +98,15 @@ class ItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+    def csv_header
+      ["Event Date", "Event Time", "Character Name", "Content", "Location", "Source"]
+    end
+
+    def csv_item(i)
+      [i.event_date_time.to_s(:short_date), i.event_date_time.to_s(:just_time), i.character.name, i.content, i.location, i.source]
+    end
   
 end

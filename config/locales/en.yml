@@ -1,17 +1,25 @@
 --- 
 en: 
-  items:
-    create_problem: There was a problem creating the new event
-    content: Event
-    source: Source
+  items: 
+    csv_import_failure: There were some errors while importing the csv file.
     location: Location
-    character: Historical Figure
-    event_date_time: Date/Time
-    edit_problem: There was a problem editing this event
-    new_problem: There was a problem adding the event
     add_character: Add New
+    new_problem: There was a problem adding the event
+    character: Historical Figure
+    item_create_success: Item was successfully created.
+    wait: Please wait. It can take a few minutes to upload large csv files.
+    csv_import_success: Successfully imported csv file
+    event_date_time: Date/Time
+    content: Event
+    create_problem: There was a problem creating the new event
+    source: Source
+    edit_problem: There was a problem editing this event
+    add: Add new historical event
   characters: 
     name: Title
+    add: Add a new character
+    create_success: Character was successfully created.
+    update_success: Character was successfully updated.
     create_problem: There was a problem creating the new character
     bio: Bio
     edit_problem: There was a problem editing this character
@@ -19,7 +27,7 @@ en:
     subject_help: A simple statement indicating the nature of your feedback.
     name: "Your name:"
     name_help: Please provide us with your name.
-    contact_response_subject: "Thanks for your inquiry from %{application_name}!"
+    contact_response_subject: Thanks for your inquiry from %{application_name}!
     email_help: Please provide us with your email so that we can contact you if necessary.
     subject: "Subject:"
     question_help: Please include any comments you would like us to hear.
@@ -29,16 +37,34 @@ en:
     question: "Your message/question:"
     email: "Your email:"
   projects: 
-    add: (Add)
-    edit: (Edit)
     title: Title
     edit_permission_denied: "You don't have permission to modify the re-enactment: %{project_title}"
+    return_to_project: "<< Return to: %{project_title}"
     description: Description
     create_problem: There was a problem creating the new re-enactment
     edit_problem: There was a problem editing this re-enactment
-    twitter_accounts: (Twitter Accounts)
+  authentications: 
+    failure: Could not connect to Twitter account. Please try again.
+    already_connected: You've already connected to this Twitter account.
+    connect_success: You successfully connected to the Twitter account.
+    delete_success: Twitter account was succesfully unlinked
+    no_parent_error: No Character or Schedule was provided. Unable to connect with Twitter account.
+    connect_error: Could not connect to Twitter account. Please try again.
+  broadcasts: 
+    new_problem: There was a problem adding the broadcast
+    create_success: Broadcast was successfully created. Now connect the broadcast to a Twitter account
+    start_label: Start this broadcast on
+    link_twitter_account: Link Twitter Account
+    edit_problem: There was a problem editing this broadcast
   general: 
+    delete_confirmation: Are you sure?
+    edit: Edit
+    add: Add
+    delete: Delete
     thank_you_contact: Thank you for your message.  A member of our team will respond to you shortly.
+    follow: Follow
     save: Save
+    inline_edit: (Edit)
     send: Send
     create: Create
+    inline_add: (Add)

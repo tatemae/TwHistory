@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_many :authentications, :as => :authenticatable, :dependent => :destroy
+  
   has_many :characters
   has_many :items
   has_many :broadcasts
@@ -30,16 +30,20 @@ class Project < ActiveRecord::Base
   
   def import_items(file)
     results = []
+    items = []
     FasterCSV.parse(file, :headers => true) do |row|
       character = self.characters.find_or_create_by_name(row[2])
       item = {:event_date_time => DateTime.parse("#{row[0]} #{row[1]}"), :character_id => character.id, :content => row[3]}
       item[:location] = row[4] if row[4]
       item[:source] = row[5] if row[5]
-      if !self.items.create(item)
+      new_item = self.items.build(item)
+      if !new_item.save
         results << "FAILED: #{row.join(',')}"
+      else
+        items << new_item
       end
     end
-    results
+    [items, results]
   end
 
   def authentication_name

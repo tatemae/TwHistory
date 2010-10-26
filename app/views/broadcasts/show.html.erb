@@ -1,5 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_broadcast_path(@broadcast) %> |
-<%= link_to 'Back', broadcasts_path %>
+<%= output_errors(translate('broadcasts.new_problem'), {:class => 'help-box'}, @broadcast) %>
+<div id="broadcast">
+  <h1>Broadcast for <%= link_to @broadcast.project.title, @project %> <span><%= link_to translate('general.inline_edit'), edit_broadcast_path(@broadcast) %></span></h1>
+  <%= render 'broadcasts/link_twitter' %>
+  <h3>Tweet Schedule</h3>
+  <%= render @scheduled_items %>
+</div>

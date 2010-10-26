@@ -7,6 +7,11 @@ describe Character do
   it { should have_many :authentications }
   
   it { should scope_by_name }
+  it { should scope_by_latest }
+  it { should scope_by_newest }
+  it { should scope_by_oldest }
+  it { should scope_newer_than }
+  it { should scope_older_than }
   
   it { should validate_presence_of :name }
 end

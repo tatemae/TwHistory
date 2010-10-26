@@ -1,10 +1,11 @@
 class BroadcastsController < ApplicationController
 
-  before_filter :login_required, :except => [:index, :show]
-  before_filter :setup_project, :except => [:index]
+  before_filter :login_required, :except => [:index]
+  before_filter :setup_project, :only => [:new, :create]
   
   def index
-    @broadcasts = Broadcast.all
+    @broadcasts_in_progress = Broadcast.in_progress.by_start.limit(5)
+    @broadcasts = Broadcast.by_start.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html
       format.xml  { render :xml => @broadcasts }
@@ -13,32 +14,34 @@ class BroadcastsController < ApplicationController
 
   def show
     @broadcast = Broadcast.find(params[:id])
-
+    @scheduled_items = @broadcast.scheduled_items.by_send.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @broadcast }
     end
   end
 
   def new
-    @broadcast = Broadcast.new
-
+    @broadcast = @project.broadcasts.build
+    check_permissions
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.xml  { render :xml => @broadcast }
     end
   end
 
   def edit
-    @broadcast = @project.broadcasts.find(params[:id])
+    @broadcast = Broadcast.find(params[:id])
+    check_permissions
   end
 
   def create
     @broadcast = @project.broadcasts.build(params[:broadcast])
-
+    @broadcast.parse_start_at(params)
+    check_permissions
     respond_to do |format|
       if @broadcast.save
-        format.html { redirect_to(@broadcast, :notice => 'Broadcast was successfully created.') }
+        format.html { redirect_to(@broadcast, :notice => translate('broadcasts.create_success')) }
         format.xml  { render :xml => @broadcast, :status => :created, :location => @broadcast }
       else
         format.html { render :action => "new" }
@@ -49,7 +52,7 @@ class BroadcastsController < ApplicationController
 
   def update
     @broadcast = Broadcast.find(params[:id])
-
+    check_permissions
     respond_to do |format|
       if @broadcast.update_attributes(params[:broadcast])
         format.html { redirect_to(@broadcast, :notice => 'Broadcast was successfully updated.') }
@@ -61,15 +64,17 @@ class BroadcastsController < ApplicationController
     end
   end
 
-  # DELETE /broadcasts/1
-  # DELETE /broadcasts/1.xml
   def destroy
     @broadcast = Broadcast.find(params[:id])
     @broadcast.destroy
-
     respond_to do |format|
       format.html { redirect_to(broadcasts_url) }
       format.xml  { head :ok }
     end
   end
+  
+  protected
+    def check_permissions
+      redirect_to(@project, :notice => "You don't have rights to change broadcast information for #{@broadcast.project.title}") unless @broadcast.project.can_edit?(current_user)
+    end
 end

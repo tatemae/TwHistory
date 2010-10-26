@@ -2,8 +2,14 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,hr,button{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:none;}
 ol,ul{list-style:none;}
 h1,h2,h3,h4,h5,h6,li{line-height:100%;}
+h1{font-size:2em;}
+h1 a{text-decoration:none;}
+h1 span a,
+h2 span a,
+h3 span a{font-size:12px;text-decoration:underline;}
 blockquote,q{quotes:none;}
 table{border-collapse:collapse;border-spacing:0;}
+.spaced-10{margin:10px;}
 input,textarea,select{vertical-align:middle;font-family:inherit;font-size:1em;}
 /* general settings */
 body{margin:0;color:#4b3013;font:14px Arial,Helvetica,sans-serif;background:url(/images/bg-body.gif);}
@@ -64,9 +70,8 @@ a:hover{text-decoration:none;}
 #content .text-sinking3 a{color:#4B3013;text-decoration:none;}
 #content .text-battle{background:url(/images/text-battle.gif) no-repeat;height:27px;}
 #content .text-cuban{height:27px;background:url(/images/text-cuban.gif) no-repeat;}
-#content .text-sinking4{height:25px;width:210px;float:left;background:url(/images/text-sinking4.gif) no-repeat;}
-#content .text-cuban2{width:189px;height:25px;float:left;background:url(/images/text-cuban2.gif) no-repeat 0 50%;}
-#content .text-first{height:25px;float:left;width:230px;background:url(/images/text-first.gif) no-repeat;}
+#content .broadcast-title{height:25px;width:210px;float:left;}
+
 .feature .img-holder{float:left;width:332px;}
 .img-holder img{display:block;}
 .feature .options-list{position:absolute;top:2px;right:23px;}
@@ -95,7 +100,7 @@ a:hover{text-decoration:none;}
 #content .broadcast{margin-bottom:14px;}
 #content .broadcast .heading{width:100%;overflow:hidden;line-height:27px;margin-bottom:16px;}
 #content .broadcast .heading h3{font-size:16px;color:#4B3013;font-weight:bold;}
-#content .broadcast .heading ul li a{color:#4B3013;padding-left:38px;background:url(/images/ico-twitter2.gif) no-repeat;float:left;height:27px;}
+.twitter-ico{color:#4B3013;padding:4px 0 0 38px;background:url(/images/ico-twitter2.gif) no-repeat;display:inline-block;height:27px;}
 .column-holder{width:708px;margin:0 0 8px -30px;overflow:hidden;}
 .column-holder .cite-list{float:none;padding:0 0 4px 8px;}
 .column-holder .column{width:313px;float:left;padding-left:30px;}
@@ -105,7 +110,6 @@ a:hover{text-decoration:none;}
 .ico-comments,
 .ico-peoples{padding-left:35px;background:url(/images/ico-peoples.gif) no-repeat 0 50%;}
 .ico-comments a, .ico-peoples a{text-decoration:none;}
-.ico-comments span a, .ico-peoples span a{font-size:12px;text-decoration:underline;}
 .ico-comments{background:url(/images/ico-comments2.gif) no-repeat 0 50%;}
 .ico-doc{background:url(/images/ico-doc2.gif) no-repeat 0 50%;}
 .links-list{margin:-6px 0 3px 3px;}
@@ -213,12 +217,23 @@ a:hover{text-decoration:none;}
 .right-tip #tip-header{background-image:url(/images/arrow_left.gif);left:-12px;height:23px;width:10px;top:-3px;}
 .bottom-tip #tip-header, .right-tip #tip-header{background-position:left top;}
 /* Errors */
-.help-box{font-size:1.2em;color:#555;}
+.fieldWithErrors{display:inline-block;}
 .fieldWithErrors input{border:solid 2px #B61E12;}
-#errorExplanation{padding:7px;padding-bottom:12px;margin-bottom:20px;}
-#errorExplanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:16px;background-color:#B61E12;color:#fff;}
+#errorExplanation{margin:0;padding:0;}
+#errorExplanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:16px;background-color:#B61E12;color:#fff;letter-spacing:normal;}
 #errorExplanation p{color:#333;margin-bottom:0;padding:5px;}
-#errorExplanation ul li{list-style:square;}
+#errorExplanation ul{padding:4px 4px 4px 25px;background-color:#FFFFFF;}
+#errorExplanation ul li{list-style:circle;}
+.form_error_message{color:#8a1f11;display:none;}
+.error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.error a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+.help-box{font-size:1.2em;color:#555;}
+.notify-box{font-size:1.2em;color:#555;position:absolute;top:0;left:10%;width:80%;z-index:10;}
 /* forms */
 .common-form h1{font-size:2.6em;margin:10px 0;}
 .common-form form .form-row{margin:10px 0;clear:both;}
@@ -247,13 +262,28 @@ a:hover{text-decoration:none;}
 /*forms*/
 #sign_in{width:470px;margin:20px auto;}
 #registration h1, #registration p{text-align:center;}
+.common-form form#register-user-form .form-row label{width:240px;}
 #register-user-form{width:330px;margin:20px auto;}
 #event-upload-form{margin:5px auto;}
 #event-form{margin:40px auto;}
 #event-form textarea{height:60px;width:620px;}
+.broadcast-form .date-time #date{width:230px;}
+#new-item-form .chooseMenu label{width:166px;}
+#edit-character-form textarea{width:640px;}
+#edit-character-form .form-row label,
+#new-item-form .form-row label{width:450px;}
+#new-item-form .form-row label#date{width:100px;}
+#new-item-form .form-row label#time{width:20px;}
 /* date picker */
 .date_pick{background:transparent url('/images/calender.jpg') no-repeat scroll right bottom;width:150px;}
 .time_pick{background:transparent url('/images/clock.gif') no-repeat scroll right bottom;width:90px;}
 .date-time input, .date-time label{padding:2px;float:left;display:inline-block;height:15px;}
 .date-time #date{width:100px;}
 .date-time #time{width:20px;}
+/*items*/
+#list{padding:.3em .2em;}
+.item{width:650px;height:65px;vertical-align:top;font:13px "Trebuchet MS",Helvetica,sans-serif;padding:3px 2px;margin:5px;background:#00a69c;position:relative;}
+.item .visual{display:inline-block;float:left;width:60px;}
+.item .text-holder{display:inline-block;float:left;width:522px;padding:0 4px;}
+.item .edit-links{position:absolute;top:0px;right:0px;display:none;}
+.item .edit-links a{color:#000;}

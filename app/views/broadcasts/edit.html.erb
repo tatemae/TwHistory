@@ -1,6 +1,11 @@
-<h1>Editing broadcast</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @broadcast %> |
-<%= link_to 'Back', broadcasts_path %>
+<%= output_errors(translate('broadcasts.new_problem'), {:class => 'help-box'}, @broadcast) %>
+<div id="edit-broadcast" class="common-form">
+  <h1>Broadcast for <%= @broadcast.project.title %></h1>
+  <%= render 'broadcasts/link_twitter' %>
+  <%= muck_form_for @broadcast, :url => broadcast_path(@broadcast), :html => { :id => "edit-broadcast-form", :name => 'edit-broadcast-form', :class => 'broadcast-form' } do |f| -%>
+  	<%= render 'form', :f => f %>
+  	<div class="button form-row">
+    	<%= f.submit translate('general.save') %>
+    </div>
+  <% end -%>
+</div>

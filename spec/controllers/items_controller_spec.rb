@@ -15,11 +15,25 @@ describe ItemsController do
   it { should require_login 'update', :put, '/login' }
   
   describe "GET index" do
-    before(:each) do
-      get :index, :project_id => @project
+    describe "html" do
+      before(:each) do
+        get :index, :project_id => @project
+      end
+      it { should respond_with :success }
+      it { should render_template :index }
     end
-    it { should respond_with :success }
-    it { should render_template :index }
+    describe "xml" do
+      before(:each) do
+        get :index, :project_id => @project, :format => 'xml'
+      end
+      it { should respond_with :success }
+    end
+    describe "csv" do
+      before(:each) do
+        get :index, :project_id => @project, :format => 'csv'
+      end
+      it { should respond_with :success }
+    end
   end
   
   describe "GET show" do

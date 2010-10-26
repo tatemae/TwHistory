@@ -12,20 +12,20 @@ Twhistory::Application.routes.draw do
   match '/auth/:provider/callback' => 'authentications#create', :controller => 'authentications'
   match '/auth/failure' => 'authentications#failure', :controller => 'authentications'
 
-  resources :comments
-  
+  resources :comments  
   # resources :items
-  # resources :authentications
-  resources :characters
-  resources :broadcasts
   # resources :scheduled_items
-    
+  resources :broadcasts do
+    resources :scheduled_items
+    resource :authentication
+  end
+  resources :characters do
+    resource :authentication
+  end
+  resources :authentications
   resources :projects do
-    resources :authentications
     resources :items
-    resources :characters do
-      resources :authentications
-    end
+    resources :characters
     resources :broadcasts do
       resources :scheduled_items
     end

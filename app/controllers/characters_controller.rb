@@ -1,7 +1,8 @@
 class CharactersController < ApplicationController
   
   before_filter :login_required, :except => [:index, :show]
-  before_filter :setup_project
+  before_filter :setup_project, :except => [:index, :destroy]
+  before_filter :setup_project_not_protected, :only => [:index]
   
   def index
     @characters = @project.characters
@@ -35,7 +36,7 @@ class CharactersController < ApplicationController
     @character = @project.characters.build(params[:character])
     respond_to do |format|
       if @character.save
-        format.html { redirect_to(@project, :notice => 'Character was successfully created.') }
+        format.html { redirect_to(@project, :notice => translate('characters.create_success')) }
         format.xml  { render :xml => @character, :status => :created, :location => @character }
       else
         format.html { render :action => "new" }
@@ -48,7 +49,7 @@ class CharactersController < ApplicationController
     @character = @project.characters.find(params[:id])
     respond_to do |format|
       if @character.update_attributes(params[:character])
-        format.html { redirect_to(@character, :notice => 'Character was successfully updated.') }
+        format.html { redirect_to( project_characters_path(@project), :notice => translate('characters.update_success')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -59,6 +60,7 @@ class CharactersController < ApplicationController
 
   def destroy
     @character = Character.find(params[:id])
+    @project = @character.project
     @character.destroy
     respond_to do |format|
       format.html { redirect_to(@project) }

@@ -1,38 +1,46 @@
 <h2 class="text-sinking2">
   <%= @project.title %> 
-  <% if @project.can_edit?(current_user) -%>
-    <%= link_to translate('projects.edit'), edit_project_path(@project) %>
-    <%= link_to translate('projects.twitter_accounts'), project_authentications_path(@project) %>
-  <% end -%>
+  <%= link_to translate('general.inline_edit'), edit_project_path(@project) if @project.can_edit?(current_user) %>
 </h2>
 <span class="author"><strong>Recreated by:</strong><%= @project.user.display_name %></span> 
 <div class="broadcast"> 
 	<div class="heading">
-	  <h3>Upcoming Broadcasts:</h3>
-	  <ul>
-	    <li><a href="#"> April 9, 2011</a></li>
-	  </ul>
+	  <h3 class="ico-brodcasts">Upcoming Broadcasts: 
+	    <span><%= link_to translate('general.inline_add'), new_project_broadcast_path(@project) if @project.can_edit?(current_user) %></span></h3>
+	  <ul class="progress-list">						
+      <% @project.broadcasts.each do |broadcast| -%>
+      <li> 
+        <span class="date"><%= link_to broadcast.start_at.to_s(:long_date), project_broadcast_path(@project, broadcast), :class => 'twitter-ico' %></span> 
+     		<ul class="follow-list"> 
+     			<li><%= link_to translate('general.follow'), 'http://twitter.com/todo', :class => 'follow' %></li>
+     			<li><%= link_to translate('general.edit'), edit_project_broadcast_path(@project, broadcast) if @project.can_edit?(current_user) %></li>
+     		</ul> 
+     	</li>
+      <% end -%>
+    </ul>
 	</div>
 	<p><%= @project.description %></p> 
 </div>
 <div class="column-holder"> 
 	<div class="column"> 
-		<h3 class="ico-peoples"><%= link_to 'Historical Figures', project_characters_path(@project) %> <span><%= link_to translate('projects.add'), new_project_character_path(@project) if @project.can_edit?(current_user) %></span></h3> 
+		<h3 class="ico-peoples"><%= link_to 'Historical Figures', project_characters_path(@project) %> 
+		  <span><%= link_to translate('general.inline_add'), new_project_character_path(@project) if @project.can_edit?(current_user) %></span></h3> 
 		<ul class="cite-list light"> 
 			<%= render :partial => 'projects/character', :collection => @characters %>
 		</ul>
 	</div>
 	<div class="column"> 
-		<h3 class="ico-comments"><%= link_to 'Historical Timeline', project_items_path(@project) %> <span><%= link_to translate('projects.add'), new_project_item_path(@project) if @project.can_edit?(current_user) %></span></h3> 
+		<h3 class="ico-comments"><%= link_to 'Historical Timeline', project_items_path(@project) %> 
+		  <span><%= link_to translate('general.inline_add'), new_project_item_path(@project) if @project.can_edit?(current_user) %></span></h3> 
 		<ul class="cite-list">
 		  <%= render :partial => 'projects/item', :collection => @items %> 
 		</ul>
 		<ul class="links">
-		  <li><a href="#">View Full Re-Enactment Archive</a></li>
-		  <li><a href="#">Download Tweets</a></li>
+		  <li><%= link_to 'Download all events for this re-enactment', project_items_path(@project, :format => 'csv') %></li>
 		</ul> 
 	</div>
 </div>
+<!--
 <h3 class="ico-doc">Primary Source Links</h3> 
 <ul class="links-list">						
   <li><a href="#"><strong>First Flight - Kittyhawk</strong> by Todd Bartlett</a></li>
@@ -45,4 +53,5 @@
   <li><a href="#"><strong>Flight of the Enola Gay</strong> by Locke HS History Club</a></li>
   <li><a href="#"><strong>Something Else</strong> by Twhistory</a></li>
   <li><a href="#"><strong>Running Out of Ideas</strong> by Todd Bartlett</a></li>
-</ul><!-- links list --> 
+</ul>
+--> 

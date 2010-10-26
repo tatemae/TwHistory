@@ -1,17 +1,22 @@
-<%= form_for(@broadcast) do |f| %>
-  <% if @broadcast.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@broadcast.errors.count, "error") %> prohibited this broadcast from being saved:</h2>
+<div class="form-row date-time">
+  <label id="date"><%= translate('broadcasts.start_label') %></label>
+  <%= text_field_tag :start_date, just_date(@broadcast.start_at), { :class => "date_pick" } -%>
+  <label id="time">At</label>
+  <%= text_field_tag :start_time, just_time(@broadcast.start_at), { :class => 'time_pick' } %>
+</div>
 
-      <ul>
-      <% @broadcast.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function(){
+    jQuery('.date_pick').datepicker({
+        			changeMonth: true,
+        			changeYear: true,
+        			numberOfMonths: 3,
+              showButtonPanel: true,
+              yearRange: 'c-200:c+50'
+        		});
+        		
+    jQuery('.time_pick').timePicker({
+              show24Hours: false,
+              step: 15});
+  });
+</script>

@@ -1,0 +1,8 @@
+<div class="broadcast-twitter">
+  <% if @broadcast.authentication -%>
+    <%= authentication.uid %>
+    <%= link_to translate('general.delete'), authentication_path(@broadcast.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
+  <% else -%>
+    <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "twitter-ico" %>
+  <% end -%>
+</div>

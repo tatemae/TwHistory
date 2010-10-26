@@ -20,7 +20,7 @@ describe Item do
   it { should validate_presence_of :event_date_time }
   
   describe "parse_event_date_time" do
-    setup do
+    before do
       @item = Factory(:item)
     end
     it "should build event_date_time from params" do

@@ -1,3 +1,18 @@
+jQuery(document).oneTime(2000, "notify_box", function() {
+	jQuery('.notify-box').fadeOut();
+});
+
+jQuery(document).ready(function(){
+	jQuery(".hidden-admin_links").hover(
+	  function () {
+	    jQuery(this).children(".admin-links").show();
+	  }, 
+	  function () {
+	    jQuery(this).children(".admin-links").hide();
+	  }
+	);
+});
+
 function limitChars(field, limit, info_field)
 {
 	var text = field.val();

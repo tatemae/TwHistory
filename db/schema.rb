@@ -68,15 +68,18 @@ ActiveRecord::Schema.define(:version => 20101023214148) do
     t.string   "authenticatable_type"
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "token"
+    t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "broadcasts", :force => true do |t|
     t.integer  "project_id"
-    t.integer  "authenticatable_id"
-    t.string   "authenticatable_type"
     t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -5,6 +5,10 @@ class CreateAuthentications < ActiveRecord::Migration
       t.string :authenticatable_type
       t.string :provider
       t.string :uid
+      t.string :name
+      t.string :nickname
+      t.string :token
+      t.string :secret
       t.timestamps
     end
     add_index :authentications, [:authenticatable_id, :authenticatable_type]
