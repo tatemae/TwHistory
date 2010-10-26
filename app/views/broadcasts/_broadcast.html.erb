@@ -1,9 +1,10 @@
 <li> 
-  <strong class="broadcast-title"><%= link_to broadcast.project.title, broadcast.project %></strong> <span class="date">broadcast.start_at.to_s(:long_date) to broadcast.end_at.to_s(:long_date)</span> 
+  <strong class="broadcast-title"><%= link_to broadcast.project.title, broadcast.project %></strong> <span class="date"><%= format_date_long(broadcast.start_at) %> to <%= format_date_long(broadcast.end_at) %></span> 
   <ul class="follow-list"> 
     <li><a href="#" class="comments">comments</a></li> 
     <li><a href="#" class="people">people</a></li> 
     <li><a href="#" class="doc">doc</a></li> 
-    <li><%= link_to translate('general.follow'), 'http://twitter.com/todo', :class => 'follow' %></li> 
+    <li><%= link_to translate('general.follow'), "http://twitter.com/#{broadcast.authentication.nickname}", :class => 'follow' if broadcast.authentication %></li> 
+    <li><%= link_to translate('general.edit'), edit_project_broadcast_path(broadcast.project, broadcast) if broadcast.project.can_edit?(current_user) %></li>
   </ul> 
 </li>

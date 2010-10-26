@@ -4,7 +4,7 @@ class BroadcastsController < ApplicationController
   before_filter :setup_project, :only => [:new, :create]
   
   def index
-    @broadcasts_in_progress = Broadcast.in_progress.by_start.limit(5)
+    @broadcasts_in_progress = Broadcast.by_start.limit(5) # TODO need to determine in progress
     @broadcasts = Broadcast.by_start.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html

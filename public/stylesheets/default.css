@@ -98,7 +98,7 @@ a:hover{text-decoration:none;}
 #content h4{font-size:18px;color:#9d6d2c;font-weight:normal;line-height:20px;margin-bottom:8px;}
 #content .author{font-size:16px;display:block;}
 #content .broadcast{margin-bottom:14px;}
-#content .broadcast .heading{width:100%;overflow:hidden;line-height:27px;margin-bottom:16px;}
+#content .broadcast .heading{width:100%;line-height:27px;margin-bottom:16px;}
 #content .broadcast .heading h3{font-size:16px;color:#4B3013;font-weight:bold;}
 .twitter-ico{color:#4B3013;padding:4px 0 0 38px;background:url(/images/ico-twitter2.gif) no-repeat;display:inline-block;height:27px;}
 .column-holder{width:708px;margin:0 0 8px -30px;overflow:hidden;}

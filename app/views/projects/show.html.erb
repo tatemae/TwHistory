@@ -7,17 +7,13 @@
 	<div class="heading">
 	  <h3 class="ico-brodcasts">Upcoming Broadcasts: 
 	    <span><%= link_to translate('general.inline_add'), new_project_broadcast_path(@project) if @project.can_edit?(current_user) %></span></h3>
-	  <ul class="progress-list">						
-      <% @project.broadcasts.each do |broadcast| -%>
-      <li> 
-        <span class="date"><%= link_to broadcast.start_at.to_s(:long_date), project_broadcast_path(@project, broadcast), :class => 'twitter-ico' %></span> 
-     		<ul class="follow-list"> 
-     			<li><%= link_to translate('general.follow'), 'http://twitter.com/todo', :class => 'follow' %></li>
-     			<li><%= link_to translate('general.edit'), edit_project_broadcast_path(@project, broadcast) if @project.can_edit?(current_user) %></li>
-     		</ul> 
-     	</li>
-      <% end -%>
-    </ul>
+	  <% if @project.broadcasts.any? -%>
+      <ul class="progress-list">
+        <%= render :partial => 'broadcasts/broadcast', :collection => @project.broadcasts %>
+      </ul>
+    <% else -%>
+      No current broadcasts
+    <% end -%>
 	</div>
 	<p><%= @project.description %></p> 
 </div>

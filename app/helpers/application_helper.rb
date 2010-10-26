@@ -23,4 +23,9 @@ module ApplicationHelper
     "<strong>showing latest #{start}-#{last}</strong> of #{total}"
   end
   
+  def format_date_long(date)
+    return '' if date.blank?
+    date.to_s(:long_date)
+  end
+  
 end
