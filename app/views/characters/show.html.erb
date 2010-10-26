@@ -1,7 +1,8 @@
-<%= render 'broadcasts/link_twitter' %>
+<p class="spaced-10">
+  <%= link_to translate('projects.return_to_project', :project_title => @project.title), @project %> 
+</p>
+<h1><%= @character.name %><span><%= link_to translate('general.edit'), edit_project_character_path(@project, @character) %></span></h1>
+<%= render 'characters/link_twitter' %>
 
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_character_path(@character) %> |
-<%= link_to 'Back', characters_path %>
+<%= image_tag @character.photo.url(:medium) if @character.photo_file_name %>
+<%= @character.bio %>

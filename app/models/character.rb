@@ -3,6 +3,8 @@ class Character < ActiveRecord::Base
   has_many :items
   belongs_to :project
   
+  #has_friendly_id :name
+  
   scope :by_name, order("name ASC")
   scope :by_newest, order("characters.created_at DESC")
   scope :by_oldest, order("characters.created_at ASC")
@@ -17,5 +19,9 @@ class Character < ActiveRecord::Base
                                  :icon => "62x62>",
                                  :tiny => "24x24>" },
                     :default_url => "/images/character_default.jpg"
+  
+  def twitter_update
+    return false unless self.authentication
+  end
   
 end

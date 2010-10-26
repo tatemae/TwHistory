@@ -1,6 +1,6 @@
 <h1>Historical Events for <%= @project.title %></h1>
 <p class="spaced-10">
-  <%= link_to translate('projects.return_to_project', :project_title => @project.title), @project %> |
+  <%= link_to translate('projects.return_to_project', :project_title => @project.title), @project %> 
   <%= link_to translate('items.add'), new_project_item_path(@project) if @can_edit_project %>
 </p>
 

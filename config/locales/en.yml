@@ -16,13 +16,14 @@ en:
     edit_problem: There was a problem editing this event
     add: Add new historical event
   characters: 
-    name: Title
+    name: Name
     add: Add a new character
     create_success: Character was successfully created.
     update_success: Character was successfully updated.
     create_problem: There was a problem creating the new character
     bio: Bio
     edit_problem: There was a problem editing this character
+    link_twitter_account: Link Twitter Account
   contact: 
     subject_help: A simple statement indicating the nature of your feedback.
     name: "Your name:"

@@ -14,4 +14,9 @@ describe Character do
   it { should scope_older_than }
   
   it { should validate_presence_of :name }
+  
+  describe "twitter_update" do
+    
+  end
+  
 end

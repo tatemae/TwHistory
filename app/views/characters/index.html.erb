@@ -1,6 +1,6 @@
 <h1>Historical Figures for <%= @project.title %></h1>
 <p class="spaced-10">
-  <%= link_to translate('projects.return_to_project', :project_title => @project.title), @project %> |
+  <%= link_to translate('projects.return_to_project', :project_title => @project.title), @project %> 
   <%= link_to translate('characters.add'), new_project_character_path(@project) if @project.can_edit?(current_user) %>
 </p>
 <div>

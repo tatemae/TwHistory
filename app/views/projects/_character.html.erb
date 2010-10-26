@@ -3,6 +3,6 @@
 	  <%= image_tag character.photo.url(:icon) if character.photo_file_name %>
 	</div>
 	<div class="text-holder"> 
-		<p><strong class="name"><%= character.name %></strong><%= character.bio %></p> 
+		<p><strong class="name"><%= link_to character.name, project_character_path(@project, character) %></strong><%= character.bio %></p> 
 	</div>
 </li>

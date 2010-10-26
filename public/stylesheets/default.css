@@ -287,3 +287,7 @@ a:hover{text-decoration:none;}
 .item .text-holder{display:inline-block;float:left;width:522px;padding:0 4px;}
 .item .edit-links{position:absolute;top:0px;right:0px;display:none;}
 .item .edit-links a{color:#000;}
+.text-holder .name a{color:#fff;text-decoration:none;}
+.text-holder .name a:hover{text-decoration:underline;}
+
+.character{margin:10px;height:100px;width:100px;float:left;}

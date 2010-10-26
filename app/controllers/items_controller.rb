@@ -27,14 +27,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @item }
-    end
-  end
-
   def new
     @item = @project.items.new
     respond_to do |format|
