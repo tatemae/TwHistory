@@ -3,7 +3,7 @@
     <%= image_tag character.photo.url(:icon) if character.photo_file_name %>
   </div>
   <div class="text-holder"> 
-  	<p><strong class="name"><%= character.name %></strong></p>
+  	<p><strong class="name"><%= link_to character.name, project_character_path(@project, character) %></strong></p>
   	<div>
   	  <%= link_to 'Edit', edit_project_character_path(@project, character) %> | 
   	  <%= link_to 'Destroy', project_character_path(@project, character), :confirm => 'Are you sure?', :method => :delete %>

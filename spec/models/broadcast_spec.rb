@@ -57,4 +57,30 @@ describe Broadcast do
     end
   end
   
+  describe "twitter_update" do
+    describe "authentication is nil" do
+      before do
+        @broadcast = Factory(:broadcast)
+      end
+      it "should return false if authentication is nil" do
+        @broadcast.twitter_update.should be_false
+      end
+    end
+    describe "authentication is valid" do
+      before do
+        @broadcast.authentication = Factory(:authentication, :token => 'token', :secret => 'secret')
+        @client = mock_model(Twitter::Base)
+        @broadcast.stub!(:client).and_return(@client)
+      end
+      it "should update the profile image and profile details" do
+        #@client.should_receive(:update_profile_image).with(@broadcast.photo.url(:medium) )
+        @client.should_receive(:update_profile).with(:name => @broadcast.name, 
+                                                     :location => 'Somewhere in TwHistory', 
+                                                     :url => project_broadcast_path(@broadcast.project, @broadcast), 
+                                                     :description => @broadcast.bio[0...160])
+        @broadcast.twitter_update
+      end
+    end 
+  end
+  
 end

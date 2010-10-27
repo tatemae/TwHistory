@@ -1,8 +1,8 @@
 class CharactersController < ApplicationController
   
   before_filter :login_required, :except => [:index, :show]
-  before_filter :setup_project, :except => [:index, :destroy]
-  before_filter :setup_project_not_protected, :only => [:index]
+  before_filter :setup_project, :except => [:index, :show, :destroy]
+  before_filter :setup_project_not_protected, :only => [:show, :index]
   
   def index
     @characters = @project.characters
@@ -14,6 +14,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = @project.characters.find(params[:id])
+    @items = @character.items.by_newest.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html
       format.xml  { render :xml => @character }

@@ -19,6 +19,8 @@ class Item < ActiveRecord::Base
                                  :icon => "62x62>",
                                  :tiny => "24x24>" }
   
+  after_save :
+  
   def parse_event_date_time(params)
     self.event_date_time = DateTime.parse("#{params[:event_date]} #{params[:event_time]}")
   end

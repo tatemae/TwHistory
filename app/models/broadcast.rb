@@ -1,4 +1,7 @@
 class Broadcast < ActiveRecord::Base
+  include ::TwitterMethods
+  include ::MuckEngineHelper
+  
   belongs_to :project
   has_one :authentication, :as => :authenticatable, :dependent => :destroy
   has_many :scheduled_items
@@ -16,6 +19,15 @@ class Broadcast < ActiveRecord::Base
   
   def parse_start_at(params)
     self.start_at = DateTime.parse("#{params[:start_date]} #{params[:start_time]}")
+  end
+  
+  def twitter_update
+    return false unless self.authentication
+    client.update_profile(:name => self.name, 
+                          :location => 'Somewhere in TwHistory', 
+                          :url => "http://www.#{MuckEngine.configuration.base_domain}/projects/#{self.project.to_param}", 
+                          :description => truncate_on_word(self.project.description, 160))
+    # client.update_profile_image(self.project.photo.to_file(:medium)) # TODO this isn't working right now. Uncomment when you have time to debug the twitter gem
   end
   
 end

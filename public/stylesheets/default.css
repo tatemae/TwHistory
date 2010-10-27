@@ -292,5 +292,8 @@ a:hover{text-decoration:none;}
 .item .edit-links a{color:#000;}
 .text-holder .name a{color:#fff;text-decoration:none;}
 .text-holder .name a:hover{text-decoration:underline;}
-
+.character .text-holder .name a{color:#4B3013;text-decoration:none;}
+.character .text-holder .name a:hover{text-decoration:underline;}
 .character{margin:10px;height:100px;width:100px;float:left;}
+#character-bio{margin:10px;}
+#character-bio img{float:left;display:inline-block;margin:0 10px 0 0;}

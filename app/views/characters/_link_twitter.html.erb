@@ -3,11 +3,13 @@
     <div>
       <p>
         Connected to Twitter Account: <%= link_to @character.authentication.nickname, "http://www.twitter.com/#{@character.authentication.nickname}", :target => '_blank' %>
-        <%= link_to translate('general.delete'), authentication_path(@character.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
       </p>
-      <p>(All tweets for <%= @character.name %> will be sent to this account).</p>
+      <% if @can_edit_project -%>
+        <p>(All tweets for <%= @character.name %> will be sent to this account).</p>
+        <%= link_to translate('general.delete'), authentication_path(@character.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
+      <% end -%>
     </div>
-  <% else -%>
+  <% elsif @can_edit_project -%>
     <%= link_to translate('characters.link_twitter_account'), new_character_authentication_path(@character), :class => "twitter-ico" %> (Be sure you are logged out of Twitter before performing this step).
   <% end -%>
 </div>

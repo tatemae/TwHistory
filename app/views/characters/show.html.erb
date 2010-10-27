@@ -4,5 +4,12 @@
 <h1><%= @character.name %><span><%= link_to translate('general.edit'), edit_project_character_path(@project, @character) %></span></h1>
 <%= render 'characters/link_twitter' %>
 
-<%= image_tag @character.photo.url(:medium) if @character.photo_file_name %>
-<%= @character.bio %>
+<div id="character-bio">
+  <%= image_tag @character.photo.url(:medium) if @character.photo_file_name %>
+  <%= @character.bio %>
+</div>
+
+<div id="list">
+  <%= render :partial => 'items/item', :collection => @items %> 
+</div>
+<%= will_paginate @items %>
