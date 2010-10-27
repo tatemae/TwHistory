@@ -8,6 +8,6 @@
       <p>(All tweets for this re-enactment will be sent through this account via a retweet from the characters)</p>
     </div>
   <% else -%>
-    <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "twitter-ico" %> (Be sure you are logged out of Twitter before performing this step).
+    <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "twitter-ico" %> <%= translate('general.twitter_logout_warning') %>
   <% end -%>
 </div>

@@ -13,6 +13,7 @@ class CharactersController < ApplicationController
   end
 
   def show
+    setup_will_paginate
     @character = @project.characters.find(params[:id])
     @items = @character.items.by_newest.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|

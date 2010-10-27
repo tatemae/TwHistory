@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
   
   protected
     
+    def setup_will_paginate
+      setup_paging
+      set_will_paginate_string
+    end
+    
     # Used to get the project id and ensure the user has permission to modify it.
     def setup_project
       @project = Project.find(params[:project_id])

@@ -2,7 +2,7 @@
   <% if @character.authentication -%>
     <div>
       <p>
-        Connected to Twitter Account: <%= link_to @character.authentication.nickname, "http://www.twitter.com/#{@character.authentication.nickname}", :target => '_blank' %>
+        <%= translate('general.connect_to_twitter_msg', :twitter_link => link_to(@character.authentication.nickname, "http://www.twitter.com/#{@character.authentication.nickname}", :target => '_blank')) %>
       </p>
       <% if @can_edit_project -%>
         <p>(All tweets for <%= @character.name %> will be sent to this account).</p>
@@ -10,6 +10,6 @@
       <% end -%>
     </div>
   <% elsif @can_edit_project -%>
-    <%= link_to translate('characters.link_twitter_account'), new_character_authentication_path(@character), :class => "twitter-ico" %> (Be sure you are logged out of Twitter before performing this step).
+    <%= link_to translate('characters.link_twitter_account'), new_character_authentication_path(@character), :class => "twitter-ico" %> <%= translate('general.twitter_logout_warning') %>
   <% end -%>
 </div>

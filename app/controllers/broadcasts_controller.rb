@@ -5,6 +5,7 @@ class BroadcastsController < ApplicationController
   
   def index
     @broadcasts_in_progress = Broadcast.by_start.limit(5) # TODO need to determine in progress
+    setup_will_paginate
     @broadcasts = Broadcast.by_start.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html
@@ -14,6 +15,7 @@ class BroadcastsController < ApplicationController
 
   def show
     @broadcast = Broadcast.find(params[:id])
+    setup_will_paginate
     @scheduled_items = @broadcast.scheduled_items.by_send.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html

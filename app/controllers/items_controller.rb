@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   before_filter :setup_project_not_protected, :only => [:index]
   
   def index
+    setup_will_paginate
     respond_to do |format|
       format.html do
         @items = @project.items.by_event_date_time.includes(:character).paginate(:page => @page, :per_page => @per_page)

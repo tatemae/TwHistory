@@ -1,3 +1,3 @@
-  class Content < ActiveRecord::Base
-    include MuckContents::Models::MuckContent
-  end
+class Content < ActiveRecord::Base
+  include MuckContents::Models::MuckContent
+end

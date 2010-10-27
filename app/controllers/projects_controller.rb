@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   
   def index
     @per_page = 5
+    setup_will_paginate
     @projects = Project.by_newest.includes(:user).paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html
