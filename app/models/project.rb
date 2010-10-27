@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
   scope :newer_than, lambda { |*args| where("projects.created_at > ?", args.first || DateTime.now) }
   scope :older_than, lambda { |*args| where("projects.created_at < ?", args.first || 1.day.ago.to_s(:db)) }
   
-  has_friendly_id :title
+  has_friendly_id :title, :use_slug => true
   
   has_attached_file :photo, 
                     :styles => { :medium => "332x224>",

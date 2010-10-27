@@ -6,7 +6,7 @@ class Character < ActiveRecord::Base
   has_many :items
   belongs_to :project
   
-  has_friendly_id :name
+  has_friendly_id :name, :use_slug => true
   
   scope :by_name, order("name ASC")
   scope :by_newest, order("characters.created_at DESC")

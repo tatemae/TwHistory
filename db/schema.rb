@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101023214148) do
+ActiveRecord::Schema.define(:version => 20101027211112) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -95,8 +95,10 @@ ActiveRecord::Schema.define(:version => 20101023214148) do
     t.integer  "photo_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
 
+  add_index "characters", ["cached_slug"], :name => "index_characters_on_cached_slug", :unique => true
   add_index "characters", ["project_id"], :name => "index_characters_on_project_id"
 
   create_table "comments", :force => true do |t|
@@ -276,9 +278,13 @@ ActiveRecord::Schema.define(:version => 20101023214148) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
+
+  add_index "projects", ["cached_slug"], :name => "index_projects_on_cached_slug", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "rolename"

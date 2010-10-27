@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
   def create
     if params[:item][:csv]
       @items, @results = @project.import_items(params[:item][:csv])
+      # TODO need to queue up the items for export to twitter
       if @results.empty?
         respond_to do |format|
           format.html { redirect_to(@project, :notice => translate('items.csv_import_success')) }
