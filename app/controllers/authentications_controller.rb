@@ -30,7 +30,7 @@ class AuthenticationsController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html { redirect_to(@parent) }
+      format.html { redirect_to([@parent.project, @parent]) }
     end
   end
 
@@ -43,10 +43,10 @@ class AuthenticationsController < ApplicationController
   
   def destroy
     @authentication = Authentication.find(params[:id])
-    @parent = @authentication.authenticable
+    @parent = @authentication.authenticatable
     @authentication.destroy
     respond_to do |format|
-      format.html { redirect_to(@parent, :notice => translate('authentications.delete_success')) }
+      format.html { redirect_to([@parent.project, @parent], :notice => translate('authentications.delete_success')) }
       format.xml  { head :ok }
     end
   end
