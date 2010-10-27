@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = @project.items.new
+    @item.character_id = params[:character] if params[:character]
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @item }
@@ -50,8 +51,11 @@ class ItemsController < ApplicationController
     else
       @item = Item.new(params[:item])
       @item.parse_event_date_time(params)
+      if success = @item.save
+        @item.twitter_update
+      end
       respond_to do |format|
-        if @item.save
+        if success
           format.html { redirect_to(@project, :notice => translate('items.item_create_success')) }
           format.xml  { render :xml => @item, :status => :created, :location => @item }
         else
