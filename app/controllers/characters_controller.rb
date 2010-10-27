@@ -15,6 +15,7 @@ class CharactersController < ApplicationController
   def show
     setup_will_paginate
     @character = @project.characters.find(params[:id])
+    @untweeted_items_count = @character.items.where("tweet_id IS NULL").count
     @items = @character.items.by_newest.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html

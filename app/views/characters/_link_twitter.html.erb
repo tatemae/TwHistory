@@ -2,11 +2,12 @@
   <% if @character.authentication -%>
     <div>
       <p>
-        <%= translate('general.connect_to_twitter_msg', :twitter_link => link_to(@character.authentication.nickname, "http://www.twitter.com/#{@character.authentication.nickname}", :target => '_blank')) %>
+        <%= translate('general.connected_to_twitter_msg', :twitter_link => link_to(@character.authentication.nickname, "http://www.twitter.com/#{@character.authentication.nickname}", :target => '_blank')) %>
       </p>
       <% if @can_edit_project -%>
         <p>(All tweets for <%= @character.name %> will be sent to this account).</p>
         <%= link_to translate('general.delete'), authentication_path(@character.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
+        <p><%=translate('items.untweeted_count_msg', :untweeted_items_count => @untweeted_items_count)%></p>
       <% end -%>
     </div>
   <% elsif @can_edit_project -%>
