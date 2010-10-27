@@ -68,8 +68,8 @@ a:hover{text-decoration:none;}
 #content .text-sinking2 a{font-size:14px;}
 #content .text-sinking a,
 #content .text-sinking3 a{color:#4B3013;text-decoration:none;}
-#content .text-battle{background:url(/images/text-battle.gif) no-repeat;height:27px;}
-#content .text-cuban{height:27px;background:url(/images/text-cuban.gif) no-repeat;}
+#content .text-battle{height:27px;}
+#content .text-cuban{height:27px;}
 #content .broadcast-title{height:25px;width:270px;float:left;font-family: 'IM Fell DW Pica',arial,serif;}
 #content .broadcast-title a{color:#4B3013;font-size:1.6em;text-decoration:none;}
 #content .broadcast-title a:hover;{text-decoration:underline;}
