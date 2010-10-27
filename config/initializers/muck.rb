@@ -1,25 +1,25 @@
 
 #
-# Replace twhistory.com in this file with your website's domain name
+# Replace twhistory.org in this file with your website's domain name
 #
   
 MuckEngine.configure do |config|
 
   # Environment sensitive values
   if Rails.env.production?
-    config.application_url = 'www.twhistory.com'     # Url of the application in production
+    config.application_url = 'www.twhistory.org'     # Url of the application in production
   elsif Rails.env.staging?
-    config.application_url = 'www.twhistory.com'     # Url of the application on staging
+    config.application_url = 'www.twhistory.org'     # Url of the application on staging
   else
     config.application_url = 'localhost:3000'         # Url of the application for test or development
   end
   
   # Global application values.  These are used to display the app name, send emails, and configure where system emails go.
   config.application_name = 'TwHistory'       # Common name for your application.  i.e. My App, Billy Bob, etc
-  config.from_email = 'support@twhistory.com'  # Emails will come from this address i.e. noreply@example.com, support@example.com, system@example.com, etc
+  config.from_email = 'support@twhistory.org'  # Emails will come from this address i.e. noreply@example.com, support@example.com, system@example.com, etc
   config.from_email_name = 'TODO Name'          # This will show up as the name on emails.  i.e. support@example.com <Example>
-  config.support_email = 'support@twhistory.com'  # Support email for your application.  This is used for contact us etc.
-  config.admin_email = 'admin@twhistory.com'      # Admin email for your application
+  config.support_email = 'support@twhistory.org'  # Support email for your application.  This is used for contact us etc.
+  config.admin_email = 'admin@twhistory.org'      # Admin email for your application
   config.customer_service_number = '1-800-'     # Phone number if you have one (optional)
 
   # Email charset.  No need to change this unless you have a good reason to change the encoding.
@@ -34,7 +34,7 @@ MuckEngine.configure do |config|
   config.email_server_address = "smtp.sendgrid.net"    # Email server address.  'smtp.sendgrid.net' works for sendgrid
   config.email_user_name = Secrets.email_user_name    # Email server username
   config.email_password = Secrets.email_password      # Email server password
-  config.base_domain = 'twhistory.com'                # Basedomain that emails will come from
+  config.base_domain = 'twhistory.org'                # Basedomain that emails will come from
 
   # ssl
   config.enable_ssl = false # Enable ssl if you have an ssl certificate installed.  This will provide security between the client and server.
@@ -42,7 +42,7 @@ MuckEngine.configure do |config|
   # Google Analtyics Configuration.  This will enable Google Analytics on your site and will be used if your template includes:
   #                                  <%= render :partial => 'layouts/global/google_analytics' %>
   config.google_tracking_code = ""                     # Get a tracking code here: http://www.google.com/analytics/. The codes look like this: 'UA-9685000-0'
-  config.google_tracking_set_domain = "twhistory.com" # Base domain provided to Google Analytics. Useful if you are using subdomains but want all traffic 
+  config.google_tracking_set_domain = "twhistory.org" # Base domain provided to Google Analytics. Useful if you are using subdomains but want all traffic 
                                               # recorded into one account.
 end
   

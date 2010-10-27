@@ -28,7 +28,7 @@ gem "acts-as-taggable-on"
 gem "fastercsv"
 gem "omniauth"
 gem "geokit"
-gem "twitter"
+gem "twitter", "0.9.12"    #, :git => 'http://github.com/jnunemaker/twitter.git', :tag => 'v1.0.0.rc.2'
 
 gem "babelphish"
 gem "uploader"

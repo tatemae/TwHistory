@@ -32,7 +32,10 @@ describe Character do
       end
       it "should update the profile image and profile details" do
         @client.should_receive(:update_profile_image).with(@character.photo.url(:medium) )
-        @client.should_receive(:update_profile).with(:name => @character.name, :location => 'Somewhere in TwHistory', :url => project_character_path(@character.project, @character), :description => @character.bio[0...160])
+        @client.should_receive(:update_profile).with(:name => @character.name, 
+                                                     :location => 'Somewhere in TwHistory', 
+                                                     :url => project_character_path(@character.project, @character), 
+                                                     :description => @character.bio[0...160])
         @character.twitter_update
       end
     end 
