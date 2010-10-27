@@ -47,10 +47,8 @@ class CharactersController < ApplicationController
   
   def update
     @character = @project.characters.find(params[:id])
-    success = @character.update_attributes(params[:character])
-    twitter_success = @character.twitter_update
     respond_to do |format|
-      if success
+      if @character.update_attributes(params[:character])
         format.html { redirect_to( project_characters_path(@project), :notice => translate('characters.update_success')) }
         format.xml  { head :ok }
       else

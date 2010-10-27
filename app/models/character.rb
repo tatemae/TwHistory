@@ -1,4 +1,5 @@
 class Character < ActiveRecord::Base
+  include ::TwitterMethods
   has_one :authentication, :as => :authenticatable, :dependent => :destroy
   has_many :items
   belongs_to :project
@@ -20,8 +21,13 @@ class Character < ActiveRecord::Base
                                  :tiny => "24x24>" },
                     :default_url => "/images/character_default.jpg"
   
+  after_save :twitter_update
+  
+
   def twitter_update
     return false unless self.authentication
+    client.update_profile_image(self.photo)  
+    client.update_profile(:name => self.name, :location => 'Somewhere in TwHistory', :url => project_character_path(self.project, self), :description => self.bio[0...160])
   end
   
 end

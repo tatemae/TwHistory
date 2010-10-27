@@ -98,6 +98,7 @@ GEM
     gherkin (2.2.9)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
+    hashie (0.4.0)
     hoptoad_notifier (2.3.11)
       activesupport
       builder
@@ -283,6 +284,11 @@ GEM
     tiny_mce (0.1.4)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
+    twitter (0.9.12)
+      hashie (~> 0.4.0)
+      httparty (~> 0.6.1)
+      multi_json (~> 0.0.4)
+      oauth (~> 0.4.3)
     tzinfo (0.3.23)
     uploader (3.0.2)
       aws-s3
@@ -339,5 +345,6 @@ DEPENDENCIES
   shoulda
   spork
   tiny_mce
+  twitter
   uploader
   will_paginate

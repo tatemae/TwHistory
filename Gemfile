@@ -28,6 +28,7 @@ gem "acts-as-taggable-on"
 gem "fastercsv"
 gem "omniauth"
 gem "geokit"
+gem "twitter"
 
 gem "babelphish"
 gem "uploader"

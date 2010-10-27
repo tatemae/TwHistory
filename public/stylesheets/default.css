@@ -63,15 +63,16 @@ a:hover{text-decoration:none;}
 #content .text-battle,
 #content .text-sinking3,
 #content .text-sinking2,
-#content .text-sinking{overflow:hidden;margin-bottom:4px;color:#4B3013;}
-#content .text-sinking2{margin-bottom:3px;color:#4B3013;}
+#content .text-sinking{overflow:hidden;margin-bottom:4px;color:#4B3013;font-family:'IM Fell DW Pica',arial,serif;}
+#content .text-sinking2{margin-bottom:3px;}
 #content .text-sinking2 a{font-size:14px;}
 #content .text-sinking a,
 #content .text-sinking3 a{color:#4B3013;text-decoration:none;}
 #content .text-battle{background:url(/images/text-battle.gif) no-repeat;height:27px;}
 #content .text-cuban{height:27px;background:url(/images/text-cuban.gif) no-repeat;}
-#content .broadcast-title{height:25px;width:210px;float:left;}
-
+#content .broadcast-title{height:25px;width:270px;float:left;font-family: 'IM Fell DW Pica',arial,serif;}
+#content .broadcast-title a{color:#4B3013;font-size:1.6em;text-decoration:none;}
+#content .broadcast-title a:hover;{text-decoration:underline;}
 .feature .img-holder{float:left;width:332px;}
 .img-holder img{display:block;}
 .feature .options-list{position:absolute;top:2px;right:23px;}
@@ -131,8 +132,9 @@ a:hover{text-decoration:none;}
 .result-box .options-list li .people{background:url(/images/ico-people2.gif) no-repeat;}
 .result-box .options-list li .doc{background:url(/images/ico-doc3.gif) no-repeat;}
 .progress-list{margin:-4px 0 27px -17px;}
-.progress-list li{vertical-align:top;width:662px;overflow:hidden;padding:10px 10px 7px;line-height:25px;margin-top:4px;background:url(/images/bg-progress.gif) no-repeat;}
+.progress-list li{vertical-align:top;width:662px;height:30px;padding:10px 10px 7px;line-height:25px;margin-top:4px;background:url(/images/bg-progress.gif) no-repeat;position:relative;}
 .progress-list li .date{color:#00a69c;float:left;padding-left:7px;}
+.progress-list li .edit{position:absolute;top:8px;right:-28px;}
 .progress-list .follow-list{float:right;}
 .progress-list .follow-list li{float:left;padding:0 0 0 9px;margin:0;width:auto;background:none;}
 .progress-list .follow-list li a{float:left;width:28px;height:29px;text-indent:-9999px;overflow:hidden;}
@@ -259,6 +261,7 @@ a:hover{text-decoration:none;}
 #content .pagination .prev_page{overflow:hidden;text-indent:-9999px;width:36px;height:25px;background:url(/images/bg-btns.gif) no-repeat;}
 #content .pagination .next_page{background-position:100% 0;}
 */
+.admin-links{display:none;}
 /*forms*/
 #sign_in{width:470px;margin:20px auto;}
 #registration h1, #registration p{text-align:center;}
