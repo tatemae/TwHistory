@@ -19,10 +19,15 @@ class Item < ActiveRecord::Base
                                  :icon => "62x62>",
                                  :tiny => "24x24>" }
   
-  after_save :
+  after_save :twitter_update
   
   def parse_event_date_time(params)
     self.event_date_time = DateTime.parse("#{params[:event_date]} #{params[:event_time]}")
+  end
+  
+  def twitter_update
+    return false unless self.character.authentication
+    self.character.client.update(self.content)
   end
   
 end

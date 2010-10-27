@@ -24,7 +24,6 @@ class Character < ActiveRecord::Base
                     :default_url => "/images/character_default.jpg"
   
   after_save :twitter_update
-  
 
   def twitter_update
     return false unless self.authentication
