@@ -2,12 +2,14 @@
   <% if @broadcast.authentication -%>
     <div>
       <p>
-        Connected to Twitter Account: <%= link_to @broadcast.authentication.nickname, "http://www.twitter.com/#{@broadcast.authentication.nickname}", :target => '_blank' %>
-        <%= link_to translate('general.delete'), authentication_path(@broadcast.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
+        <%= translate('general.connected_to_twitter_msg') %> <%= link_to(@broadcast.authentication.nickname, "http://www.twitter.com/#{@broadcast.authentication.nickname}", :target => '_blank') %>
       </p>
-      <p>(All tweets for this re-enactment will be sent through this account via a retweet from the characters)</p>
+      <% if @can_edit_project -%>
+        <p>(All tweets for <%= @broadcast.name %> will be sent to this account).</p>
+        <%= button_to translate('general.delete_twitter_connection'), authentication_path(@broadcast.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
+      <% end -%>
     </div>
-  <% else -%>
+  <% elsif @can_edit_project -%>
     <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "twitter-ico" %> <%= translate('general.twitter_logout_warning') %>
   <% end -%>
 </div>

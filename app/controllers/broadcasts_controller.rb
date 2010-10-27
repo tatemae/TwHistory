@@ -15,6 +15,7 @@ class BroadcastsController < ApplicationController
 
   def show
     @broadcast = Broadcast.find(params[:id])
+    @can_edit_project = @broadcast.project.can_edit?(current_user)
     setup_will_paginate
     @scheduled_items = @broadcast.scheduled_items.by_send.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
