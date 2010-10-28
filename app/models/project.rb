@@ -23,10 +23,10 @@ class Project < ActiveRecord::Base
   
   searchable do
     string :title
-  #  string :location
-  #  text :title
-  #  text :location
-#    text :description, :more_like_this => true
+    string :location
+    text :title
+    text :location
+    text :description, :more_like_this => true
   end
                                       
   def can_edit?(check_user)

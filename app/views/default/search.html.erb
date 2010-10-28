@@ -1,6 +1,6 @@
 <h2>Search Results <span><%= paging_information(@projects, @total_count).html_safe if @projects.any? %></span></h2>
 <% if @projects.any? -%>
-  <%= render :search_result, @projects %>
+  <%= render :partial => 'default/search_result', :collection => @projects %>
 <% else -%>
   <%=translate('general.no_search_results') %>
 <% end -%>
