@@ -25,7 +25,7 @@ class Broadcast < ActiveRecord::Base
     return false unless self.authentication
     client.update_profile(:name => self.name, 
                           :location => self.project.location, 
-                          :url => "http://www.#{MuckEngine.configuration.base_domain}/projects/#{self.project.to_param}", 
+                          :url => self.project_url, 
                           :description => truncate_on_word(self.project.description, 160))
     # client.update_profile_image(self.project.photo.to_file(:medium)) # TODO this isn't working right now. Uncomment when you have time to debug the twitter gem
   end
@@ -43,4 +43,8 @@ class Broadcast < ActiveRecord::Base
     self.end_at | self.start_at
   end
 	
+	def project_url
+    "http://www.#{MuckEngine.configuration.application_url}/projects/#{self.project.to_param}"
+  end
+  
 end
