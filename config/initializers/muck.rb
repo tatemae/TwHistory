@@ -65,20 +65,23 @@ end
   
 MuckContents.configure do |config|
   # Contents Configuration
-  git_repository = ''                  # Not currently used.  Eventually this will be the path to a git repository that the content system uses to store revisions.
-  content_git_repository = false       # Should be set to false as git integration is not currently working.
-  enable_auto_translations = false     # If true then all content objects will automatically be translated into all languages supported by Google Translate
-  content_enable_solr = false           # Enables solr for the content system.  If you are using solr then set this to true.  If you do not wish to setup and manage solr 
-                                       # then set this value to false (but search will be disabled).
-  content_css = ['/stylesheets/reset.css', '/stylesheets/styles.css'] # CSS files that should be fed into the tiny_mce content editor.  
+  config.git_repository = ''                  # Not currently used.  Eventually this will be the path to a git repository that the content system uses to store revisions.
+  config.git_repository = false               # Should be set to false as git integration is not currently working.
+  config.enable_auto_translations = false     # If true then all content objects will automatically be translated into all languages supported by Google Translate
+  config.enable_sunspot = false               # This enables or disables sunspot for profiles. Only use acts_as_solr or sunspot not both. Sunspot does not include multicore support.
+  config.enable_solr = false                  # Enables solr for the content system.  If you are using solr then set this to true.  If you do not wish to setup and manage solr 
+                                              # then set this value to false (but search will be disabled).
+  config.content_css = ['/stylesheets/reset.css', '/stylesheets/styles.css'] # CSS files that should be fed into the tiny_mce content editor.  
                                                                       # Note that Rails will typically generate a single all.css stylesheet.  Setting the stylesheets here let's 
                                                                       # the site administrator control which css is present in the content editor and thus which css an end 
                                                                       # user has access to to style their content.
 end
 
 MuckProfiles.configure do |config|
+  config.enable_sunspot = false  
   config.enable_solr = false           # This enables or disables acts as solr for profiles.
-  config.enable_guess_location = true # If true the profile system will attempt to determine the user's location via IP and populated with the location, lat and lon fields.
+  config.enable_sunspot = false        # This enables or disables sunspot for profiles. Only use acts_as_solr or sunspot not both. Sunspot does not include multicore support.
+  config.enable_guess_location = true  # If true the profile system will attempt to determine the user's location via IP and populated with the location, lat and lon fields.
   config.policy = { :public => [:login, :first_name, :last_name, :about],
                      :authenticated => [:location, :city, :state_id, :country_id, :language_id],
                      :friends => [:email],

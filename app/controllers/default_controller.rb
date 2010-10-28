@@ -12,6 +12,11 @@ class DefaultController < ApplicationController
   end
   
   def search
+    setup_will_paginate
+    @search = ProjectSearch.new(@page, @per_page).search(params[:query])
+    debugger
+    @total_count = @search.total
+    @projects = @search.results
   end
   
   def contact

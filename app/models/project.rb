@@ -20,7 +20,15 @@ class Project < ActiveRecord::Base
                                  :icon => "62x62>",
                                  :tiny => "24x24>" },
                     :default_url => "/images/character_default.jpg"
-                    
+  
+  searchable do
+    string :title
+  #  string :location
+  #  text :title
+  #  text :location
+#    text :description, :more_like_this => true
+  end
+                                      
   def can_edit?(check_user)
     return false if check_user.blank?
     return true if check_user == self.user

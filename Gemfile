@@ -29,12 +29,13 @@ gem "fastercsv"
 gem "omniauth"
 gem "geokit"
 gem "twitter", "0.9.12"    #, :git => 'http://github.com/jnunemaker/twitter.git', :tag => 'v1.0.0.rc.2'
+gem 'sunspot_rails', '1.2.rc4'
 
 gem "babelphish"
 gem "uploader"
 gem "muck-engine", ">=3.0.6"
 gem "muck-users", ">=3.0.5"
-gem "muck-solr", :require => "acts_as_solr"
+#gem "muck-solr", :require => "acts_as_solr"
 gem "muck-comments", ">=3.0.2"
 gem "muck-contents"
 gem "muck-profiles"
@@ -43,6 +44,7 @@ gem "muck-friends"
 gem "muck-shares"
 gem "muck-invites"
 
+#gem "muck-solr", :require => "acts_as_solr", :path => "~/projects/acts_as_solr"
 #gem "muck-engine", :path => "~/projects/muck-engine"
 #gem "muck-users", :path => "~/projects/muck-users"
 

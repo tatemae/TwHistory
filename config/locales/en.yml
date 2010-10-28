@@ -2,17 +2,17 @@
 en: 
   items: 
     csv_import_failure: There were some errors while importing the csv file.
-    location: Location
     add: Add new historical event
-    add_character: Add New
-    new_problem: There was a problem adding the event
-    character: Historical Figure
+    location: Location
     untweeted_count_msg: There are currently %{untweeted_items_count} items from this character that are not tweeted.
-    item_create_success: Item was successfully created.
+    character: Historical Figure
+    new_problem: There was a problem adding the event
+    add_character: Add New
     wait: Please wait. It can take a few minutes to upload large csv files.
+    item_create_success: Item was successfully created.
     csv_import_success: Successfully imported csv file
-    event_date_time: Date/Time
     content: Event
+    event_date_time: Date/Time
     create_problem: There was a problem creating the new event
     source: Source
     edit_problem: There was a problem editing this event
@@ -20,41 +20,41 @@ en:
     name: Name
     add: Add a new character
     create_success: Character was successfully created.
-    link_twitter_account: Link Twitter Account
     update_success: Character was successfully updated.
-    bio: Bio
+    link_twitter_account: Link Twitter Account
     create_problem: There was a problem creating the new character
+    bio: Bio
     edit_problem: There was a problem editing this character
   contact: 
-    name: "Your name:"
     subject_help: A simple statement indicating the nature of your feedback.
+    name: "Your name:"
     name_help: Please provide us with your name.
-    email_help: Please provide us with your email so that we can contact you if necessary.
     contact_response_subject: Thanks for your inquiry from %{application_name}!
+    email_help: Please provide us with your email so that we can contact you if necessary.
     subject: "Subject:"
     question_help: Please include any comments you would like us to hear.
-    contact_us: Contact Us
-    phone: "Your phone number:"
     phone_help: Your phone number is optional but will help us contact you if necessary.
+    phone: "Your phone number:"
+    contact_us: Contact Us
     question: "Your message/question:"
     email: "Your email:"
   projects: 
     title: Title
     edit_permission_denied: "You don't have permission to modify the re-enactment: %{project_title}"
-    create_problem: There was a problem creating the new re-enactment
-    description: Description
     return_to_project: "<< Return to: %{project_title}"
+    description: Description
+    create_problem: There was a problem creating the new re-enactment
     edit_problem: There was a problem editing this re-enactment
   authentications: 
     failure: Could not connect to Twitter account. Please try again.
     already_connected: You've already connected to this Twitter account.
     connect_success: You successfully connected to the Twitter account.
-    no_parent_error: No Character or Schedule was provided. Unable to connect with Twitter account.
     delete_success: Twitter account was succesfully unlinked
+    no_parent_error: No Character or Schedule was provided. Unable to connect with Twitter account.
     connect_error: Could not connect to Twitter account. Please try again. %{errors}
   broadcasts: 
-    create_success: Broadcast was successfully created. Now connect the broadcast to a Twitter account
     new_problem: There was a problem adding the broadcast
+    create_success: Broadcast was successfully created. Now connect the broadcast to a Twitter account
     start_label: Start this broadcast on
     link_twitter_account: Link Twitter Account
     edit_problem: There was a problem editing this broadcast
@@ -66,6 +66,7 @@ en:
     send_tweets: Transmit these Tweets now
     thank_you_contact: Thank you for your message.  A member of our team will respond to you shortly.
     follow: Follow
+    no_search_results: Couldn't find any matching re-enactments.
     inline_edit: (Edit)
     save: Save
     create: Create
