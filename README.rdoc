@@ -1,5 +1,7 @@
 = TwHistory
 
+Visit us at http://www.twhistory.org
+
 We believe that history is filled with exciting stories. We also believe that these stories can be told by 
 creating virtual reenactments using Twitter, a popular micro-blogging service that allows 140 character 'tweets'.
 
