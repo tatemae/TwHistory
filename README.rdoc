@@ -1,0 +1,16 @@
+= TwHistory
+
+We believe that history is filled with exciting stories. We also believe that these stories can be told by 
+creating virtual reenactments using Twitter, a popular micro-blogging service that allows 140 character 'tweets'.
+
+The process is simple. Students or volunteers pick a well-documented historical event. They pick real historical figures 
+who were at that event, and create tweets based on original source documentation. These tweets are then scheduled to be 
+broadcast in real time. The end result is a virtual reenactment of a historical event, broadcast in real time.
+
+These virtual reenactments allow a new way to experience history. Instead of reading about a month-long campaign 
+in just a few hours, followers experience the campaign over the course of a month, all in real time. 
+Together, the separate tweets combine to paint a complete and unique picture of a small segment of history.
+
+TwHistory is funded and supported by Talis[http://www.talis.com/]
+
+Copyright (c) 2009-2010 Tatemae[http://www.tatemae.com/], released under the MIT license
