@@ -6,7 +6,7 @@ class BroadcastsController < ApplicationController
   def index
     @broadcasts_in_progress = Broadcast.by_start.limit(5) # TODO need to determine in progress
     setup_will_paginate
-    @broadcasts = Broadcast.by_start.paginate(:page => @page, :per_page => @per_page)
+    @broadcasts = Broadcast.by_start.limit(100).includes(:project)
     respond_to do |format|
       format.html
       format.xml  { render :xml => @broadcasts }

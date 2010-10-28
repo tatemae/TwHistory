@@ -28,28 +28,7 @@
           	next: '&nbsp;'
   	    },
   		editable: false,
-  		events: [
-  			{
-  				title: 'Gettysburg',
-  				start: new Date(y, m-1, 28),
-  				end: new Date(y, m, 2)
-  			},
-  			{
-  				title: '1947 Mormon Pioneer Trek',
-  				start: new Date(y, m, 5),
-  				end: new Date(y, m, 30)
-  			},
-  			{
-  				title: 'Cuban Misile Crisis',
-  				start: new Date(y, m, 6),
-  				end: new Date(y, m, 13)
-  			},
-  			{
-  				title: 'Titanik',
-  				start: new Date(y, m, 11),
-  				end: new Date(y, m, 12)
-  			},
-  		]
+  		events: <%= @broadcasts.to_json(:only => [:id], :methods => [:title, :start, :end]).html_safe -%>
   	});	
   });
 </script>
