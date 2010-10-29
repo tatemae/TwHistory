@@ -9,11 +9,13 @@
   <%= @character.bio %>
 </div>
 
-<h3 class="ico-comments">
-  Historical Timeline
-  <span><%= link_to translate('general.inline_add'), new_project_item_path(@project, :character => @character.id) if @project.can_edit?(current_user) %></span>
-</h3> 
-<div id="list">
-  <%= render :partial => 'items/item', :collection => @items %> 
+<div>
+  <h3 class="ico-comments">
+    Historical Timeline
+    <span><%= link_to translate('general.inline_add'), new_project_item_path(@project, :character => @character.id) if @project.can_edit?(current_user) %></span>
+  </h3> 
+  <div id="list">
+    <%= render :partial => 'items/item', :collection => @items %> 
+  </div>
 </div>
 <%= will_paginate @items %>

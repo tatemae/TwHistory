@@ -42,8 +42,10 @@ class BroadcastsController < ApplicationController
     @broadcast = @project.broadcasts.build(params[:broadcast])
     @broadcast.parse_start_at(params)
     check_permissions
+    success = @broadcast.save
+    # TODO calculate scheduled items
     respond_to do |format|
-      if @broadcast.save
+      if success
         format.html { redirect_to(@broadcast, :notice => translate('broadcasts.create_success')) }
         format.xml  { render :xml => @broadcast, :status => :created, :location => @broadcast }
       else

@@ -14,8 +14,8 @@ class CharactersController < ApplicationController
 
   def show
     setup_will_paginate
-    @character = @project.characters.find(params[:id])
-    @untweeted_items_count = @character.items.where("tweet_id IS NULL").count
+    @character = Character.find(params[:id])
+    @project ||= @character.project
     @items = @character.items.by_newest.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html
@@ -33,6 +33,7 @@ class CharactersController < ApplicationController
 
   def edit
     @character = Character.find(params[:id])
+    @can_edit_project = @character.project.can_edit?(current_user)
   end
 
   def create
@@ -50,8 +51,10 @@ class CharactersController < ApplicationController
   
   def update
     @character = @project.characters.find(params[:id])
+    success = @character.update_attributes(params[:character])
+    @character.twitter_update
     respond_to do |format|
-      if @character.update_attributes(params[:character])
+      if success
         format.html { redirect_to( project_characters_path(@project), :notice => translate('characters.update_success')) }
         format.xml  { head :ok }
       else

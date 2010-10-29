@@ -10,7 +10,7 @@ class Authentication < ActiveRecord::Base
   after_create :update_parent_twitter_profile
   
   def update_parent_twitter_profile
-    self.authenticatable.twitter_update
+    self.authenticatable.twitter_update if self.authenticatable
   end
   
 end

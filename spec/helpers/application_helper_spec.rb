@@ -8,7 +8,7 @@ describe ApplicationHelper do
       @per_page = 5
       start = 1
       last = 5
-      items = 1...10.collect{|i| i}
+      items = (1...10).collect{|i| i}
       total = items.length
       helper.paging_information(items, total).should == "<strong>showing latest #{start}-#{last}</strong> of #{total}"
     end
@@ -17,7 +17,7 @@ describe ApplicationHelper do
       @per_page = 5
       start = 1
       last = 5
-      items = 1...10.collect{|i| i}
+      items = (1...10).collect{|i| i}
       total = items.length
       helper.paging_information(items, total).should == "<strong>showing latest #{start}-#{last}</strong> of #{total}"
     end
@@ -26,7 +26,7 @@ describe ApplicationHelper do
       @per_page = 10
       start = 11
       last = 20
-      items = 1...30.collect{|i| i}
+      items = (1...30).collect{|i| i}
       total = items.length
       helper.paging_information(items, total).should == "<strong>showing latest #{start}-#{last}</strong> of #{total}"
     end

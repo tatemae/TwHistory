@@ -11,7 +11,7 @@ MuckEngine.configure do |config|
   elsif Rails.env.staging?
     config.application_url = 'beta.twhistory.org'     # Url of the application on staging
   else
-    config.application_url = 'localhost:3000'         # Url of the application for test or development
+    config.application_url = 'localhost:3001'         # Url of the application for test or development
   end
   
   # Global application values.  These are used to display the app name, send emails, and configure where system emails go.

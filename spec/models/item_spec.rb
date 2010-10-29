@@ -19,6 +19,34 @@ describe Item do
   it { should validate_presence_of :content }
   it { should validate_presence_of :event_date_time }
   
+  describe "scopes" do
+    describe "by_event_date_time" do
+      before do
+        Item.delete_all
+        @first_item = Factory(:item, :event_date_time => 1.month.ago)
+        @second_item = Factory(:item, :event_date_time => 1.day.ago)
+        @third_item = Factory(:item, :event_date_time => 1.day.from_now)
+      end
+      it "should order broadcasts by start date" do
+        Item.by_event_date_time[0].should == @third_item
+        Item.by_event_date_time[1].should == @second_item
+        Item.by_event_date_time[2].should == @first_item
+      end
+    end
+    describe "untweeted" do
+      before do
+        Item.delete_all
+        @tweeted = Factory(:item, :tweet_id => '237373')
+        @untweeted = Factory(:item, :tweet_id => nil)
+      end
+      it "should order broadcasts by start date" do
+        Item.untweeted.should_not include(@tweeted)
+        Item.untweeted.should include(@untweeted)
+      end
+    end
+    
+  end
+  
   describe "parse_event_date_time" do
     before do
       @item = Factory(:item)
@@ -26,6 +54,34 @@ describe Item do
     it "should build event_date_time from params" do
       @item.parse_event_date_time({:event_date => '10/10/2010', :event_time => '10:10'})
       @item.event_date_time.should == DateTime.new('10/10/2010 10:10')
+    end
+  end
+  
+  describe "twitter_update" do
+    it "should return false if character doesn't have twitter account" do
+      character = Factory(:character, :authentication => nil)
+      item = Factory(:item, :character => character)
+      item.twitter_update.should be_false
+    end
+    it "should export to twitter if character has a twitter account" do
+      authentication = Factory(:authentication)
+      character = Factory(:character, :authentication => authentication)
+      item = Factory(:item, :character => character)
+      item.should_receive(:export_to_twitter)
+      item.twitter_update
+    end
+  end
+  
+  describe "export_to_twitter" do
+    it "calls client update and updates tweet_id" do
+      character = Factory(:character)
+      item = Factory(:item, :character => character)
+      client = mock
+      tweet = mock(:id => 1)
+      client.should_receive(:update).with(item.content).and_return(tweet)
+      character.should_receive(:client).and_return(client)
+      item.should_receive(:update_attribute).with(:tweet_id, tweet.id)
+      item.export_to_twitter
     end
   end
   

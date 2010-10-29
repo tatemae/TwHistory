@@ -7,14 +7,6 @@
       <% if @can_edit_project -%>
         <p>(All tweets for <%= @character.name %> will be sent to this account).</p>
         <%= button_to translate('general.delete_twitter_connection'), authentication_path(@character.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete %>
-        <% if @untweeted_items_count > 0 -%>
-          <p><%=translate('items.untweeted_count_msg', :untweeted_items_count => @untweeted_items_count)%></p>
-          <%= muck_form_for @character, :url => project_character_path(@project, @character), :html => { :id => "send-tweets-character-form", :name => 'edit-character-form' } do |f| -%>
-          	<div class="button form-row">
-            	<%= f.submit translate('general.send_tweets') %>
-            </div>
-          <% end -%>
-        <% end -%>
       <% end -%>
     </div>
   <% elsif @can_edit_project -%>

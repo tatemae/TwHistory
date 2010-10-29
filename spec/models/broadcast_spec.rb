@@ -27,22 +27,43 @@ describe Broadcast do
       end
     end
     
-    scope :past, where("broadcasts.end_at <= ?", DateTime.now)
-    scope :in_progress, where("broadcasts.start_at <= ? AND broadcasts.end_at >= ?", DateTime.now)
-    scope :future, where("broadcasts.start_at >= ?", DateTime.now)
+    describe "past" do
+      before do
+        Broadcast.delete_all
+        @past_item = Factory(:broadcast, :end_at => 1.day.ago)
+        @future_item = Factory(:broadcast, :end_at => 1.day.from_now)
+      end
+      it "should only find broadcasts that have passed" do
+        Broadcast.past.should_not include(@future_item)
+        Broadcast.past.should include(@past_item)
+      end
+    end
     
+    describe "in_progress" do
+      before do
+        Broadcast.delete_all
+        @past_item = Factory(:broadcast, :start_at => 1.week.ago, :end_at => 1.day.ago)
+        @inprogress = Factory(:broadcast, :start_at => 1.day.ago, :end_at => 1.day.from_now)
+        @future_item = Factory(:broadcast, :start_at => 1.day.from_now, end_at => 1.week.from_now)
+      end
+      it "should only find broadcasts that are in progress" do
+        Broadcast.past.should_not include(@past_item)
+        Broadcast.past.should_not include(@future_item)
+        Broadcast.past.should include(@inprogress)
+      end
+    end
     
-    describe "not_past" do
+    describe "future" do
       before do
         Broadcast.delete_all
         @past_item = Factory(:broadcast, :start_at => 1.day.ago)
         @future_item = Factory(:broadcast, :start_at => 1.day.from_now)
       end
       it "should find future broadcasts" do
-        Broadcast.not_past.should include(@future_item)
+        Broadcast.future.should include(@future_item)
       end
       it "should not find past broadcasts" do
-        Broadcast.not_past.should_not include(@past_item)
+        Broadcast.future.should_not include(@past_item)
       end
     end
   end

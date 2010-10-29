@@ -28,6 +28,7 @@ class Broadcast < ActiveRecord::Base
                           :url => self.project_url, 
                           :description => truncate_on_word(self.project.description, 160))
     # client.update_profile_image(self.project.photo.to_file(:medium)) # TODO this isn't working right now. Uncomment when you have time to debug the twitter gem
+    # TODO fire a background job that will monitor the scheduled tweets for this broadcast
   end
   
   # Used to build json for calendar

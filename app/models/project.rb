@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
   has_many :broadcasts
   belongs_to :user
   
+  has_many :project_roles
   has_many :authorized_users, :class_name => 'User', :through => :project_roles
   
   scope :by_newest, order("projects.created_at DESC")

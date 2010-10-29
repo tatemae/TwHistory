@@ -4,7 +4,6 @@ en:
     csv_import_failure: There were some errors while importing the csv file.
     add: Add new historical event
     location: Location
-    untweeted_count_msg: There are currently %{untweeted_items_count} items from this character that are not tweeted.
     character: Historical Figure
     new_problem: There was a problem adding the event
     add_character: Add New

@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     
     # Get's the project but doesn't redirect if the user doesn't have edit permission
     def setup_project_not_protected
-      @project = Project.find(params[:project_id])
+      @project = Project.find(params[:project_id]) rescue nil
       @can_edit_project = false
       @can_edit_project = @project.can_edit?(current_user) if @project
     end

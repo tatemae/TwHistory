@@ -21,9 +21,12 @@ Factory.define :project do |f|
 end
 
 Factory.define :authentication do |f|
-  f.character {|a| a.association(:character) }
   f.provider { Factory.next(:name) }
   f.uid { Factory.next(:uri) }
+  f.name { Factory.next(:name) }
+  f.nickname { Factory.next(:name) }
+  f.token { Factory.next(:name) }
+  f.secret { Factory.next(:name) }
 end
 
 Factory.define :broadcast do |f|
@@ -35,5 +38,5 @@ end
 Factory.define :sheduled_item do |f|
   f.broadcast {|a| a.association(:broadcast) }
   f.item {|a| a.association(:item) }
-  f.send_at DateTime.now
+  #f.send_at DateTime.now
 end

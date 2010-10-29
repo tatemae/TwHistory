@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   include MuckUsers::Models::MuckUser
   
   has_many :projects
+  has_many :project_roles
   has_many :authorized_projects, :class_name => 'Project', :through => :project_roles
   
   acts_as_authentic do |c|

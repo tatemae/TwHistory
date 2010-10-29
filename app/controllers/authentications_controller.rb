@@ -23,6 +23,7 @@ class AuthenticationsController < ApplicationController
                                      :nickname => @omniauth['user_info']['nickname'],
                                      :token => @omniauth['credentials']['token'],
                                      :secret => @omniauth['credentials']['secret'])
+      debugger
       if @authentication.save
         flash[:notice] = translate('authentications.connect_success')
       else
@@ -37,7 +38,7 @@ class AuthenticationsController < ApplicationController
   def failure
     flash[:notice] = translate('authentications.failure')
     respond_to do |format|
-      format.html { redirect_to(@parent) }
+      format.html { redirect_to([@parent.project, @parent] }
     end
   end
   

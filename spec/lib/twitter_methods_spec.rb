@@ -13,7 +13,7 @@ describe TwitterMethods do
       authentication = mock()
       authentication.should_receive(:token).and_return('token')
       authentication.should_receive(:secret).and_return('secret')
-      @twitter_methods.stub!(:authentication).return(authentication)
+      @twitter_methods.stub!(:authentication).and_return(authentication)
       client = @twitter_methods.client
       client.type.should == Twitter::Base
     end
