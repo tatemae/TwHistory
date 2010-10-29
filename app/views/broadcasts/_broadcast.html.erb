@@ -2,9 +2,11 @@
   <strong class="broadcast-title"><%= link_to broadcast.project.title, broadcast.project %></strong> 
   <span class="date"><%= format_date_long(broadcast.start_at) %> to <%= format_date_long(broadcast.end_at) %></span> 
   <ul class="follow-list"> 
+  <!--
     <li><a href="#" class="comments">comments</a></li> 
     <li><a href="#" class="people">people</a></li> 
     <li><a href="#" class="doc">doc</a></li> 
+  -->
     <li><%= link_to translate('general.follow'), "http://twitter.com/#{broadcast.authentication.nickname}", :class => 'follow', :target => 'blank' if broadcast.authentication %></li> 
   </ul>
   <% if broadcast.project.can_edit?(current_user) -%>

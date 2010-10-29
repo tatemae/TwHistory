@@ -298,3 +298,5 @@ a:hover{text-decoration:none;}
 .character{margin:10px;height:100px;width:100px;float:left;}
 #character-bio{margin:10px;clear:both;display:inline-block;}
 #character-bio img{float:left;display:inline-block;margin:0 10px 0 0;}
+/*broadcasts*/
+.no-broadcasts-msg{margin:10px;color:#4B3013;font-weight:bold;}

@@ -1,11 +1,6 @@
 <div class="feature"> 
-	<div class="feature-holder"> 
-		<ul class="options-list">
-		  <li><a href="#" class="twitter">twitter</a></li>
-		  <li><a href="#" class="comments">comments</a></li>
-		  <li><a href="#" class="my-space">my-space</a></li>
-		  <li><a href="#" class="doc">doc</a></li>							
-		</ul>
+	<div class="feature-holder">
+	  <%= render 'projects/options_list' %>
 		<h2 class="text-feature">featured re-enactment</h2>
 		<div class="row">
 		  <h3 class="text-sinking"><%= link_to @project.title, @project %></h3>

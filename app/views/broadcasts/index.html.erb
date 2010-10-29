@@ -1,32 +1,55 @@
-<h2>Broadcast Schedule</h2> 
+<h2>Broadcast Schedule <%= "for #{@project.title}" if @project %></h2>
 <h4>Re-enactments in Progress</h4>
 <% if @broadcasts_in_progress.any? -%>
   <ul class="progress-list">
     <%= render :partial => 'broadcasts/broadcast', :collection => @broadcasts_in_progress %>
   </ul>
 <% else -%>
-  No current broadcasts
+  <div class="no-broadcasts-msg">No current broadcasts</div>
 <% end -%>
-<h4>Scheduled Re-enactments</h4> 
-<div id="calendar"></div>
 
-<script type="text/javascript" language="JavaScript">
-  jQuery(document).ready(function(){
-  	jQuery('#calendar').fullCalendar({
-  		header: {
-  			left: 'prev',
-  			center: 'title',
-  			right: 'next'
-  		},
-  		buttonText: {
-          	prev: '&nbsp;',
-          	next: '&nbsp;'
-  	    },
-  		editable: false,
-  		eventClick: function(calEvent, jsEvent, view) {
-  		  location.href=calEvent.project_url;
-      },
-  		events: <%= @broadcasts.to_json(:only => [:id], :methods => [:title, :start, :end, :project_url]).html_safe -%>
-  	});	
-  });
-</script>
+<% if @project -%>
+  
+  <h4>Upcoming Re-enactments</h4>
+  <% if @future_broadcasts.any? -%>
+    <ul class="progress-list">
+      <%= render :partial => 'broadcasts/broadcast', :collection => @future_broadcasts %>
+    </ul>
+  <% else -%>
+    <div class="no-broadcasts-msg">No future broadcasts</div>
+  <% end -%>
+  
+  <h4>Past Re-enactments</h4>
+  <% if @past_broadcasts.any? -%>
+    <ul class="progress-list">
+      <%= render :partial => 'broadcasts/broadcast', :collection => @past_broadcasts %>
+    </ul>
+  <% else -%>
+    <div class="no-broadcasts-msg">No post broadcasts</div>
+  <% end -%>
+  
+<% else -%>
+  <h4>Scheduled Re-enactments</h4>
+  <div id="calendar"></div>
+
+  <script type="text/javascript" language="JavaScript">
+    jQuery(document).ready(function(){
+    	jQuery('#calendar').fullCalendar({
+    		header: {
+    			left: 'prev',
+    			center: 'title',
+    			right: 'next'
+    		},
+    		buttonText: {
+            	prev: '&nbsp;',
+            	next: '&nbsp;'
+    	    },
+    		editable: false,
+    		eventClick: function(calEvent, jsEvent, view) {
+    		  location.href=calEvent.project_url;
+        },
+    		events: <%= @broadcasts.to_json(:only => [:id], :methods => [:title, :start, :end, :project_url]).html_safe -%>
+    	});	
+    });
+  </script>
+<% end -%>

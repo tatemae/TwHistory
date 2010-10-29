@@ -34,7 +34,7 @@ class Character < ActiveRecord::Base
   end
   
   def character_url
-    "http://www.#{MuckEngine.configuration.application_url}/projects/#{self.project.to_param}/characters/#{self.to_param}"
+    "http://#{MuckEngine.configuration.application_url}/projects/#{self.project.to_param}/characters/#{self.to_param}"
   end
   
 end

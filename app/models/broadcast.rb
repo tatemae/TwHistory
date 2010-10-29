@@ -45,7 +45,7 @@ class Broadcast < ActiveRecord::Base
   end
 	
 	def project_url
-    "http://www.#{MuckEngine.configuration.application_url}/projects/#{self.project.to_param}"
+    "http://#{MuckEngine.configuration.application_url}/projects/#{self.project.to_param}"
   end
   
 end

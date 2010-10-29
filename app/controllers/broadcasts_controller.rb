@@ -2,11 +2,18 @@ class BroadcastsController < ApplicationController
 
   before_filter :login_required, :except => [:index]
   before_filter :setup_project, :only => [:new, :create]
+  before_filter :setup_project_not_protected, :only => [:index]
   
   def index
-    @broadcasts_in_progress = Broadcast.by_start.limit(5) # TODO need to determine in progress
-    setup_will_paginate
-    @broadcasts = Broadcast.by_start.limit(100).includes(:project)
+    #setup_will_paginate
+    if @project
+      @broadcasts_in_progress = @project.broadcasts.in_progress.by_start.limit(10)
+      @future_broadcasts = @project.broadcasts.future.by_start.limit(10).includes(:project)
+      @past_broadcasts = @project.broadcasts.past.by_start.limit(10).includes(:project)      
+    else
+      @broadcasts_in_progress = Broadcast.in_progress.by_start.limit(5)
+      @broadcasts = Broadcast.by_start.limit(200).includes(:project)
+    end    
     respond_to do |format|
       format.html
       format.xml  { render :xml => @broadcasts }

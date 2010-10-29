@@ -1,11 +1,6 @@
 <div class="result-box"> 
 	<div class="heading"> 
-		<ul class="options-list"> 
-			<li><a href="#" class="twitter">twitter</a></li> 
-			<li><a href="#" class="comments">comments</a></li> 
-			<li><a href="#" class="people">people</a></li> 
-			<li><a href="#" class="doc">doc</a></li> 
-		</ul>
+	  <%= render 'projects/options_list' %>
 		<h3 class="text-sinking3"><%= link_to search_result.title, search_result %></h3>
 	</div>
 	<span class="author"><strong>Recreated by:</strong> <%= search_result.user.display_name %></span> 
