@@ -22,6 +22,7 @@ gem "sanitize"
 gem "paperclip"
 gem "friendly_id", ">=3.1.7"
 gem "hoptoad_notifier"
+gem 'newrelic_rpm'
 gem "recaptcha", :require => "recaptcha/rails"
 gem "tiny_mce"
 gem "acts-as-taggable-on"
