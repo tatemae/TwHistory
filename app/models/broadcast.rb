@@ -52,10 +52,8 @@ class Broadcast < ActiveRecord::Base
     items = self.project.items.chronological
     first_event_date_time = items.first.event_date_time
     broadcast_date_time = nil
-    # TODO the spacing isn't working right to time the events
     items.each do |item|
       broadcast_date_time = self.start_at + (item.event_date_time - first_event_date_time)
-      #debugger
       self.scheduled_items.build(:item_id => item.id, :send_at => broadcast_date_time)
     end
     self.end_at = broadcast_date_time # Record the broadcast end date/time

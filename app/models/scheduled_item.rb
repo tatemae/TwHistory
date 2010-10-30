@@ -10,10 +10,12 @@ class ScheduledItem < ActiveRecord::Base
   def self.broadcast_scheduled_items
     to_send = ScheduledItem.ready_to_send.by_send.includes([:broadcast, :item])
     to_send.each do |scheduled_item|
-      tweet = scheduled_item.broadcast.client.retweet(item.tweet_id)
-      # TODO need to throttle and possibly not destroy if tweet is not successful
-      # Rate limiting: http://dev.twitter.com/pages/rate-limiting
-      scheduled_item.destroy
+      if scheduled_item.broadcast.authentication
+        tweet = scheduled_item.broadcast.client.retweet(item.tweet_id)
+        # TODO need to throttle and possibly not destroy if tweet is not successful
+        # Rate limiting: http://dev.twitter.com/pages/rate-limiting
+        scheduled_item.destroy
+      end
     end
   end
   
