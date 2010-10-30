@@ -5,7 +5,6 @@ class BroadcastsController < ApplicationController
   before_filter :setup_project_not_protected, :only => [:index]
   
   def index
-    #setup_will_paginate
     if @project
       @broadcasts_in_progress = @project.broadcasts.in_progress.by_start.limit(10)
       @future_broadcasts = @project.broadcasts.future.by_start.limit(10).includes(:project)
@@ -24,7 +23,8 @@ class BroadcastsController < ApplicationController
     @broadcast = Broadcast.find(params[:id])
     @can_edit_project = @broadcast.project.can_edit?(current_user)
     setup_will_paginate
-    @scheduled_items = @broadcast.scheduled_items.by_send.paginate(:page => @page, :per_page => @per_page)
+    @per_page = 100
+    @scheduled_items = @broadcast.scheduled_items.by_send.includes(:item).paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html
       format.xml  { render :xml => @broadcast }
@@ -32,7 +32,10 @@ class BroadcastsController < ApplicationController
   end
 
   def new
-    @broadcast = @project.broadcasts.build
+    @first_item = @project.items.by_event_date_time.first
+    current = DateTime.now + 1.day
+    start_at = DateTime.new(current.year, current.month, current.day, @first_item.event_date_time.hour, @first_item.event_date_time.min) 
+    @broadcast = @project.broadcasts.build(:start_at => start_at)
     check_permissions
     respond_to do |format|
       format.html
@@ -50,10 +53,16 @@ class BroadcastsController < ApplicationController
     @broadcast.parse_start_at(params)
     check_permissions
     success = @broadcast.save
-    # TODO calculate scheduled items
+    schedule_success = @broadcast.build_schedule
+    if success
+      flash[:notice] = translate('broadcasts.create_success')
+      if !schedule_success
+        flash[:notice] = "The broadcast was successfully created but there were some problems creating the broadcast schedule."
+      end
+    end
     respond_to do |format|
       if success
-        format.html { redirect_to(@broadcast, :notice => translate('broadcasts.create_success')) }
+        format.html { redirect_to(@broadcast) }
         format.xml  { render :xml => @broadcast, :status => :created, :location => @broadcast }
       else
         format.html { render :action => "new" }

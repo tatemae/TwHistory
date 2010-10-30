@@ -14,9 +14,8 @@ Twhistory::Application.routes.draw do
 
   resources :comments  
   # resources :items
-  # resources :scheduled_items
+  resources :scheduled_items
   resources :broadcasts do
-    resources :scheduled_items
     resource :authentication
   end
   resources :characters do

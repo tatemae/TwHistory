@@ -48,4 +48,16 @@ class Broadcast < ActiveRecord::Base
     "http://#{MuckEngine.configuration.application_url}/projects/#{self.project.to_param}"
   end
   
+  # Builds scheduled tweets based on scheduling parameters provided by the user
+  def build_schedule
+    items = self.project.items.by_event_date_time
+    first_event_date_time = items.first.event_date_time
+    broadcast_date_time = nil
+    items.each do |item|
+      broadcast_date_time = self.start_at + (item.event_date_time - first_event_date_time)
+      self.scheduled_items.create(:item_id => item.id, :send_at => broadcast_date_time)
+    end
+    self.update_attribute(:end_at, broadcast_date_time) # Record the broadcast end date/time
+  end
+  
 end

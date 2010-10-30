@@ -279,8 +279,8 @@ a:hover{text-decoration:none;}
 #new-item-form .form-row label#date{width:100px;}
 #new-item-form .form-row label#time{width:20px;}
 /* date picker */
-.date_pick{background:transparent url('/images/calender.jpg') no-repeat scroll right bottom;width:150px;}
-.time_pick{background:transparent url('/images/clock.gif') no-repeat scroll right bottom;width:90px;}
+.date_pick{background:#FFF url('/images/calender.jpg') no-repeat scroll right bottom;width:150px;}
+.time_pick{background:#FFF url('/images/clock.gif') no-repeat scroll right bottom;width:90px;}
 .date-time input, .date-time label{padding:2px;float:left;display:inline-block;height:15px;}
 .date-time #date{width:100px;}
 .date-time #time{width:20px;}
@@ -300,3 +300,7 @@ a:hover{text-decoration:none;}
 #character-bio img{float:left;display:inline-block;margin:0 10px 0 0;}
 /*broadcasts*/
 .no-broadcasts-msg{margin:10px;color:#4B3013;font-weight:bold;}
+.scheduled-item{width:650px;height:65px;vertical-align:top;font:13px "Trebuchet MS",Helvetica,sans-serif;padding:3px 2px;margin:5px;background:#00a69c;position:relative;}
+.scheduled-item .visual{display:inline-block;float:left;width:60px;}
+.scheduled-item .text-holder{display:inline-block;float:left;width:590px;padding:0 4px;}
+.scheduled-item .send-at{position:absolute;right:5px;bottom:5px;}

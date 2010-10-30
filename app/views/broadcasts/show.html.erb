@@ -4,4 +4,20 @@
   <%= render 'broadcasts/link_twitter' %>
   <h3>Tweet Schedule</h3>
   <%= render @scheduled_items %>
+  <%= will_paginate @scheduled_items %>
 </div>
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function(){
+    jQuery('.date_pick').datepicker({
+        			changeMonth: true,
+        			changeYear: true,
+        			numberOfMonths: 3,
+              showButtonPanel: true,
+              yearRange: 'c-200:c+50'
+        		});
+        		
+    jQuery('.time_pick').timePicker({
+              show24Hours: false,
+              step: 15});
+  });
+</script>

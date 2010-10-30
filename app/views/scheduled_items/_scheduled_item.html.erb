@@ -1,0 +1,22 @@
+<% item = scheduled_item.item %>
+<div class="scheduled-item">
+  <div class="visual">
+    <%= image_tag item.character.photo.url(:icon) if item.character.photo_file_name %>
+  </div>
+  <div class="text-holder"> 
+    <p><strong class="name"><%= item.character.name %></strong> <%= item.content %></p> 
+		<em class="date"> <%= item.event_date_time.to_s(:date_and_time) %></em>
+  </div>
+  <% if @can_edit_project -%>
+    <div class="send-at">
+      <%= form_for scheduled_item, :html => { :class => 'ajax' } do |f| -%>
+        <label id="date">Send On</label>
+        <%= text_field_tag :start_date, just_date(scheduled_item.send_at), { :class => "date_pick" } -%>
+        <label id="time">At</label>
+        <%= text_field_tag :start_time, just_time(scheduled_item.send_at), { :class => 'time_pick' } %>
+        <%= f.submit t('general.update') %>
+      <% end -%>
+    </div>
+	<% end -%>
+</div>
+

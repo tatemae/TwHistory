@@ -78,6 +78,14 @@ describe Broadcast do
     end
   end
   
+  describe "build_schedule" do
+    before do
+      @broadcast = Factory(:broadcast)
+    end
+    it "should create scheduled items" do
+    end
+  end
+  
   describe "twitter_update" do
     describe "authentication is nil" do
       before do
