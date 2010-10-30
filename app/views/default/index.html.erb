@@ -1,6 +1,6 @@
 <div class="feature"> 
 	<div class="feature-holder">
-	  <%= render 'projects/options_list' %>
+	  <%= render 'projects/options_list', :project => @project %>
 		<h2 class="text-feature">featured re-enactment</h2>
 		<div class="row">
 		  <h3 class="text-sinking"><%= link_to @project.title, @project %></h3>

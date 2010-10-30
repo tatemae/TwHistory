@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   
   has_many :projects
   has_many :project_roles
-  has_many :authorized_projects, :class_name => 'Project', :through => :project_roles
+  has_many :authorized_projects, :through => :project_roles, :source => 'project'
   
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt

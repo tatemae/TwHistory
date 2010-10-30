@@ -1,6 +1,6 @@
 <div class="result-box"> 
 	<div class="heading"> 
-	  <%= render 'projects/options_list' %>
+	  <%= render 'projects/options_list', :project => search_result %>
 		<h3 class="text-sinking3"><%= link_to search_result.title, search_result %></h3>
 	</div>
 	<span class="author"><strong>Recreated by:</strong> <%= search_result.user.display_name %></span> 

@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   
   has_many :project_roles
-  has_many :authorized_users, :class_name => 'User', :through => :project_roles
+  has_many :authorized_users, :through => :project_roles, :source => 'user'
   
   scope :by_newest, order("projects.created_at DESC")
   scope :by_oldest, order("projects.created_at ASC")

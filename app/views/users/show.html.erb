@@ -1,0 +1,15 @@
+<div id="user" class="common-content">
+  <h1>Re-enactments I'm in charge of</h1>
+  <% if @user.projects.any? -%>
+    <%= render :partial => 'projects/project', :collection => @user.projects %>
+  <% else -%>
+    None yet. Have a great idea? <%= link_to 'Create a new re-enactment.', new_project_path %>
+  <% end -%>
+  
+  <h1>Re-enactments I'm working on</h1>
+  <% if @user.authorized_projects.any? -%>
+    <%= render :partial => 'projects/project', :collection => @user.authorized_projects %>
+  <% else -%>
+    None yet. <%= link_to 'Browse re-enactments to see what you find.', projects_path %>
+  <% end -%>
+</div>
