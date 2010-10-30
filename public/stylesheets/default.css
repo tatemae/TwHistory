@@ -306,7 +306,6 @@ a:hover{text-decoration:none;}
 .scheduled-item .visual{display:inline-block;float:left;width:60px;}
 .scheduled-item .text-holder{display:inline-block;float:left;width:590px;padding:0 4px;}
 .scheduled-item .send-at{position:absolute;right:5px;bottom:5px;}
-
-
+/*Login/logout*/
 .login-form p{color:#FFF;font-family:'IM Fell DW Pica',arial,serif;font-size:18px;font-weight:bold;text-align:center;}
 .login-form p a{color:#FFF;}
