@@ -4,7 +4,7 @@ class Broadcast < ActiveRecord::Base
   
   belongs_to :project
   has_one :authentication, :as => :authenticatable, :dependent => :destroy
-  has_many :scheduled_items
+  has_many :scheduled_items, :dependent => :destroy
   
   scope :by_start, order("broadcasts.start_at DESC")
   scope :past, where("broadcasts.end_at <= ?", DateTime.now)
@@ -28,7 +28,6 @@ class Broadcast < ActiveRecord::Base
                           :url => self.project_url, 
                           :description => truncate_on_word(self.project.description, 160))
     # client.update_profile_image(self.project.photo.to_file(:medium)) # TODO this isn't working right now. Uncomment when you have time to debug the twitter gem
-    # TODO fire a background job that will monitor the scheduled tweets for this broadcast
   end
   
   # Used to build json for calendar
@@ -41,7 +40,7 @@ class Broadcast < ActiveRecord::Base
   end
   
   def end
-    self.end_at | self.start_at
+    self.end_at || self.start_at
   end
 	
 	def project_url
@@ -50,14 +49,17 @@ class Broadcast < ActiveRecord::Base
   
   # Builds scheduled tweets based on scheduling parameters provided by the user
   def build_schedule
-    items = self.project.items.by_event_date_time
+    items = self.project.items.chronological
     first_event_date_time = items.first.event_date_time
     broadcast_date_time = nil
+    # TODO the spacing isn't working right to time the events
     items.each do |item|
       broadcast_date_time = self.start_at + (item.event_date_time - first_event_date_time)
-      self.scheduled_items.create(:item_id => item.id, :send_at => broadcast_date_time)
+      #debugger
+      self.scheduled_items.build(:item_id => item.id, :send_at => broadcast_date_time)
     end
-    self.update_attribute(:end_at, broadcast_date_time) # Record the broadcast end date/time
+    self.end_at = broadcast_date_time # Record the broadcast end date/time
+    self.save
   end
-  
+    
 end

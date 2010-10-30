@@ -87,9 +87,10 @@ class BroadcastsController < ApplicationController
 
   def destroy
     @broadcast = Broadcast.find(params[:id])
+    @project = @broadcast.project
     @broadcast.destroy
     respond_to do |format|
-      format.html { redirect_to(broadcasts_url) }
+      format.html { redirect_to(project_broadcasts_path(@project), :notice => 'Broadcast was successfully deleted') }
       format.xml  { head :ok }
     end
   end

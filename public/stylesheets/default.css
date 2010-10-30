@@ -134,7 +134,8 @@ a:hover{text-decoration:none;}
 .progress-list{margin:-4px 0 27px -17px;}
 .progress-list li{vertical-align:top;width:662px;height:30px;padding:10px 10px 7px;line-height:25px;margin-top:4px;background:url(/images/bg-progress.gif) no-repeat;position:relative;}
 .progress-list li .date{color:#00a69c;float:left;padding-left:7px;}
-.progress-list li .edit{position:absolute;top:8px;right:-28px;}
+.progress-list li .edit{position:absolute;top:-3px;right:5px;}
+.progress-list li .edit input[type="submit"]{width:60px;}
 .progress-list .follow-list{float:right;}
 .progress-list .follow-list li{float:left;padding:0 0 0 9px;margin:0;width:auto;background:none;}
 .progress-list .follow-list li a{float:left;width:28px;height:29px;text-indent:-9999px;overflow:hidden;}
@@ -262,6 +263,7 @@ a:hover{text-decoration:none;}
 #content .pagination .prev_page{overflow:hidden;text-indent:-9999px;width:36px;height:25px;background:url(/images/bg-btns.gif) no-repeat;}
 #content .pagination .next_page{background-position:100% 0;}
 */
+.waiting{margin:3px 0;padding-left:20px;background:transparent url('/images/spinner.gif') no-repeat scroll left bottom;}
 .admin-links{display:none;}
 /*forms*/
 #sign_in{width:470px;margin:20px auto;}

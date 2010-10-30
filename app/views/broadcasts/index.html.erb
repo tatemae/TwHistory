@@ -1,4 +1,4 @@
-<h2>Broadcast Schedule <%= "for #{@project.title}" if @project %></h2>
+<h2>Broadcast Schedule <%= "for #{link_to(@project.title, @project)}".html_safe if @project %></h2>
 <h4>Re-enactments in Progress</h4>
 <% if @broadcasts_in_progress.any? -%>
   <ul class="progress-list">

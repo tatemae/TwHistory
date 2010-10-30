@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
   belongs_to :character
   
   scope :by_event_date_time, order("items.event_date_time DESC")
+  scope :chronological, order("items.event_date_time ASC")
   scope :by_newest, order("items.created_at DESC")
   scope :by_oldest, order("items.created_at ASC")
   scope :by_latest, order("items.updated_at DESC")

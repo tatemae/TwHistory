@@ -57,6 +57,9 @@ en:
     start_label: Start this broadcast on
     link_twitter_account: Link Twitter Account
     edit_problem: There was a problem editing this broadcast
+    edit: Edit Broadcast Settings
+    delete: Delete This Broadcast
+    wait: Please wait. It can take a few minutes to create the broadcast schedule.
   general: 
     delete_confirmation: Are you sure?
     add: Add

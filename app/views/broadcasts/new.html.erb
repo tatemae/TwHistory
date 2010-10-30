@@ -12,7 +12,8 @@
   	<%= output_errors(translate('broadcasts.new_problem'), {:class => 'help-box'}, @broadcast) %>
     <%= render 'form', :f => f %>
   	<div class="button form-row">
-    	<%= f.submit translate('general.create') %>
+    	<%= f.submit translate('general.create'), :class => 'wait-button' %>    	
+      <div class="waiting"><%=translate('broadcasts.wait') %></div>
     </div>
   <% end -%>
 </div>

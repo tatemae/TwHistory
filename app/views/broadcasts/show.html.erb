@@ -1,7 +1,15 @@
 <%= output_errors(translate('broadcasts.new_problem'), {:class => 'help-box'}, @broadcast) %>
 <div id="broadcast">
-  <h1>Broadcast for <%= link_to @broadcast.project.title, @broadcast.project %> <span><%= link_to translate('general.inline_edit'), edit_broadcast_path(@broadcast) %></span></h1>
+  <h1>Broadcast for <%= link_to @broadcast.project.title, @broadcast.project %></h1>
+  <h2>Starts on <%= @broadcast.start_at.to_s(:date_and_time) %></h2>
+  
   <%= render 'broadcasts/link_twitter' %>
+  
+  <div class="edit">
+    <%= button_to translate('broadcasts.edit'), edit_broadcast_path(@broadcast.project, @broadcast), :method => :get %>
+    <%= button_to translate('broadcasts.delete'), broadcast_path(@broadcast), :confirm => translate('general.delete_confirmation'), :method => :delete %>    
+  </div>
+  
   <h3>Tweet Schedule</h3>
   <%= render @scheduled_items %>
   <%= will_paginate @scheduled_items %>

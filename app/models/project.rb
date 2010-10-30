@@ -1,8 +1,8 @@
 class Project < ActiveRecord::Base
   
-  has_many :characters
-  has_many :items
-  has_many :broadcasts
+  has_many :characters, :dependent => :destroy
+  has_many :items, :dependent => :destroy
+  has_many :broadcasts, :dependent => :destroy
   belongs_to :user
   
   has_many :project_roles

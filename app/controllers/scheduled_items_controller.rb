@@ -1,6 +1,7 @@
 class ScheduledItemsController < ApplicationController
 
   def update
+    # TODO update should send back ajax that updates the form and indicates the scheduled item was updated
     @scheduled_item = ScheduledItem.find(params[:id])
     respond_to do |format|
       if @scheduled_item.update_attributes(params[:scheduled_item])
@@ -14,6 +15,7 @@ class ScheduledItemsController < ApplicationController
   end
 
   def destroy
+    # TODO destroy should remove the item from the list
     @scheduled_item = ScheduledItem.find(params[:id])
     @scheduled_item.destroy
     respond_to do |format|

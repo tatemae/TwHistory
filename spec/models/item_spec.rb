@@ -33,6 +33,19 @@ describe Item do
         Item.by_event_date_time[2].should == @first_item
       end
     end
+    describe "chronological" do
+      before do
+        Item.delete_all
+        @first_item = Factory(:item, :event_date_time => 1.month.ago)
+        @second_item = Factory(:item, :event_date_time => 1.day.ago)
+        @third_item = Factory(:item, :event_date_time => 1.day.from_now)
+      end
+      it "should order broadcasts by start date" do
+        Item.chronological[2].should == @third_item
+        Item.chronological[1].should == @second_item
+        Item.chronological[0].should == @first_item
+      end
+    end
     describe "untweeted" do
       before do
         Item.delete_all

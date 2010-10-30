@@ -11,7 +11,8 @@
   </ul>
   <% if broadcast.project.can_edit?(current_user) -%>
   <span class="edit admin-links">
-    <%= link_to translate('general.edit'), edit_project_broadcast_path(broadcast.project, broadcast) %>
+    <%= button_to translate('general.edit'), edit_project_broadcast_path(broadcast.project, broadcast), :method => :get %>
+    <%= button_to translate('general.delete'), broadcast_path(broadcast), :confirm => translate('general.delete_confirmation'), :method => :delete %>    
   </span>
   <% end -%>
 </li>

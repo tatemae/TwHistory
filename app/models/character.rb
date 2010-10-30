@@ -3,7 +3,7 @@ class Character < ActiveRecord::Base
   include ::MuckEngineHelper
   
   has_one :authentication, :as => :authenticatable, :dependent => :destroy
-  has_many :items #, :dependent => :destroy  TODO decide if we want to make a call out to twitter to delete all this character's tweets if the character is deleted
+  has_many :items, :dependent => :destroy  # TODO decide if we want to make a call out to twitter to delete all this character's tweets if the character is deleted
   belongs_to :project
   
   has_friendly_id :name, :use_slug => true
