@@ -44,6 +44,7 @@ en:
     description: Description
     create_problem: There was a problem creating the new re-enactment
     edit_problem: There was a problem editing this re-enactment
+    delete_confirmation: Are you sure you want to delete this project? Doing so will remove all characters and events. There is no undo.
   authentications: 
     failure: Could not connect to Twitter account. Please try again.
     already_connected: You've already connected to this Twitter account.

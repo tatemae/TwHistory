@@ -1,7 +1,14 @@
 <h2 class="text-sinking2">
   <%= @project.title %> 
-  <%= link_to translate('general.inline_edit'), edit_project_path(@project) if @project.can_edit?(current_user) %>
 </h2>
+
+<% if @project.can_edit?(current_user) %>
+  <div class="main-edit">
+    <%= button_to translate('general.edit'), edit_project_path(@project), :method => :get %>
+    <%= button_to translate('general.delete'), project_path(@project), :confirm => translate('projects.delete_confirmation'), :method => :delete, :class => 'confirm' %>    
+  </div>
+<% end -%>
+
 <span class="author"><strong>Recreated by:</strong><%= @project.user.display_name %></span> 
 <div class="broadcast"> 
 	<div class="heading">

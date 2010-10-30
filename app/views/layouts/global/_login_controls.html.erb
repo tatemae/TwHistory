@@ -1,5 +1,8 @@
 <% if logged_in? -%>
-  <div class="login-form-spacer"></div>
+  <div class="login-form">
+    <p>Welcome <%= current_user.display_name %></p>
+    <p><%= link_to 'Logout', logout_path %> | <%= link_to 'Dashboard', user_path(current_user) %></p>
+  </div>
 <% else -%>
   <div class="login-form">
     <%= form_for :user_session, :url => user_session_path do |f| -%>

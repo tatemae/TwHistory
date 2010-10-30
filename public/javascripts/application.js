@@ -13,6 +13,15 @@ jQuery(document).ready(function(){
 	);
 });
 
+jQuery(document).ready(function(){
+	jQuery(".confirm").live('click',function(){
+		var message = jQuery(this).attr('data-confirm');
+		if (!confirm(message)){
+			return false;
+		}
+	});
+});
+
 function limitChars(field, limit, info_field)
 {
 	var text = field.val();

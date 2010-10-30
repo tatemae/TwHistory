@@ -186,6 +186,7 @@ GEM
       activerecord (>= 3.0.0)
       railties (>= 3.0.0)
     net-ldap (0.1.1)
+    newrelic_rpm (2.13.1)
     nokogiri (1.4.3.1)
     oa-basic (0.1.6)
       multi_json (~> 0.0.2)
@@ -348,6 +349,7 @@ DEPENDENCIES
   muck-users (>= 3.0.5)
   mysql
   nested_set
+  newrelic_rpm
   omniauth
   paperclip
   rails (= 3.0.1)
