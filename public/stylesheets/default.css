@@ -268,6 +268,7 @@ a:hover{text-decoration:none;}
 #event-upload-form{margin:5px auto;}
 #event-form{margin:40px auto;}
 #event-form textarea{height:60px;width:620px;}
+#event-form label{font-size:14px;}
 .broadcast-form .date-time #date{width:230px;}
 #new-item-form .chooseMenu label{width:166px;}
 #edit-character-form textarea{width:640px;}

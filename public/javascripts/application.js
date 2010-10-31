@@ -3,6 +3,7 @@ jQuery(document).oneTime(2000, "notify_box", function() {
 });
 
 jQuery(document).ready(function(){
+
 	jQuery(".hidden-admin_links").hover(
 	  function () {
 	    jQuery(this).children(".admin-links").show();
@@ -11,15 +12,18 @@ jQuery(document).ready(function(){
 	    jQuery(this).children(".admin-links").hide();
 	  }
 	);
-});
 
-jQuery(document).ready(function(){
 	jQuery(".confirm").live('click',function(){
 		var message = jQuery(this).attr('data-confirm');
 		if (!confirm(message)){
 			return false;
 		}
 	});
+	
+	jQuery(function() {
+	  jQuery("#tabs").tabs();
+	});
+	
 });
 
 function limitChars(field, limit, info_field)

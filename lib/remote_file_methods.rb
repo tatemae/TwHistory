@@ -21,8 +21,8 @@ module RemoteFileMethods
         self.photo = io.original_filename.blank? ? nil : io
         self.photo_remote_url = photo_url
       rescue => ex
-        debugger
-        t = 0
+        #debugger
+        #t = 0
       end
     end
   

@@ -45,7 +45,7 @@ class Project < ActiveRecord::Base
       character = self.characters.find_or_create_by_name(row[2])
       character.photo_url = row[6] if character.photo_file_name.blank? && row[6]
       if !character.save
-        results << "FAILED to save character image for character id: #{character.id}"
+        results << "FAILED to save character image for character id: #{character.id}. Error: #{character.errors.full_messages.to_sentence}"
       end
       item = {:event_date_time => DateTime.parse("#{row[0]} #{row[1]}"), :character_id => character.id, :content => row[3]}
       item[:location] = row[4] if row[4]

@@ -66,10 +66,6 @@ function load_events(){
   eventSource.add(new Timeline.DefaultEventSource.Event(new Date(<%=ActiveSupport::JSON.encode(item.event_date_time).html_safe%>), null, null, null, true, "<%= item.content %>", "<%= item.character.name %>"));
   <% end -%>
 }
-
-jQuery(function() {
-  jQuery("#tabs").tabs();
-});
 </script>
 
 <% content_for :head do -%>

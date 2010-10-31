@@ -1,19 +1,29 @@
-<div id="event-upload-form" class="common-form">
-  <p><%= link_to translate('projects.return_to_project', :project_title => @project.title), @project %></p>
-  <h1>Upload a CSV file</h1>
-  <%= form_for :item, :url => project_items_path(@project), :html => { :multipart => true } do |f| -%>
-    <%= f.file_field :csv %>
-    <%= f.submit "Upload", :id => 'upload_csv', :class => 'wait-button' %>
-    <div class="waiting"><%=translate('items.wait') %></div>
-  <% end -%>
-</div>
-<div id="event-form" class="common-form">
-  <h1>Add Single Event</h1>
-  <%= muck_form_for :item, :url => project_items_path(@project), :html => { :multipart => true, :id => "new-item-form", :name => 'new-item-form' } do |f| -%>
-  	<%= output_errors(translate('items.new_problem'), {:class => 'help-box'}, @item) %>
-    <%= render 'form', :f => f %>
-  	<div class="button form-row">
-    	<%= f.submit translate('general.create') %>
+<p><%= link_to translate('projects.return_to_project', :project_title => @project.title), @project %></p>
+<div id="tabs">
+	<ul>
+		<li><a href="#single">Add Single Event</a></li>
+		<li><a href="#csv">Upload CSV File</a></li>
+	</ul>
+	<div id="single">
+    <div id="event-form" class="common-form">
+      <h1>Add Single Event</h1>
+      <%= muck_form_for :item, :url => project_items_path(@project), :html => { :multipart => true, :id => "new-item-form", :name => 'new-item-form' } do |f| -%>
+      	<%= output_errors(translate('items.new_problem'), {:class => 'help-box'}, @item) %>
+        <%= render 'form', :f => f %>
+      	<div class="button form-row">
+        	<%= f.submit translate('general.create') %>
+        </div>
+      <% end -%>
     </div>
-  <% end -%>
+	</div>
+	<div id="csv">
+    <div id="event-upload-form" class="common-form">
+      <h1>Upload a CSV file</h1>
+      <%= form_for :item, :url => project_items_path(@project), :html => { :multipart => true } do |f| -%>
+        <%= f.file_field :csv %>
+        <%= f.submit "Upload", :id => 'upload_csv', :class => 'wait-button' %>
+        <div class="waiting"><%=translate('items.wait') %></div>
+      <% end -%>
+    </div>
+	</div>
 </div>
