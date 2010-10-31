@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  include RemoteFileMethods
   
   has_many :characters, :dependent => :destroy
   has_many :items, :dependent => :destroy
@@ -13,7 +14,7 @@ class Project < ActiveRecord::Base
   scope :by_latest, order("projects.updated_at DESC")
   scope :newer_than, lambda { |*args| where("projects.created_at > ?", args.first || DateTime.now) }
   scope :older_than, lambda { |*args| where("projects.created_at < ?", args.first || 1.day.ago.to_s(:db)) }
-  
+    
   has_friendly_id :title, :use_slug => true
   
   has_attached_file :photo, 
@@ -42,13 +43,16 @@ class Project < ActiveRecord::Base
     items = []
     FasterCSV.parse(file, :headers => true) do |row|
       character = self.characters.find_or_create_by_name(row[2])
+      character.photo_url = row[6] if character.photo_file_name.blank? && row[6]
+      if !character.save
+        results << "FAILED to save character image for character id: #{character.id}"
+      end
       item = {:event_date_time => DateTime.parse("#{row[0]} #{row[1]}"), :character_id => character.id, :content => row[3]}
       item[:location] = row[4] if row[4]
-      item[:image] = row[5] if row[5]
-      item[:source] = row[6] if row[6]
+      item[:source] = row[5] if row[5]
       new_item = self.items.build(item)
       if !new_item.save
-        results << "FAILED: #{row.join(',')}"
+        results << "FAILED: #{row}"
       else
         items << new_item
       end

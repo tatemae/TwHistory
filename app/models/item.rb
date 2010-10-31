@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  include RemoteFileMethods
+  
   belongs_to :project
   belongs_to :character
   
@@ -14,7 +16,7 @@ class Item < ActiveRecord::Base
   attr_protected :created_at, :updated_at, :lat, :lng
   validates_presence_of :content
   validates_presence_of :event_date_time
-  
+    
   has_attached_file :photo, 
                     :styles => { :medium => "300x300>",
                                  :thumb => "100x100>",

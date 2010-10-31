@@ -25,7 +25,7 @@ var timeLine;
 var eventSource;
 jQuery(document).ready(function(){
   eventSource = new Timeline.DefaultEventSource();
-  var date = new Date(<%=ActiveSupport::JSON.encode(@items.first.event_date_time).html_safe%>); 
+  var date = new Date(<%=ActiveSupport::JSON.encode(@items.first.event_date_time).html_safe if @items.any? %>); 
   var bandInfos = [
     Timeline.createBandInfo({
       width: "80%", 

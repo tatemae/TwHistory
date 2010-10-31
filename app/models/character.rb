@@ -1,6 +1,7 @@
 class Character < ActiveRecord::Base
   include ::TwitterMethods
   include ::MuckEngineHelper
+  include RemoteFileMethods
   
   has_one :authentication, :as => :authenticatable, :dependent => :destroy
   has_many :items, :dependent => :destroy  # TODO decide if we want to make a call out to twitter to delete all this character's tweets if the character is deleted
@@ -8,7 +9,7 @@ class Character < ActiveRecord::Base
   
   has_friendly_id :name, :use_slug => true
   
-  scope :by_name, order("name ASC")
+  scope :by_name, order("characters.name ASC")
   scope :by_newest, order("characters.created_at DESC")
   scope :by_oldest, order("characters.created_at ASC")
   scope :by_latest, order("characters.updated_at DESC")
