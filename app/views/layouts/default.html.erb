@@ -6,24 +6,14 @@
 <body>
   <div id="wrapper">
     <%= render :partial => 'layouts/global/header' %>
-    <div id="main"> 
-    	<div class="time-line"> 
-    		<ul> 
-    			<li>1810</li><li>1820</li><li>1830</li><li>1840</li><li>1850</li><li>1860</li><li>1870</li><li>1880</li><li>1890</li><li>1900</li> 
-    		</ul> 
-    		<a href="#" class="point point1815">1815</a><!-- point --> 
-    		<a href="#" class="point point1830">1830</a><!-- point --> 
-    		<a href="#" class="point point1847">1847</a><!-- point --> 
-    		<a href="#" class="point point1872">1872</a><!-- point --> 
-    		<a href="#" class="point point1874">1874</a><!-- point --> 
-    		<a href="#" class="point point1896">1896</a><!-- point --> 
-    	</div><!-- time line --> 
+    <div id="main">
+      <%= render :partial => 'layouts/global/timeline' %>
     	<div class="main-holder"> 
     		<div id="content">
           <%= yield :layout %>
-        </div><!-- content -->
+        </div>
     		<%= render :partial => 'layouts/global/side_bar' %>
-    	</div><!-- main holder --> 
+    	</div>
     </div>
     <%= render :partial => 'layouts/global/footer' %>
   </div>

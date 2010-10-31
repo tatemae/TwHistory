@@ -44,7 +44,8 @@ class Project < ActiveRecord::Base
       character = self.characters.find_or_create_by_name(row[2])
       item = {:event_date_time => DateTime.parse("#{row[0]} #{row[1]}"), :character_id => character.id, :content => row[3]}
       item[:location] = row[4] if row[4]
-      item[:source] = row[5] if row[5]
+      item[:image] = row[5] if row[5]
+      item[:source] = row[6] if row[6]
       new_item = self.items.build(item)
       if !new_item.save
         results << "FAILED: #{row.join(',')}"

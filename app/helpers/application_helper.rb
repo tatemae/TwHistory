@@ -28,4 +28,10 @@ module ApplicationHelper
     date.to_s(:long_date)
   end
   
+  def decades(start_decade, end_decade)
+    decades = ''
+		start_decade.step(end_decade, 10) {|i| decades << "<li>#{i}</li>" }
+		decades.html_safe
+	end
+	  
 end
