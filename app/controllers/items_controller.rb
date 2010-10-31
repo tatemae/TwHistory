@@ -99,11 +99,10 @@ class ItemsController < ApplicationController
   private
   
     def csv_header
-      ["Event Date", "Event Time", "Character Name", "Content", "Location", "Source"]
+      ["Event Date", "Event Time", "Character Name", "Content", "Location", "Source", "Photo"]
     end
 
     def csv_item(i)
-      [i.event_date_time.to_s(:short_date), i.event_date_time.to_s(:just_time), i.character.name, i.content, i.location, i.source]
+      [i.event_date_time.to_s(:short_date), i.event_date_time.to_s(:just_time), i.character.name, i.content, i.location, i.source, "http://#{MuckEngine.configuration.application_url}#{i.character.photo.url}"]
     end
-  
 end
