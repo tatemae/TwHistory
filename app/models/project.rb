@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
   def can_edit?(check_user)
     return false if check_user.blank?
     return true if check_user == self.user
-    return true if self.users.include?(check_user)
+    return true if self.authorized_users.include?(check_user)
     false
   end
   
