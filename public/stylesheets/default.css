@@ -305,3 +305,9 @@ a:hover{text-decoration:none;}
 /*Login/logout*/
 .login-form p{color:#FFF;font-family:'IM Fell DW Pica',arial,serif;font-size:18px;font-weight:bold;text-align:center;}
 .login-form p a{color:#FFF;}
+.common-content h1{font-size:2.8em;}
+.common-content p{margin:10px;}
+/*people*/
+.bio {width:650px;clear:both;margin:10px 0;height:280px;}
+.bio  p{float:left; width:430px;margin:0 5px;}
+.bio img{float:left;}
