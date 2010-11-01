@@ -298,9 +298,9 @@ a:hover{text-decoration:none;}
 #character-bio img{float:left;display:inline-block;margin:0 10px 0 0;}
 /*broadcasts*/
 .no-broadcasts-msg{margin:10px;color:#4B3013;font-weight:bold;}
-.scheduled-item{width:650px;height:65px;vertical-align:top;font:13px "Trebuchet MS",Helvetica,sans-serif;padding:3px 2px;margin:5px;background:#00a69c;position:relative;}
+.scheduled-item{width:650px;height:75px;vertical-align:top;font:13px "Trebuchet MS",Helvetica,sans-serif;padding:3px 2px;margin:5px;background:#00a69c;position:relative;}
 .scheduled-item .visual{display:inline-block;float:left;width:60px;}
-.scheduled-item .text-holder{display:inline-block;float:left;width:590px;padding:0 4px;}
+.scheduled-item .text-holder{display:inline-block;float:left;width:580px;padding:0 4px;}
 .scheduled-item .send-at{position:absolute;right:5px;bottom:5px;}
 /*Login/logout*/
 .login-form p{color:#FFF;font-family:'IM Fell DW Pica',arial,serif;font-size:18px;font-weight:bold;text-align:center;}

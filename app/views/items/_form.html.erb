@@ -1,33 +1,43 @@
-<%= f.menu_select :character_id, translate('items.character'), @project.characters, :extra_html => link_to(translate('items.add_character'), new_project_character_path(@project)) %> 
-<div class="form-row date-time">
-  <label id="date"><%= translate('items.event_date_time') %></label>
-  <%= text_field_tag :event_date, just_date(@item.event_date_time), { :class => "date_pick" } -%>
-  <label id="time">At</label>
-  <%= text_field_tag :event_time, just_time(@item.event_date_time), { :class => 'time_pick' } %>
-</div>
-<%= f.text_area :content, { :label => translate('items.content'),
-                            :tip => "Enter content for this event",
-                            :extra_html => '<div id="charlimitinfo">(140 characters or less)</div>'} %>
-<%= f.text_area :source, { :label => translate('items.source') } -%>
-<%= image_tag @item.photo.url(:thumb) if @item && @item.photo_file_name %>
-<%= f.file_field :photo, { :label => 'Upload a Photo (Please use a square image)' } %>
-<%= f.text_field :location, { :label => translate('items.location') } -%>
-
-<script type="text/javascript" language="JavaScript">
-  jQuery(document).ready(function(){
-    jQuery('.date_pick').datepicker({
-        			changeMonth: true,
-        			changeYear: true,
-        			numberOfMonths: 3,
-              showButtonPanel: true,
-              yearRange: 'c-200:c+50'
-        		});
+<% if @project.characters.any? -%>
+  <%= f.menu_select :character_id, translate('items.character'), @project.characters, :extra_html => link_to(translate('items.add_character'), new_project_character_path(@project)) %> 
+  <div class="form-row date-time">
+    <label id="date"><%= translate('items.event_date_time') %></label>
+    <%= text_field_tag :event_date, just_date(@item.event_date_time), { :class => "date_pick" } -%>
+    <label id="time">At</label>
+    <%= text_field_tag :event_time, just_time(@item.event_date_time), { :class => 'time_pick' } %>
+  </div>
+  <%= f.text_area :content, { :label => translate('items.content'),
+                              :tip => "Enter content for this event",
+                              :extra_html => '<div id="charlimitinfo">(140 characters or less)</div>'} %>
+  <%= f.text_area :source, { :label => translate('items.source') } -%>
+  <%= image_tag @item.photo.url(:thumb) if @item && @item.photo_file_name %>
+  <%= f.file_field :photo, { :label => 'Upload a Photo (Please use a square image)' } %>
+  <%= f.text_field :location, { :label => translate('items.location') } -%>
+	<div class="button form-row">
+	  <% if type == :create -%>
+  	  <%= f.submit translate('general.create') %>
+    <% else -%>
+  	  <%= f.submit translate('general.save') %>
+  	<% end -%>
+  </div>
+  <script type="text/javascript" language="JavaScript">
+    jQuery(document).ready(function(){
+      jQuery('.date_pick').datepicker({
+          			changeMonth: true,
+          			changeYear: true,
+          			numberOfMonths: 3,
+                showButtonPanel: true,
+                yearRange: 'c-200:c+50'
+          		});
         		
-    jQuery('.time_pick').timePicker({
-              show24Hours: false,
-              step: 15});
-    jQuery('.tweet').keyup(function(){
-      limitChars(this, 140, this.siblings('.charlimitinfo'));
-    })
-  });
-</script>
+      jQuery('.time_pick').timePicker({
+                show24Hours: false,
+                step: 15});
+      jQuery('.tweet').keyup(function(){
+        limitChars(this, 140, this.siblings('.charlimitinfo'));
+      })
+    });
+  </script>
+<% else -%>
+  <p>Please <%= link_to 'add at least one historical figure', new_project_character_path(@project) %> before adding events</p>
+<% end -%>

@@ -16,6 +16,7 @@ class Item < ActiveRecord::Base
   attr_protected :created_at, :updated_at, :lat, :lng
   validates_presence_of :content
   validates_presence_of :event_date_time
+  validates_presence_of :character_id
     
   has_attached_file :photo, 
                     :styles => { :medium => "300x300>",
@@ -24,11 +25,13 @@ class Item < ActiveRecord::Base
                                  :tiny => "24x24>" }
   
   def parse_event_date_time(params)
-    self.event_date_time = DateTime.parse("#{params[:event_date]} #{params[:event_time]}")
+    if !params[:event_date].blank? && !params[:event_time].blank?
+      self.event_date_time = DateTime.parse("#{params[:event_date]} #{params[:event_time]}")
+    end
   end
   
   def twitter_update
-    return false unless self.character.authentication
+    return false unless self.character && self.character.authentication
     export_to_twitter
   end
   

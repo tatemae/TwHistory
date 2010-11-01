@@ -9,10 +9,7 @@
       <h1>Add Single Event</h1>
       <%= muck_form_for :item, :url => project_items_path(@project), :html => { :multipart => true, :id => "new-item-form", :name => 'new-item-form' } do |f| -%>
       	<%= output_errors(translate('items.new_problem'), {:class => 'help-box'}, @item) %>
-        <%= render 'form', :f => f %>
-      	<div class="button form-row">
-        	<%= f.submit translate('general.create') %>
-        </div>
+        <%= render 'form', :f => f, :type => :create %>
       <% end -%>
     </div>
 	</div>

@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
         format.xml  { render :xml => @results, :status => :unprocessable_entity }
       end
     else
-      @item = Item.new(params[:item])
+      @item = @project.items.build(params[:item])
       @item.parse_event_date_time(params)
       if success = @item.save
         @item.twitter_update

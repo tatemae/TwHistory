@@ -64,4 +64,8 @@ class Project < ActiveRecord::Base
     self.title
   end
   
+  def next_broadcast
+    @next ||= (self.broadcasts.in_progress.by_start || self.broadcasts.future.by_start).first
+  end
+  
 end

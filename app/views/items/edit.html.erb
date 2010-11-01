@@ -2,9 +2,6 @@
   <h1>Edit Event</h1>
   <%= muck_form_for @item, :url => project_item_path(@project, @item), :html => { :multipart => true, :id => "new-item-form", :name => 'new-item-form' } do |f| -%>
   	<%= output_errors(translate('items.edit_problem'), {:class => 'help-box'}, @item) %>
-    <%= render 'form', :f => f %>
-  	<div class="button form-row">
-    	<%= f.submit translate('general.save') %>
-    </div>
+    <%= render 'form', :f => f, :type => :edit %>
   <% end -%>
 </div>

@@ -3,7 +3,7 @@
 	  <%= render 'projects/options_list', :project => project %> 
 		<h3 class="text-sinking3"><%= link_to project.title, project %></h3>
 	</div>
-	<span class="author"><strong>Recreated by:</strong><%= project.user.display_name %></span> 
-	<span class="next-broadcast"><strong>Next Broadcast:</strong> April 9, 2011</span> 
+	<span class="author"><strong>Recreated by:</strong><%= project.user.display_name %></span>
+	<%= next_project_broadcast(project) %>
 	<p><%= project.description %></p> 
 </div>
