@@ -5,6 +5,7 @@ Twhistory::Application.routes.draw do
   # top level pages
   match '/about' => 'default#about'
   match '/people' => 'default#people'
+  match '/teachers' => 'default#teachers'
   match '/search' => 'default#search'
   match '/contact' => 'default#contact'
   match '/sitemap' => 'default#sitemap'

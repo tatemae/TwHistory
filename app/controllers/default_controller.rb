@@ -11,6 +11,9 @@ class DefaultController < ApplicationController
   def about
   end
   
+  def teachers
+  end
+  
   def search
     setup_will_paginate
     @search = ProjectSearch.new(@page, @per_page).search(params[:query])
