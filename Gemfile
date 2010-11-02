@@ -36,7 +36,7 @@ gem 'sunspot_rails', '1.2.rc4'
 gem "babelphish"
 gem "uploader"
 gem "muck-engine", ">=3.0.8"
-gem "muck-users", ">=3.0.8"
+gem "muck-users", ">=3.0.9"
 #gem "muck-solr", :require => "acts_as_solr"
 gem "muck-comments", ">=3.0.2"
 gem "muck-contents"

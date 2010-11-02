@@ -311,3 +311,5 @@ a:hover{text-decoration:none;}
 .bio {width:650px;clear:both;margin:10px 0;height:280px;}
 .bio  p{float:left; width:430px;margin:0 5px;}
 .bio img{float:left;}
+.available{color:#076807;}
+.unavailable{color:#F00;}

@@ -6,6 +6,15 @@ GIT
     authlogic (2.1.3)
       activesupport
 
+PATH
+  remote: ~/projects/muck-users
+  specs:
+    muck-users (3.0.8)
+      authlogic
+      bcrypt-ruby
+      friendly_id
+      muck-engine (>= 3.0.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -174,11 +183,6 @@ GEM
       muck-engine
       muck-users
     muck-solr (3.0.1)
-    muck-users (3.0.8)
-      authlogic
-      bcrypt-ruby
-      friendly_id
-      muck-engine (>= 3.0.3)
     multi_json (0.0.4)
     multipart-post (1.0.1)
     mysql (2.8.1)
@@ -346,7 +350,7 @@ DEPENDENCIES
   muck-invites
   muck-profiles
   muck-shares
-  muck-users (>= 3.0.8)
+  muck-users!
   mysql
   nested_set
   newrelic_rpm
