@@ -1,5 +1,5 @@
 <div id="featured_<%=featured_project.dom_id%>_container" class="featured-project-container <%=no_show%>">
-  <div class="feature-indicator" style="margin-left:<%=calculate_indicator_position(@featured_project_items[featured_project.id].first, @featured_project_first_items)%>px"></div>
+  <div class="feature-indicator" style="left:<%=calculate_indicator_position(@featured_project_items[featured_project.id].first, @featured_project_first_items)%>px"></div>
   <div class="feature"> 
   	<div class="feature-holder">
   	  <%= render 'projects/options_list', :project => featured_project %>

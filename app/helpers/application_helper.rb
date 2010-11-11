@@ -90,7 +90,7 @@ module ApplicationHelper
   
   def calculate_indicator_position(item, featured_project_first_items)
     item_position = calculate_item_position(featured_project_first_items, item)
-    item_position - 60
+    item_position - 20 # 20 is the amount required to make the arrow match up with the dot.
   end
   
   def display_start_year(start_decade, step)
