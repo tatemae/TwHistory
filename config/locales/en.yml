@@ -45,6 +45,8 @@ en:
     description: Description
     return_to_project: "<< Return to: %{project_title}"
     edit_problem: There was a problem editing this re-enactment
+    feature: Make "%{project}" a Featured Project.
+    unfeature: Unfeature Project
   authentications: 
     failure: Could not connect to Twitter account. Please try again.
     already_connected: You've already connected to this Twitter account.

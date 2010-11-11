@@ -1,11 +1,22 @@
+<% start_decade = calculate_start_decade(@featured_project_first_items) if @custom_timeline -%>
 <div class="time-line"> 
 	<ul>
-		<%= decades(1830, 1920) %>   
-	</ul> 
-	<a href="#" class="point" style="left:123px;">1835</a>
-	<a href="#" class="point" style="left:286px;">1850</a> 
-	<a href="#" class="point" style="left:451px;">1867</a> 
-	<a href="#" class="point" style="left:701px;">1893</a> 
-	<a href="#" class="point" style="left:721px;">1894</a> 
-	<a href="#" class="point" style="left:931px;">1918</a> 
+	  <% if @custom_timeline -%>
+      <%= decades(display_start_decade(start_decade), calculate_end_decade(start_decade)) %>
+    <% else -%>
+      <%= decades(1830, 1920) %> 
+    <% end -%>
+	</ul>
+	<% if @custom_timeline -%>
+    <% @featured_project_first_items.each do |item| -%>
+      <a id="featured_<%=item.project.dom_id%>" href="#" class="point featured-project-link" style="left:<%=calculate_item_position(start_decade, item)%>px;"><%= item.event_date_time.to_s(:year) %></a>
+    <% end -%>
+  <% else -%>
+  	<a href="#" class="point" style="left:123px;">1835</a>
+  	<a href="#" class="point" style="left:286px;">1850</a> 
+  	<a href="#" class="point" style="left:451px;">1867</a> 
+  	<a href="#" class="point" style="left:701px;">1893</a> 
+  	<a href="#" class="point" style="left:721px;">1894</a> 
+  	<a href="#" class="point" style="left:931px;">1918</a>  
+  <% end -%>
 </div>

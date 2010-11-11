@@ -14,7 +14,9 @@ class Project < ActiveRecord::Base
   scope :by_latest, order("projects.updated_at DESC")
   scope :newer_than, lambda { |*args| where("projects.created_at > ?", args.first || DateTime.now) }
   scope :older_than, lambda { |*args| where("projects.created_at < ?", args.first || 1.day.ago.to_s(:db)) }
-    
+  scope :featured, where("projects.featured_at IS NOT NULL")
+  scope :by_featured, order("projects.featured_at DESC")
+  
   has_friendly_id :title, :use_slug => true
   
   has_attached_file :photo, 
@@ -22,6 +24,8 @@ class Project < ActiveRecord::Base
                                  :icon => "62x62>",
                                  :tiny => "24x24>" },
                     :default_url => "/images/character_default.jpg"
+  
+  attr_protected :created_at, :updated_at, :featured_at
   
   searchable do
     string :title

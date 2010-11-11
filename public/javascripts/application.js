@@ -20,8 +20,12 @@ jQuery(document).ready(function(){
 		}
 	});
 	
-	jQuery(function() {
-	  jQuery("#tabs").tabs();
+	jQuery("#tabs").tabs();
+	
+	jQuery('.featured-project-link').click(function(){
+		jQuery('.featured-project-container').hide();
+		jQuery('#' + this.id + '_container').show();
+		return false;
 	});
 	
 });

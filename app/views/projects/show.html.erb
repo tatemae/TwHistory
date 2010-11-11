@@ -1,7 +1,20 @@
 <h2 class="text-sinking2">
   <%= @project.title %> 
 </h2>
-
+<% if admin? -%>
+  <% if @project.featured_at.blank? -%>
+    <%= form_for(@project) do |f| %>
+      <%= hidden_field_tag :mark_featured, true %>
+      <%= f.submit translate('projects.feature', :project => @project.title) %>
+    <% end %>
+  <% else -%>
+    <%= form_for(@project) do |f| %>
+      <p>Project was marked featured on: <%= @project.featured_at.to_s(:short_date) %></p>
+      <%= hidden_field_tag :unmark_featured, true %>
+      <%= f.submit translate('projects.unfeature', :project => @project.title) %>
+    <% end %>
+  <% end -%>
+<% end -%>
 <% if @project.can_edit?(current_user) %>
   <div class="main-edit">
     <%= button_to translate('general.edit'), edit_project_path(@project), :method => :get %>
@@ -36,7 +49,7 @@
 		<h3 class="ico-comments"><%= link_to 'Historical Timeline', project_items_path(@project) %> 
 		  <span><%= link_to translate('general.inline_add'), new_project_item_path(@project) if @project.can_edit?(current_user) %></span></h3> 
 		<ul class="cite-list">
-		  <%= render :partial => 'projects/item', :collection => @items %> 
+		  <%= render :partial => 'projects/item', :collection => @items, :locals => { :project => @project } %> 
 		</ul>
 		<ul class="links">
 		  <li><%= link_to 'Download all events for this re-enactment', project_items_path(@project, :format => 'csv') %></li>

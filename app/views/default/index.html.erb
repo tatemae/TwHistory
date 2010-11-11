@@ -1,17 +1,1 @@
-<div class="feature-indicator" style="margin-left:391px"></div>
-<div class="feature"> 
-	<div class="feature-holder">
-	  <%= render 'projects/options_list', :project => @project %>
-		<h2 class="text-feature">featured re-enactment</h2>
-		<div class="row">
-		  <h3 class="text-sinking"><%= link_to @project.title, @project %></h3>
-			<div class="img-holder"> 
-				<%= link_to image_tag(@project.photo.url(:medium)), @project %>
-			</div>
-			<ul class="cite-list">
-			  <%= render :partial => 'projects/item', :collection => @items %> 
-			</ul>
-		</div>
-	</div>
-</div>
-<p><%= @project.description %></p>
+<%= render :partial => 'default/featured_project', :collection => @featured_projects %>

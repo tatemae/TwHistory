@@ -313,3 +313,5 @@ a:hover{text-decoration:none;}
 .bio img{float:left;}
 .available{color:#076807;}
 .unavailable{color:#F00;}
+/*home page*/
+.featured-noshow{display:none;}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101030232908) do
+ActiveRecord::Schema.define(:version => 20101111023547) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -300,6 +300,7 @@ ActiveRecord::Schema.define(:version => 20101030232908) do
     t.datetime "updated_at"
     t.string   "cached_slug"
     t.string   "photo_remote_url"
+    t.datetime "featured_at"
   end
 
   add_index "projects", ["cached_slug"], :name => "index_projects_on_cached_slug", :unique => true
