@@ -28,24 +28,45 @@ module ApplicationHelper
     date.to_s(:long_date)
   end
   
-  def decades(start_decade, end_decade)
+  def decades(start_decade, end_decade, step = 10)
     decades = ''
-		start_decade.step(end_decade, 10) {|i| decades << "<li>#{i}</li>" }
+		start_decade.step(end_decade, step) {|i| decades << "<li>#{i}</li>" }
 		decades.html_safe
 	end
 
-	def calculate_start_decade(featured_project_first_items)
-	  return 1830 if featured_project_first_items.blank?
-	  @start_decade ||= featured_project_first_items.collect{|item| decade_floor(item.event_date_time.to_s(:year).to_i)}.sort.first
+  def calculate_time_periods(featured_project_first_items)
+    return [@start_year, @end_year, @step] if @step
+    @start_year = calculate_start_year(featured_project_first_items)
+    @end_year = calculate_end_year(featured_project_first_items)
+    if (@end_year - @start_year) < 100
+      @end_year = @start_year + 100
+    end
+    @step = calculate_step(@start_year, @end_year)
+    @end_year = @start_year + (@step * 10) # rebuild the end year so that we land on a year divisible by 10 since we have ten lines on our timeline.
+    [@start_year, @end_year, @step]
   end
   
-  # def calculate_end_decade(featured_project_first_items)
-  #    return 1930 if featured_project_first_items.blank?
-  #     @end_decade ||= featured_project_first_items.collect{|item| decade_round(item.event_date_time.to_s(:year).to_i)}.sort.last
-  # end
+  def custom_decades(featured_project_first_items)
+    start_year, end_year, step = calculate_time_periods(featured_project_first_items)
+    decades(display_start_year(start_year, step), end_year, step)
+  end
+
+	def calculate_start_year(featured_project_first_items)
+	  return 1830 if featured_project_first_items.blank?
+	  @start_year ||= featured_project_first_items.collect{|item| decade_floor(item.event_date_time.to_s(:year).to_i)}.sort.first
+  end
+  
+  def calculate_end_year(featured_project_first_items)
+    #start_decade + 100 # Output a 100 year span
+    return 1930 if featured_project_first_items.blank?
+    @end_year ||= featured_project_first_items.collect{|item| decade_round(item.event_date_time.to_s(:year).to_i)}.sort.last
+  end
   
   def calculate_step(start_year, end_year)
-    (end_year - start_year)/10
+    step = (end_year - start_year)/10
+    step = 10 if step < 10
+    step = decade_round(step)
+    step
   end
   
   def decade_floor(year)
@@ -56,14 +77,10 @@ module ApplicationHelper
     year + (10 - (year % 10))
   end
   
-  def calculate_end_decade(start_decade)
-    start_decade + 100 # Output a 100 year span
-  end
-  
-  def calculate_item_position(start_decade, item)
-    step = 10
+  def calculate_item_position(featured_project_first_items, item)
+    start_year, end_year, step = calculate_time_periods(featured_project_first_items)
     item_year = item.event_date_time.to_s(:year).to_i
-    distance = item_year - start_decade
+    distance = item_year - start_year
     if distance <= step
       (distance * (95.0/step)).to_i
     else
@@ -72,13 +89,12 @@ module ApplicationHelper
   end
   
   def calculate_indicator_position(item, featured_project_first_items)
-    start_decade = calculate_start_decade(featured_project_first_items)
-    item_position = calculate_item_position(start_decade, item)
+    item_position = calculate_item_position(featured_project_first_items, item)
     item_position - 60
   end
   
-  def display_start_decade(start_decade)
-    start_decade + 10 # The true start decade isn't show on the timeline so we offset to the next decade up.
+  def display_start_year(start_decade, step)
+    start_decade + step # The true start decade isn't show on the timeline so we offset to the next decade up.
   end
   
   def no_show
