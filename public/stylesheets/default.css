@@ -117,6 +117,8 @@ a:hover{text-decoration:none;}
 .result-box{position:relative;padding:11px 11px 21px;}
 #content .result-box .author{margin-bottom:5px;}
 .next-broadcast{display:block;color:#00a69c;margin-bottom:6px;}
+.next-broadcast a{color:#00A69C;text-decoration:none;}
+.next-broadcast a:hover{text-decoration:underline;}
 .result-box .heading{width:100%;}
 .result-box .heading:after{content:"";display:block;clear:both;}
 .result-box .options-list{float:right;padding-right:5px;}

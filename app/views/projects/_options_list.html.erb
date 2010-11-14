@@ -1,10 +1,8 @@
-<ul class="options-list"> 
-	<li>
-	  <%= link_to translate('general.follow'), project_broadcasts_path(project), :class => 'twitter' %>
-	</li> 
+<ul class="<%=css%>"> 
+	<li><%= follow_link(project) %></li> 
 	<!--
+	<li><a href="#" class="doc">docs</a></li> 
 	<li><a href="#" class="comments">comments</a></li> 
 	<li><a href="#" class="people">people</a></li> 
-	<li><a href="#" class="doc">doc</a></li> 
-	-->
+  -->
 </ul>

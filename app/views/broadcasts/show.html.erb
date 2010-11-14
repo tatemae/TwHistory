@@ -5,10 +5,12 @@
   
   <%= render 'broadcasts/link_twitter' %>
   
+  <% if @broadcast.project.can_edit?(current_user) -%>
   <div class="edit">
     <%= button_to translate('broadcasts.edit'), edit_broadcast_path(@broadcast.project, @broadcast), :method => :get %>
     <%= button_to translate('broadcasts.delete'), broadcast_path(@broadcast), :confirm => translate('general.delete_confirmation'), :method => :delete %>    
   </div>
+  <% end -%>
   
   <h3>Tweet Schedule</h3>
   <%= render @scheduled_items %>

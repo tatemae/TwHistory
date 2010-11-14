@@ -1,9 +1,9 @@
 <div class="result-box"> 
 	<div class="heading"> 
-	  <%= render 'projects/options_list', :project => search_result %>
+	  <%= render 'projects/options_list', :project => search_result, :css => 'options-list' %>
 		<h3 class="text-sinking3"><%= link_to search_result.title, search_result %></h3>
 	</div>
 	<span class="author"><strong>Recreated by:</strong> <%= search_result.user.display_name %></span>
-	<%= next_project_broadcast(search_result) %>
+	<%= next_project_broadcast(search_result).html_safe %>
 	<p><%= search_result.description %></p> 
 </div>

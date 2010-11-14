@@ -1,6 +1,6 @@
 class BroadcastsController < ApplicationController
 
-  before_filter :login_required, :except => [:index]
+  before_filter :login_required, :except => [:index, :show]
   before_filter :setup_project, :only => [:new, :create]
   before_filter :setup_project_not_protected, :only => [:index]
   
