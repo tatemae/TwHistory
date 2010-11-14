@@ -41,7 +41,7 @@ MuckEngine.configure do |config|
 
   # Google Analtyics Configuration.  This will enable Google Analytics on your site and will be used if your template includes:
   #                                  <%= render :partial => 'layouts/global/google_analytics' %>
-  config.google_tracking_code = ""                     # Get a tracking code here: http://www.google.com/analytics/. The codes look like this: 'UA-9685000-0'
+  config.google_tracking_code = "UA-456579-15"        # Get a tracking code here: http://www.google.com/analytics/. The codes look like this: 'UA-9685000-0'
   config.google_tracking_set_domain = "twhistory.org" # Base domain provided to Google Analytics. Useful if you are using subdomains but want all traffic 
                                               # recorded into one account.
 end
