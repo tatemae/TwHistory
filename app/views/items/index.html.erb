@@ -6,17 +6,18 @@
 
 <div id="tabs">
 	<ul>
-		<li><a href="#time">Timeline</a></li>
 		<li><a href="#list">List</a></li>
+		<li><a href="#time">Timeline</a></li>
 	</ul>
+	<div id="list">
+	  <%= render @items %>
+	  <%= will_paginate @items %>
+	</div>
 	<div id="time">
 	  <div id="timeline" style="height: 450px; border: 1px solid #aaa"></div>
     <noscript>
     This page uses Javascript to show you a Timeline. Please enable Javascript in your browser to see the full page. Thank you.
     </noscript>
-	</div>
-	<div id="list">
-	  <%= render @items %>
 	</div>
 </div>
 
@@ -31,7 +32,7 @@ jQuery(document).ready(function(){
       width: "80%", 
       date: date,
       intervalUnit: Timeline.DateTime.HOUR, 
-      intervalPixels: 20,
+      intervalPixels: 100,
       eventSource: eventSource,
       timeZone: new Date().getTimezoneOffset() / 60
     }),
