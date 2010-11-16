@@ -10,6 +10,6 @@ require File.expand_path("../../spec_helper", __FILE__)
 #     end
 #   end
 # end
-describe BroadcastsHelper do
+describe ProjectsHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end
