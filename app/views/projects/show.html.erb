@@ -18,7 +18,9 @@
 <% if @project.can_edit?(current_user) %>
   <div class="main-edit">
     <%= button_to translate('general.edit'), edit_project_path(@project), :method => :get %>
-    <%= button_to translate('general.delete'), project_path(@project), :confirm => translate('projects.delete_confirmation'), :method => :delete, :class => 'confirm' %>    
+    <%= button_to translate('general.delete'), project_path(@project), :confirm => translate('projects.delete_confirmation'), :method => :delete, :class => 'confirm' %> 
+    <%= button_to translate('projects.delete_items'), project_path(@project, :items => true), :confirm => translate('projects.delete_items_confirmation'), :method => :delete, :class => 'confirm' %> 
+    <%= button_to translate('projects.delete_characters'), project_path(@project, :characters => true), :confirm => translate('projects.delete_characters_confirmation'), :method => :delete, :class => 'confirm' %>    
   </div>
 <% end -%>
 

@@ -84,10 +84,28 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy
+    stuff_deleted = false
+
+    if params[:items]
+      @project.items.destroy_all
+      stuff_deleted = true
+    end
+      
+    if params[:characters]
+      @project.characters.destroy_all
+      stuff_deleted = true
+    end
+    
+    @project.destroy unless stuff_deleted
 
     respond_to do |format|
-      format.html { redirect_to(projects_url) }
+      format.html do
+        if stuff_deleted
+          redirect_to(project_url(@project))
+        else
+          redirect_to(projects_url)
+        end
+      end
       format.xml  { head :ok }
     end
   end

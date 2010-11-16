@@ -47,6 +47,10 @@ en:
     edit_problem: There was a problem editing this re-enactment
     feature: Make "%{project}" a Featured Project.
     unfeature: Unfeature Project
+    delete_items: Delete all Events
+    delete_characters: Delete all Characters
+    delete_items_confirmation: Are you sure you want to delete all events for this re-enactment? This cannot be undone.
+    delete_characters_confirmation: Are you sure you want to remove all characters from this re-enactment? This cannot be undone.
   authentications: 
     failure: Could not connect to Twitter account. Please try again.
     already_connected: You've already connected to this Twitter account.

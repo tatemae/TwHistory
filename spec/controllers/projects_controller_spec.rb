@@ -68,6 +68,37 @@ describe ProjectsController do
       it { should redirect_to(project_path(assigns(:project))) }
     end
   
+    describe "DELETE to destroy" do
+      before(:each) do
+        @project = Factory(:project, :user => @user)
+      end
+      it "deletes the project" do
+        delete :destroy, :id => @project.id
+        should redirect_to(projects_path)
+        Project.find(@project.id).should be_nil
+      end
+      it "deletes the project's items" do
+        items = mock
+        items.should_receive(:destroy_all)
+        @project.should_receive(:items).and_return(items)
+        @project.should_not_receive(:characters)
+        @project.should_not_receive(:destroy)
+        delete :destroy, :id => @project.id, :items => true
+        should redirect_to(project_path(assigns(:project)))
+        Project.find(@project.id).should_not be_nil
+      end
+      it "it deletes the project's characters" do
+        characters = mock
+        characters.should_receive(:destroy_all)
+        @project.should_receive(:characters).and_return(characters)
+        @project.should_not_receive(:items)
+        @project.should_not_receive(:destroy)   
+        delete :destroy, :id => @project.id
+        should redirect_to(project_path(assigns(:project)))
+        Project.find(@project.id).should_not be_nil
+      end
+    end
+    
   end
   
 end
