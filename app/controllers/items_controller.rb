@@ -10,14 +10,14 @@ class ItemsController < ApplicationController
     setup_will_paginate
     respond_to do |format|
       format.html do
-        @items = @project.items.by_event_date_time.includes(:character).paginate(:page => @page, :per_page => @per_page)
+        @items = @project.items.chronological.includes(:character).paginate(:page => @page, :per_page => @per_page)
       end
       format.xml do
-        @items = @project.items.by_event_date_time.includes(:character)
+        @items = @project.items.chronological.includes(:character)
         render :xml => @items
       end
       format.csv do
-        @items = @project.items.by_event_date_time.includes(:character)
+        @items = @project.items.chronological.includes(:character)
         stream_csv(@project.title) do |csv|
           csv << csv_header
           @items.each do |i|
