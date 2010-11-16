@@ -317,3 +317,8 @@ a:hover{text-decoration:none;}
 .unavailable{color:#F00;}
 /*home page*/
 .featured-noshow{display:none;}
+/*Items*/
+#csv-instructions{margin:10px;}
+#csv-instructions .header-instructions{margin:25px 1px;}
+#csv-instructions .header-info{font-weight:bold;font-size:12px;}
+#csv-instructions .header-example{text-align:center;margin:15px auto;}

@@ -45,7 +45,13 @@ class Project < ActiveRecord::Base
   def import_items(file)
     results = []
     items = []
-    FasterCSV.parse(file, :headers => true) do |row|
+    return [items, results] if file.nil?
+    has_headers = false
+    if file.readlines[0].include?('Event Date')
+      has_headers = true
+    end
+    file.rewind
+    FasterCSV.parse(file, :headers => has_headers) do |row|
       character = self.characters.find_or_create_by_name(row[2])
       character.photo_url = row[6] if character.photo_file_name.blank? && row[6]
       if !character.save

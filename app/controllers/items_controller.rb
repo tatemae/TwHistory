@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @sidebar_off = true
     @item = @project.items.new
     @item.character_id = params[:character] if params[:character]
     respond_to do |format|
