@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(:characters).find(params[:id])
     @characters = @project.characters.by_newest.limit(10)
-    @items = @project.items.includes(:character).by_newest.limit(10)
+    @items = @project.items.includes(:character).chronological.limit(10)
     respond_to do |format|
       format.html
       format.xml  { render :xml => @project }
