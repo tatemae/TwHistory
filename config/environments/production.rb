@@ -47,8 +47,4 @@ Twhistory::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  config.after_initialize do 
-    Sunspot.config.solr.url = 'http://localhost:9818/solr'
-  end
-  
 end
