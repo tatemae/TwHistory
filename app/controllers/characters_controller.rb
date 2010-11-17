@@ -16,7 +16,7 @@ class CharactersController < ApplicationController
     setup_will_paginate
     @character = Character.find(params[:id])
     @project ||= @character.project
-    @items = @character.items.by_newest.paginate(:page => @page, :per_page => @per_page)
+    @items = @character.items.chronological.paginate(:page => @page, :per_page => @per_page)
     respond_to do |format|
       format.html
       format.xml  { render :xml => @character }
