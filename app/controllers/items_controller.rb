@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
   end
   
   def create
-    if params[:item][:csv]
+    if params[:item] && params[:item][:csv]
       @items, @results = @project.import_items(params[:item][:csv])
       if @results.empty?
         respond_to do |format|
