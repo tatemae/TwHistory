@@ -30,10 +30,12 @@ class Broadcast < ActiveRecord::Base
     # client.update_profile_image(self.project.photo.to_file(:medium)) # TODO this isn't working right now. Uncomment when you have time to debug the twitter gem
   end
   
-  # Used to build json for calendar
-  def title
+  def name
     self.project.title
   end
+
+  # Used to build json for calendar
+  delegate :title, :to => :project
   
   def start
     self.start_at

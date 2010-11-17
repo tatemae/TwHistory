@@ -68,6 +68,28 @@ describe Broadcast do
     end
   end
   
+  describe "title" do
+    before do
+      @title = 'a great title'
+      @project = Factory(:project)
+      @broadcast = Factory(:broadcast, :project => @project)
+    end
+    it "should give the project's title" do
+      @broadcast.title.should == @title
+    end
+  end
+  
+  describe "name" do
+    before do
+      @title = 'a great title'
+      @project = Factory(:project)
+      @broadcast = Factory(:broadcast, :project => @project)
+    end
+    it "should give the project's title for name" do
+      @broadcast.name.should == @title
+    end
+  end
+  
   describe "parse_start_at" do
     before do
       @broadcast = Factory(:broadcast)
