@@ -7,9 +7,9 @@ MuckEngine.configure do |config|
 
   # Environment sensitive values
   if Rails.env.production?
-    config.application_url = 'beta.twhistory.org'     # Url of the application in production
+    config.application_url = 'twhistory.org'     # Url of the application in production
   elsif Rails.env.staging?
-    config.application_url = 'beta.twhistory.org'     # Url of the application on staging
+    config.application_url = 'staging.twhistory.org'     # Url of the application on staging
   else
     config.application_url = 'localhost:3001'         # Url of the application for test or development
   end
