@@ -123,16 +123,16 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    muck-activities (3.0.1)
+    muck-activities (3.1.0)
       muck-comments
       muck-engine
       muck-users
-    muck-comments (3.0.2)
+    muck-comments (3.1.0)
       muck-engine
       muck-users
       nested_set
       sanitize
-    muck-contents (3.0.2)
+    muck-contents (3.1.0)
       acts-as-taggable-on
       awesome_nested_set
       babelphish
@@ -147,15 +147,15 @@ GEM
       overlord
       validation_reflection
       will_paginate (~> 3.0.beta)
-    muck-friends (3.0.3)
+    muck-friends (3.1.0)
       muck-engine
       muck-profiles
       muck-users
-    muck-invites (3.0.0)
+    muck-invites (3.1.0)
       contacts
       hpricot
       muck-engine
-    muck-profiles (3.0.2)
+    muck-profiles (3.1.0)
       geokit
       muck-comments
       muck-contents
@@ -167,8 +167,8 @@ GEM
       paperclip
       sanitize
       uploader
-    muck-raker (3.0.0)
-    muck-shares (3.0.1)
+    muck-raker (3.1.0)
+    muck-shares (3.1.0)
       muck-activities
       muck-comments
       muck-engine
@@ -336,14 +336,14 @@ DEPENDENCIES
   geokit
   hoptoad_notifier
   launchy
-  muck-activities
-  muck-comments (>= 3.0.2)
-  muck-contents
+  muck-activities (>= 3.1.0)
+  muck-comments (>= 3.1.0)
+  muck-contents (>= 3.1.0)
   muck-engine (>= 3.1.0)
-  muck-friends
-  muck-invites
-  muck-profiles
-  muck-shares
+  muck-friends (>= 3.1.0)
+  muck-invites (>= 3.1.0)
+  muck-profiles (>= 3.1.0)
+  muck-shares (>= 3.1.0)
   muck-users (>= 3.1.0)
   mysql
   nested_set
@@ -353,8 +353,8 @@ DEPENDENCIES
   rails (= 3.0.1)
   rcov
   recaptcha
-  rspec (>= 2.0.1)
-  rspec-rails (>= 2.0.1)
+  rspec (>= 2.1.0)
+  rspec-rails (>= 2.1.0)
   ruby-debug
   sanitize
   shoulda
