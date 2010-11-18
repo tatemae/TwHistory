@@ -65,7 +65,7 @@ GEM
     childprocess (0.1.4)
       ffi (~> 0.6.3)
     columnize (0.3.2)
-    configuration (1.1.0)
+    configuration (1.2.0)
     contacts (1.2.4)
       gdata (= 1.1.1)
       json (>= 0.4.1)

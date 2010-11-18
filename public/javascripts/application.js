@@ -30,6 +30,19 @@ jQuery(document).ready(function(){
 	
 });
 
+jQuery(document).ready(function(){
+	jQuery('.button').each(function(){
+ 		var b = jQuery(this);
+ 		var tt = b.text() || b.val();
+ 		if (jQuery(':submit,:button',this)) {
+ 			b = jQuery('<a>').insertAfter(this). addClass(this.className).attr('id',this.id);
+ 			jQuery(this).remove();
+ 		}
+ 		b.text('').css({cursor:'pointer'}). prepend('<i></i>').append($('<span>').
+		text(tt).append('<i></i><span></span>'));
+	});
+});
+
 function limitChars(field, limit, info_field)
 {
 	var text = field.val();
