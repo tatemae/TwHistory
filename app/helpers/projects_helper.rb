@@ -9,6 +9,7 @@ module ProjectsHelper
   end
 
   def follow_link(broadcast)
+    return if broadcast.empty?
     if broadcast.authentication
       return link_to(translate('general.follow'), "http://twitter.com/#{broadcast.authentication.nickname}", :class => 'follow', :target => 'blank')
     end
