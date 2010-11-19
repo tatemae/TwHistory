@@ -61,6 +61,7 @@ en:
   broadcasts: 
     edit: Edit Broadcast Settings
     delete: Delete This Broadcast
+    new: Create New Broadcast
     create_success: Broadcast was successfully created. Now connect the broadcast to a Twitter account
     new_problem: There was a problem adding the broadcast
     wait: Please wait. It can take a few minutes to create the broadcast schedule.

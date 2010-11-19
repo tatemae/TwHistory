@@ -10,6 +10,11 @@
       <% end -%>
     </div>
   <% elsif @can_edit_project -%>
-    <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "twitter-ico" %> <%= translate('general.twitter_logout_warning') %>
+    <div class="link-twitter">
+      <div>
+        <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "pretty-button green" %>
+      </div>
+      <p><%= translate('general.twitter_logout_warning') %></p>
+    </div>
   <% end -%>
 </div>

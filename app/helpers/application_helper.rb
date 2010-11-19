@@ -3,7 +3,7 @@ module ApplicationHelper
 
   def just_date(date_time)
     return '' if date_time.blank?
-    date_time.to_s(:short_date)
+    date_time.to_s(:long_date)
   end
 
   def just_time(date_time)
