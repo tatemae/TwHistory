@@ -147,7 +147,7 @@ a:hover{text-decoration:none;}
 .progress-list{margin:-4px 0 27px -17px;}
 .progress-list li{vertical-align:top;width:662px;height:30px;padding:10px 10px 7px;line-height:25px;margin-top:4px;background:url(/images/bg-progress.gif) no-repeat;position:relative;}
 .progress-list li .date{color:#00a69c;float:left;padding-left:7px;}
-.progress-list li .edit{position:absolute;top:-3px;right:5px;}
+.progress-list li .edit{position:absolute;top:8px;right:102px;}
 .progress-list li .edit input[type="submit"]{width:60px;}
 .progress-list .follow-list{float:right;}
 .progress-list .follow-list li{float:left;padding:0 0 0 9px;margin:0;width:auto;background:none;}
@@ -322,7 +322,6 @@ a:hover{text-decoration:none;}
 .scheduled-item .visual{display:inline-block;float:left;width:60px;}
 .scheduled-item .text-holder{display:inline-block;float:left;width:580px;padding:0 4px;}
 .scheduled-item .send-at{position:absolute;right:5px;bottom:5px;}
-.broadcast-edit{margin-top:6px;}
 /*Login/logout*/
 .login-form p{color:#FFF;font-family:'IM Fell DW Pica',arial,serif;font-size:18px;font-weight:bold;text-align:center;}
 .login-form p a{color:#FFF;}
