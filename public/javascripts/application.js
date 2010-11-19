@@ -32,13 +32,16 @@ jQuery(document).ready(function(){
 
 jQuery(document).ready(function(){
 	jQuery('.button').each(function(){
- 		var b = jQuery(this);
- 		var tt = b.text() || b.val();
+ 		var original_button = jQuery(this);
+		var new_button = jQuery(this);
+ 		var tt = original_button.text() || original_button.val();
  		if (jQuery(':submit,:button',this)) {
- 			b = jQuery('<a>').insertAfter(this). addClass(this.className).attr('id',this.id);
- 			jQuery(this).remove();
+ 			new_button = jQuery('<a>').insertAfter(this).addClass(this.className).attr('id',this.id + "_pretty").click(function(){
+				original_button.click();
+			});
+ 			jQuery(this).hide();
  		}
- 		b.text('').css({cursor:'pointer'}). prepend('<i></i>').append($('<span>').
+ 		new_button.text('').css({cursor:'pointer'}). prepend('<i></i>').append(jQuery('<span>').
 		text(tt).append('<i></i><span></span>'));
 	});
 });
