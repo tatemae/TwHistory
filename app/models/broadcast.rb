@@ -10,6 +10,8 @@ class Broadcast < ActiveRecord::Base
   scope :past, where("broadcasts.end_at <= ?", DateTime.now)
   scope :in_progress, where("broadcasts.start_at <= ? AND broadcasts.end_at >= ?", DateTime.now, DateTime.now)
   scope :future, where("broadcasts.start_at >= ?", DateTime.now)
+  scope :current_and_future, where("broadcasts.start_at >= ? OR broadcasts.end_at >= ?", DateTime.now, DateTime.now)
+  
   
   scope :by_newest, order("broadcasts.created_at DESC")
   scope :by_oldest, order("broadcasts.created_at ASC")
