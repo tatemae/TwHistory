@@ -31,7 +31,6 @@ class Character < ActiveRecord::Base
                           :url => character_url, 
                           :description => truncate_on_word(self.bio, 160))
     # client.update_profile_image(self.photo.to_file(:medium)) # TODO this isn't working right now. Uncomment when you have time to debug the twitter gem
-    UpdateCharacterTweetsJob.enqueue(id)
   end
   
   def character_url
