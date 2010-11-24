@@ -78,7 +78,6 @@ describe Item do
       tweet = mock(:id => 1)
       client.should_receive(:update).with(item.content).and_return(tweet)
       character.should_receive(:client).and_return(client)
-      item.should_receive(:update_attribute).with(:tweet_id, tweet.id)
       item.export_to_twitter
     end
   end

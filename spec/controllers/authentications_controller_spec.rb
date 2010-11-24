@@ -8,7 +8,7 @@ describe AuthenticationsController do
     @user = Factory(:user)
     @project = Factory(:project, :user => @user)
     @broadcast = Factory(:broadcast, :project => @project)
-    @authentication = Factory(:authentication, :authenticatable => @project)
+    @authentication = Factory(:authentication, :authenticatable => @broadcast)
   end
 
   it { should require_login 'new', :get, '/login' }

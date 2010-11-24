@@ -35,8 +35,8 @@ Factory.define :broadcast do |f|
   f.start_at DateTime.now
 end
 
-Factory.define :sheduled_item do |f|
+Factory.define :scheduled_item do |f|
   f.broadcast {|a| a.association(:broadcast) }
   f.item {|a| a.association(:item) }
-  #f.send_at DateTime.now
+  f.run_at DateTime.now
 end

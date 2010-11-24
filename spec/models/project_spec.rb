@@ -3,10 +3,10 @@ require File.expand_path("../../spec_helper", __FILE__)
 describe Project do
   it { should have_many :items }
   it { should have_many :characters }
-  it { should have_many :authentications }
   it { should have_many :broadcasts }
   it { should belong_to :user }
   it { should have_many :authorized_users }
+  it { should have_many :project_roles }
   
   it { should scope_by_latest }
   it { should scope_by_newest }
@@ -45,13 +45,12 @@ describe Project do
       @project.import_items(@items_file)
       @project.reload
       # Characters
-      @project.characters.any?{|c| c.name == 'C Lightoller'}.should be_true
-      @project.characters.any?{|c| c.name == 'J Phillips'}.should be_true
-      @project.characters.any?{|c| c.name == 'Capt Smith'}.should be_true
+      @project.characters.any?{|c| c.name == 'Levi Jackman'}.should be_true
+      @project.characters.any?{|c| c.name == 'Heber Kimball'}.should be_true
       # Items
-      @project.items.any?{ |i| i.content == 'Just sent lifeboat 12 away with 40 women and children' && i.event_date_time == DateTime.new("Jun 11, 1912 1:20 AM") }.should be_true
-      @project.items.any?{ |i| i.content == 'Word is we are sinking. Staying at my post. Trying to raise another ship on our wireless' && i.event_date_time == DateTime.new("Jun 11, 1912 1:25 AM") }.should be_true
-      @project.items.any?{ |i| i.content == "Titanic just lurched to port, with the deck tilting. The band is playing for us. Boats No. 9 and No. 10 are lowering." && i.event_date_time == DateTime.new("Jun 11, 1912 1:15 AM") }.should be_true
+      @project.items.any?{ |i| i.content == 'I am leaving home with Simon Cantier as pianears to go with the Company of pianears to finde a location for the Saints Some whair in the west' && i.event_date_time == DateTime.new("03/29/1847 09:34:00 AM") }.should be_true
+      @project.items.any?{ |i| i.content == 'Just arrived at the main camp on the west side of the Missouri river. Likely leave in the morning.' && i.event_date_time == DateTime.new("04/01/1847 07:30:00") }.should be_true
+      @project.items.any?{ |i| i.content == 'Leaving Winter Quarters with 6 of my teams","Along the Pioneer Trail' && i.event_date_time == DateTime.new("04/05/1847 08:29:00") }.should be_true
     end
   end
   
