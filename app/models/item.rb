@@ -29,15 +29,10 @@ class Item < ActiveRecord::Base
       self.event_date_time = DateTime.parse("#{params[:event_date]} #{params[:event_time]}")
     end
   end
-  
-  def twitter_update
-    return false unless self.character && self.character.authentication
-    export_to_twitter
-  end
-  
+    
   def export_to_twitter
-    tweet = self.character.client.update(self.content)
-    self.update_attribute(:tweet_id, tweet.id)
+    return false unless self.character && self.character.authentication
+    self.character.client.update(self.content)
   end
   
 end

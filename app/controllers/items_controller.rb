@@ -53,11 +53,8 @@ class ItemsController < ApplicationController
     else
       @item = @project.items.build(params[:item])
       @item.parse_event_date_time(params)
-      if success = @item.save
-        @item.twitter_update
-      end
       respond_to do |format|
-        if success
+        if @item.save
           format.html { redirect_to(@project, :notice => translate('items.item_create_success')) }
           format.xml  { render :xml => @item, :status => :created, :location => @item }
         else

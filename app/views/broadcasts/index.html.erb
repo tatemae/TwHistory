@@ -1,5 +1,5 @@
 <h2>Broadcast Schedule <%= "for #{link_to(@project.title, @project)}".html_safe if @project %></h2>
-<p><%= link_to translate('broadcasts.new'), new_project_broadcast_path(@project), :class => 'pretty-button green inline-button add-button' if @project.can_edit?(current_user) %></p>
+<p><%= link_to translate('broadcasts.new'), new_project_broadcast_path(@project), :class => 'pretty-button green inline-button add-button' if @project && @project.can_edit?(current_user) %></p>
 <h4>Re-enactments in Progress</h4>
 <% if @broadcasts_in_progress.any? -%>
   <ul class="progress-list">

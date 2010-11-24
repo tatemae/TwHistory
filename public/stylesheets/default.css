@@ -236,7 +236,7 @@ a:hover{text-decoration:none;}
 /* Errors */
 .fieldWithErrors{display:inline-block;}
 .fieldWithErrors input{border:solid 2px #B61E12;}
-#errorExplanation{margin:0;padding:0;}
+#errorExplanation{margin:0;background:none repeat scroll 0 0 #FFFFFF;padding:4px;z-index:10000;}
 #errorExplanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:16px;background-color:#B61E12;color:#fff;letter-spacing:normal;}
 #errorExplanation p{color:#333;margin-bottom:0;padding:5px;}
 #errorExplanation ul{padding:4px 4px 4px 25px;background-color:#FFFFFF;}

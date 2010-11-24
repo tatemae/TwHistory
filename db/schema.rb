@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101111023547) do
+ActiveRecord::Schema.define(:version => 20101124053316) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -173,8 +173,8 @@ ActiveRecord::Schema.define(:version => 20101111023547) do
   add_index "countries", ["name"], :name => "index_countries_on_name"
 
   create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
+    t.integer  "priority",     :default => 0
+    t.integer  "attempts",     :default => 0
     t.text     "handler"
     t.text     "last_error"
     t.datetime "run_at"
@@ -183,6 +183,8 @@ ActiveRecord::Schema.define(:version => 20101111023547) do
     t.string   "locked_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "broadcast_id"
+    t.integer  "item_id"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
@@ -229,7 +231,6 @@ ActiveRecord::Schema.define(:version => 20101111023547) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "event_date_time"
-    t.string   "tweet_id"
     t.string   "photo_remote_url"
   end
 
@@ -307,14 +308,6 @@ ActiveRecord::Schema.define(:version => 20101111023547) do
 
   create_table "roles", :force => true do |t|
     t.string   "rolename"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "scheduled_items", :force => true do |t|
-    t.integer  "broadcast_id"
-    t.integer  "item_id"
-    t.datetime "send_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

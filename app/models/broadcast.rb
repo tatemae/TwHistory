@@ -58,10 +58,14 @@ class Broadcast < ActiveRecord::Base
     broadcast_date_time = nil
     items.each do |item|
       broadcast_date_time = self.start_at + (item.event_date_time - first_event_date_time)
-      self.scheduled_items.build(:item_id => item.id, :send_at => broadcast_date_time)
+      BroadcastTweetJob.enqueue(self.id, item.id, broadcast_date_time)      
     end
     self.end_at = broadcast_date_time # Record the broadcast end date/time
     self.save
   end
-    
+  
+  def retweet(tweet_id)
+    self.client.retweet(tweet_id)
+  end
+  
 end

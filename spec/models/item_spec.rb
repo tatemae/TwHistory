@@ -70,21 +70,6 @@ describe Item do
     end
   end
   
-  describe "twitter_update" do
-    it "should return false if character doesn't have twitter account" do
-      character = Factory(:character, :authentication => nil)
-      item = Factory(:item, :character => character)
-      item.twitter_update.should be_false
-    end
-    it "should export to twitter if character has a twitter account" do
-      authentication = Factory(:authentication)
-      character = Factory(:character, :authentication => authentication)
-      item = Factory(:item, :character => character)
-      item.should_receive(:export_to_twitter)
-      item.twitter_update
-    end
-  end
-  
   describe "export_to_twitter" do
     it "calls client update and updates tweet_id" do
       character = Factory(:character)

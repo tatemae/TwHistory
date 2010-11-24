@@ -11,12 +11,11 @@
     <div class="send-at">
       <%= form_for scheduled_item, :html => { :class => 'ajax' } do |f| -%>
         <label id="date">Send On</label>
-        <%= text_field_tag :start_date, just_date(scheduled_item.send_at), { :class => "date_pick" } -%>
+        <%= text_field_tag :run_date, just_date(scheduled_item.run_at), { :class => "date_pick" } -%>
         <label id="time">At</label>
-        <%= text_field_tag :start_time, just_time(scheduled_item.send_at), { :class => 'time_pick' } %>
+        <%= text_field_tag :run_time, just_time(scheduled_item.run_at), { :class => 'time_pick' } %>
         <%= f.submit t('general.update') %>
       <% end -%>
     </div>
 	<% end -%>
 </div>
-

@@ -5,7 +5,11 @@ class CharactersController < ApplicationController
   before_filter :setup_project_not_protected, :only => [:show, :index]
   
   def index
-    @characters = @project.characters
+    if @project
+      @characters = @project.characters
+    else
+      redirect_to root_path
+    end
     respond_to do |format|
       format.html
       format.xml  { render :xml => @characters }
