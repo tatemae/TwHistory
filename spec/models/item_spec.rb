@@ -72,7 +72,8 @@ describe Item do
   
   describe "export_to_twitter" do
     it "calls client update and updates tweet_id" do
-      character = Factory(:character)
+      authentication = Factory(:authentication)
+      character = Factory(:character, :authentication => authentication)
       item = Factory(:item, :character => character)
       client = mock
       tweet = mock(:id => 1)
