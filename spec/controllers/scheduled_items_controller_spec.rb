@@ -66,7 +66,7 @@ describe ScheduledItemsController do
 
     it "redirects to the scheduled_items list" do
       delete :destroy, :id => @scheduled_item
-      response.should redirect_to(scheduled_items_url)
+      response.should redirect_to(@scheduled_item.broadcast)
     end
   end
 

@@ -8,15 +8,18 @@
 		<em class="date"> <%= item.event_date_time.to_s(:date_and_time) %></em>
   </div>
   <% if @can_edit_project -%>
+    <div id="<%=scheduled_item.dom_id%>_message" class="scheduled-item-message"></div>
     <div class="send-at">
       <%= form_for scheduled_item, :html => { :class => 'ajax' } do |f| -%>
         <label class="date">Send On</label>
         <%= text_field_tag :run_date, just_date(scheduled_item.run_at), { :class => "date_pick" } -%>
         <label class="time">At</label>
         <%= text_field_tag :run_time, just_time(scheduled_item.run_at), { :class => 'time_pick' } %>
-        <%= f.submit t('general.update'), :class => 'pretty-button green' %>
+        <%= f.submit t('general.update') %>
       <% end -%>
-      <%= button_to translate('general.delete'), scheduled_item_path(scheduled_item), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'pretty-button green' %>    
+      <%= form_for scheduled_item, :html => { :class => 'ajax', :method => :delete } do |f| -%>
+        <%= f.submit t('general.delete'), :confirm => translate('general.delete_confirmation') %>
+      <% end -%>
     </div>
 	<% end -%>
 </div>

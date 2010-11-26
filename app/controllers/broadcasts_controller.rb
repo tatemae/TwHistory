@@ -45,7 +45,8 @@ class BroadcastsController < ApplicationController
 
   def edit
     @broadcast = Broadcast.find(params[:id])
-    check_permissions
+    # Only way to edit a broadcast is to see all the scheduled items and change those.
+    redirect_to(@broadcast)
   end
 
   def create

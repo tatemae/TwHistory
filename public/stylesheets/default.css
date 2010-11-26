@@ -236,7 +236,8 @@ a:hover{text-decoration:none;}
 /* Errors */
 .fieldWithErrors{display:inline-block;}
 .fieldWithErrors input{border:solid 2px #B61E12;}
-#errorExplanation{margin:0;background:none repeat scroll 0 0 #FFFFFF;padding:4px;z-index:10000;}
+#errorExplanation{}
+#errorExplanation.show-error{padding:4px;margin:0;background:none repeat scroll 0 0 #FFFFFF;z-index:10000;}
 #errorExplanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:16px;background-color:#B61E12;color:#fff;letter-spacing:normal;}
 #errorExplanation p{color:#333;margin-bottom:0;padding:5px;}
 #errorExplanation ul{padding:4px 4px 4px 25px;background-color:#FFFFFF;}
@@ -324,6 +325,7 @@ a:hover{text-decoration:none;}
 .scheduled-item .send-at{position:absolute;bottom:0;right:0;}
 .scheduled-item .send-at .time, .scheduled-item .send-at .date{margin:4px 4px 0;font-size:14px;}
 .scheduled-item .send-at label, .scheduled-item .send-at input, .scheduled-item .send-at form{float:left;display:inline-block;margin-top:4px;}
+.scheduled-item .scheduled-item-message{color:#FF0000;position:absolute;left:4px;bottom:4px;}
 #broadcast h2{font-size:14px;color:#4B3013;}
 #broadcast h3{clear:both;margin:65px 0 10px;}
 #broadcast .link-twitter{margin:10px 0;}

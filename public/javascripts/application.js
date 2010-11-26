@@ -53,6 +53,12 @@ jQuery(document).ready(function(){
 	});
 });
 
+function show_message(message){
+	jQuery('#errorExplanation').html(message);
+	jQuery('#errorExplanation').addClass('show-error');
+	jQuery('#errorExplanation').show();
+}
+
 function limitChars(field, limit, info_field)
 {
 	var text = field.val();
