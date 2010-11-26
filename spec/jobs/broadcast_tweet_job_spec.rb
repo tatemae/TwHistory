@@ -11,8 +11,9 @@ describe BroadcastTweetJob do
       Item.should_receive(:find).with(item.id).and_return(item)
       Broadcast.should_receive(:find).with(broadcast.id).and_return(broadcast)
 
-      item.should_receive(:export_to_twitter)
-      broadcast.should_receive(:export_to_twitter)
+      tweet = mock(:id => 1)
+      item.should_receive(:export_to_twitter).and_return(tweet)
+      broadcast.should_receive(:retweet)
       BroadcastTweetJob.new(broadcast.id, item.id).perform
     end
   end

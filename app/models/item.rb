@@ -11,7 +11,6 @@ class Item < ActiveRecord::Base
   scope :by_latest, order("items.updated_at DESC")
   scope :newer_than, lambda { |*args| where("items.created_at > ?", args.first || DateTime.now) }
   scope :older_than, lambda { |*args| where("items.created_at < ?", args.first || 1.day.ago.to_s(:db)) }
-  scope :untweeted, where("tweet_id IS NULL")
   
   attr_protected :created_at, :updated_at, :lat, :lng
   validates_presence_of :content

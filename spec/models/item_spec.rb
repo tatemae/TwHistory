@@ -45,19 +45,7 @@ describe Item do
         Item.chronological[1].should == @second_item
         Item.chronological[0].should == @first_item
       end
-    end
-    describe "untweeted" do
-      before do
-        Item.delete_all
-        @tweeted = Factory(:item, :tweet_id => '237373')
-        @untweeted = Factory(:item, :tweet_id => nil)
-      end
-      it "should order broadcasts by start date" do
-        Item.untweeted.should_not include(@tweeted)
-        Item.untweeted.should include(@untweeted)
-      end
-    end
-    
+    end    
   end
   
   describe "parse_event_date_time" do
@@ -66,7 +54,7 @@ describe Item do
     end
     it "should build event_date_time from params" do
       @item.parse_event_date_time({:event_date => '10/10/2010', :event_time => '10:10'})
-      @item.event_date_time.should == DateTime.new('10/10/2010 10:10')
+      @item.event_date_time.should == DateTime.parse('10/10/2010 10:10')
     end
   end
   

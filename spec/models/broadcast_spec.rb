@@ -44,12 +44,12 @@ describe Broadcast do
         Broadcast.delete_all
         @past_item = Factory(:broadcast, :start_at => 1.week.ago, :end_at => 1.day.ago)
         @inprogress = Factory(:broadcast, :start_at => 1.day.ago, :end_at => 1.day.from_now)
-        @future_item = Factory(:broadcast, :start_at => 1.day.from_now, end_at => 1.week.from_now)
+        @future_item = Factory(:broadcast, :start_at => 1.day.from_now, :end_at => 1.week.from_now)
       end
       it "should only find broadcasts that are in progress" do
-        Broadcast.past.should_not include(@past_item)
-        Broadcast.past.should_not include(@future_item)
-        Broadcast.past.should include(@inprogress)
+        Broadcast.in_progress.should_not include(@past_item)
+        Broadcast.in_progress.should_not include(@future_item)
+        Broadcast.in_progress.should include(@inprogress)
       end
     end
     
@@ -71,7 +71,7 @@ describe Broadcast do
   describe "title" do
     before do
       @title = 'a great title'
-      @project = Factory(:project)
+      @project = Factory(:project, :title => @title)
       @broadcast = Factory(:broadcast, :project => @project)
     end
     it "should give the project's title" do
@@ -82,7 +82,7 @@ describe Broadcast do
   describe "name" do
     before do
       @title = 'a great title'
-      @project = Factory(:project)
+      @project = Factory(:project, :title => @title)
       @broadcast = Factory(:broadcast, :project => @project)
     end
     it "should give the project's title for name" do
@@ -95,8 +95,15 @@ describe Broadcast do
       @broadcast = Factory(:broadcast)
     end
     it "should build parse_start_at from params" do
-      @broadcast.parse_start_at({:event_date => '10/10/2010', :event_time => '10:10'})
-      @broadcast.start_at.should == DateTime.new('10/10/2010 10:10')
+      @broadcast.parse_start_at({:start_date => '10/10/2010', :start_time => '10:10:00 AM'})
+      @broadcast.start_at.should == DateTime.parse('10/10/2010 10:10:00 AM')
+    end
+  end
+  
+  describe "project_url" do
+    it "should build " do
+      broadcast = Factory(:broadcast)
+      broadcast.project_url.should == "http://#{MuckEngine.configuration.application_url}/projects/#{broadcast.project.to_param}"
     end
   end
   
@@ -104,31 +111,33 @@ describe Broadcast do
     before do
       @broadcast = Factory(:broadcast)
     end
-    it "should create scheduled items" do
+    it "should create scheduled items (delayed jobs)" do
     end
   end
   
   describe "twitter_update" do
+    before do
+      @broadcast = Factory(:broadcast)
+      @broadcast.authentication = nil
+    end
     describe "authentication is nil" do
-      before do
-        @broadcast = Factory(:broadcast)
-      end
       it "should return false if authentication is nil" do
         @broadcast.twitter_update.should be_false
       end
     end
     describe "authentication is valid" do
       before do
-        @broadcast.authentication = Factory(:authentication, :token => 'token', :secret => 'secret')
-        @client = mock_model(Twitter::Base)
+        @project = Factory(:project, :location => 'Some where in TwHistory')
+        @broadcast.authentication = Factory(:authentication, :token => 'token', :secret => 'secret', :project => @project)
+        @client = mock_model('TwitterClient')
         @broadcast.stub!(:client).and_return(@client)
       end
       it "should update the profile image and profile details" do
         #@client.should_receive(:update_profile_image).with(@broadcast.photo.url(:medium) )
         @client.should_receive(:update_profile).with(:name => @broadcast.name, 
-                                                     :location => 'Somewhere in TwHistory', 
-                                                     :url => project_broadcast_path(@broadcast.project, @broadcast), 
-                                                     :description => @broadcast.bio[0...160])
+                                                     :location => broadcast.project.location, 
+                                                     :url => @broadcast.project_url, 
+                                                     :description => @broadcast.twitter_description)
         @broadcast.twitter_update
       end
     end 

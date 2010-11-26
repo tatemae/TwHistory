@@ -75,11 +75,13 @@ describe ProjectsController do
       it "deletes the project" do
         delete :destroy, :id => @project.id
         should redirect_to(projects_path)
-        Project.find(@project.id).should be_nil
+        project = Project.find(@project.id).should rescue nil
+        project.should be_nil
       end
       it "deletes the project's items" do
         items = mock
         items.should_receive(:destroy_all)
+        Project.should_receive(:find).with(@project.id).and_return(@project)
         @project.should_receive(:items).and_return(items)
         @project.should_not_receive(:characters)
         @project.should_not_receive(:destroy)
@@ -90,6 +92,7 @@ describe ProjectsController do
       it "it deletes the project's characters" do
         characters = mock
         characters.should_receive(:destroy_all)
+        Project.should_receive(:find).with(@project.id).and_return(@project)
         @project.should_receive(:characters).and_return(characters)
         @project.should_not_receive(:items)
         @project.should_not_receive(:destroy)   

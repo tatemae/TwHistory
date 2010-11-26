@@ -9,9 +9,9 @@ describe ScheduledItem do
     describe "by_send" do
       before do
         ScheduledItem.delete_all
-        @old_item = Factory(:scheduled_item, :run_at => 1.month.ago.getutc)
-        @new_item = Factory(:scheduled_item, :run_at => 1.day.ago.getutc)
-        @future_item = Factory(:scheduled_item, :run_at => 1.day.from_now.getutc)
+        @old_item = Factory(:scheduled_item, :run_at => 1.month.ago)
+        @new_item = Factory(:scheduled_item, :run_at => 1.day.ago)
+        @future_item = Factory(:scheduled_item, :run_at => 1.day.from_now)
       end
       it "should order by send date" do        
         ScheduledItem.by_send[0].should == @old_item
@@ -23,9 +23,9 @@ describe ScheduledItem do
     describe "ready_to_send" do
       before do
         ScheduledItem.delete_all
-        @ready_item = Factory(:scheduled_item, :run_at => 1.day.ago.getutc)
-        @ready_item_too = Factory(:scheduled_item, :run_at => 1.minute.ago.getutc)
-        @not_ready_item = Factory(:scheduled_item, :run_at => 1.day.from_now.getutc)
+        @ready_item = Factory(:scheduled_item, :run_at => 1.day.ago)
+        @ready_item_too = Factory(:scheduled_item, :run_at => 5.minutes.ago)
+        @not_ready_item = Factory(:scheduled_item, :run_at => 1.day.from_now)
       end
       it "should only find items that are ready to send" do
         ScheduledItem.ready_to_send.should include(@ready_item)

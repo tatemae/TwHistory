@@ -14,6 +14,12 @@ describe ScheduledItemsController do
   it { should require_login 'update', :put, '/login' }
   it { should require_login 'destroy', :delete, '/login' }
 
+  def mock_scheduled_item(stubs={})
+    (@mock_scheduled_item ||= mock_model(ScheduledItem).as_null_object).tap do |scheduled_item|
+      scheduled_item.stub(stubs) unless stubs.empty?
+    end
+  end
+    
   describe "PUT update" do
 
     describe "with valid params" do

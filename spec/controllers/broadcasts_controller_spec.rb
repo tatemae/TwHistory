@@ -15,6 +15,12 @@ describe BroadcastsController do
   it { should require_login 'edit', :get, '/login' }
   it { should require_login 'update', :put, '/login' }
 
+  def mock_broadcast(stubs={})
+    (@mock_broadcast ||= mock_model(Broadcast).as_null_object).tap do |broadcast|
+      broadcast.stub(stubs) unless stubs.empty?
+    end
+  end
+
   describe "GET index" do
     before(:each) do
       get :index, :project_id => @project

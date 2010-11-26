@@ -318,10 +318,12 @@ a:hover{text-decoration:none;}
 .main-edit{display:inline-block;}
 /*broadcasts*/
 .no-broadcasts-msg{margin:10px;color:#4B3013;font-weight:bold;}
-.scheduled-item{width:650px;height:75px;vertical-align:top;font:13px "Trebuchet MS",Helvetica,sans-serif;padding:3px 2px;margin:5px;background:#00a69c;position:relative;}
+.scheduled-item{width:650px;height:100px;vertical-align:top;font:13px "Trebuchet MS",Helvetica,sans-serif;padding:3px 2px;margin:10px 5px;border:solid 1px #00a69c;position:relative;}
 .scheduled-item .visual{display:inline-block;float:left;width:60px;}
 .scheduled-item .text-holder{display:inline-block;float:left;width:580px;padding:0 4px;}
-.scheduled-item .send-at{position:absolute;right:5px;bottom:5px;}
+.scheduled-item .send-at{position:absolute;bottom:0;right:0;}
+.scheduled-item .send-at .time, .scheduled-item .send-at .date{margin:4px 4px 0;font-size:14px;}
+.scheduled-item .send-at label, .scheduled-item .send-at input, .scheduled-item .send-at form{float:left;display:inline-block;margin-top:4px;}
 #broadcast h2{font-size:14px;color:#4B3013;}
 #broadcast h3{clear:both;margin:65px 0 10px;}
 #broadcast .link-twitter{margin:10px 0;}

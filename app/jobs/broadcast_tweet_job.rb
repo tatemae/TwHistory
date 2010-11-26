@@ -20,7 +20,7 @@ class BroadcastTweetJob
 
   def self.enqueue(broadcast_id, item_id, broadcast_date_time)
     Delayed::Job.enqueue(:payload_object => BroadcastTweetJob.new(broadcast_id, item_id),
-                         :run_at => broadcast_date_time.getutc,
+                         :run_at => broadcast_date_time,
                          :broadcast_id => broadcast_id, 
                          :item_id => item_id)
   end

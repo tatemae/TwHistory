@@ -18,12 +18,12 @@ class ScheduledItemsController < ApplicationController
   end
 
   def destroy
-    # TODO destroy should remove the item from the list
     @scheduled_item = ScheduledItem.find(params[:id])
     @scheduled_item.destroy
     respond_to do |format|
       format.html { redirect_to(scheduled_items_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
+      format.js { render :text => "jQuery('##{@scheduled_item.dom_id}').remove();" }
     end
   end
 

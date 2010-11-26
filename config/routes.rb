@@ -15,7 +15,7 @@ Twhistory::Application.routes.draw do
   match '/auth/failure' => 'authentications#failure', :controller => 'authentications'
 
   resources :comments  
-  # resources :items
+  resources :items
   resources :scheduled_items
   resources :broadcasts do
     resource :authentication

@@ -1,5 +1,5 @@
 <% item = scheduled_item.item %>
-<div class="scheduled-item">
+<div id="<%=scheduled_item.dom_id%>" class="scheduled-item">
   <div class="visual">
     <%= image_tag item.character.photo.url(:icon) if item.character.photo_file_name %>
   </div>
@@ -10,12 +10,13 @@
   <% if @can_edit_project -%>
     <div class="send-at">
       <%= form_for scheduled_item, :html => { :class => 'ajax' } do |f| -%>
-        <label id="date">Send On</label>
+        <label class="date">Send On</label>
         <%= text_field_tag :run_date, just_date(scheduled_item.run_at), { :class => "date_pick" } -%>
-        <label id="time">At</label>
+        <label class="time">At</label>
         <%= text_field_tag :run_time, just_time(scheduled_item.run_at), { :class => 'time_pick' } %>
-        <%= f.submit t('general.update') %>
+        <%= f.submit t('general.update'), :class => 'pretty-button green' %>
       <% end -%>
+      <%= button_to translate('general.delete'), scheduled_item_path(scheduled_item), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'pretty-button green' %>    
     </div>
 	<% end -%>
 </div>

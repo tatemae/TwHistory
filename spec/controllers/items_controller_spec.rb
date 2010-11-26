@@ -35,15 +35,6 @@ describe ItemsController do
       it { should respond_with :success }
     end
   end
-  
-  describe "GET show" do
-    before(:each) do
-      @item = Factory(:item)
-      get :show, :id => @item, :project_id => @project
-    end
-    it { should respond_with :success }
-    it { should render_template :show }
-  end
 
   describe "logged in" do
     before do

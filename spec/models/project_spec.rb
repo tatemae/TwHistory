@@ -48,9 +48,9 @@ describe Project do
       @project.characters.any?{|c| c.name == 'Levi Jackman'}.should be_true
       @project.characters.any?{|c| c.name == 'Heber Kimball'}.should be_true
       # Items
-      @project.items.any?{ |i| i.content == 'I am leaving home with Simon Cantier as pianears to go with the Company of pianears to finde a location for the Saints Some whair in the west' && i.event_date_time == DateTime.new("03/29/1847 09:34:00 AM") }.should be_true
-      @project.items.any?{ |i| i.content == 'Just arrived at the main camp on the west side of the Missouri river. Likely leave in the morning.' && i.event_date_time == DateTime.new("04/01/1847 07:30:00") }.should be_true
-      @project.items.any?{ |i| i.content == 'Leaving Winter Quarters with 6 of my teams","Along the Pioneer Trail' && i.event_date_time == DateTime.new("04/05/1847 08:29:00") }.should be_true
+      @project.items.any?{ |i| i.content == 'I am leaving home with Simon Cantier as pianears to go with the Company of pianears to finde a location for the Saints Some whair in the west' && i.event_date_time == DateTime.parse("03/29/1847 09:34:00 AM") }.should be_true
+      @project.items.any?{ |i| i.content == 'Just arrived at the main camp on the west side of the Missouri river. Likely leave in the morning.' && i.event_date_time == DateTime.parse("04/01/1847 07:30:00 PM") }.should be_true
+      @project.items.any?{ |i| i.content == 'Leaving Winter Quarters with 6 of my teams' && i.event_date_time == DateTime.parse("04/05/1847 08:29:00 AM") }.should be_true
     end
   end
   
