@@ -53,10 +53,22 @@ describe ItemsController do
 
     describe "POST to create" do
       describe "standard create" do
-        before(:each) do
-          post :create, :item => Factory.attributes_for(:item, :project => @project), :project_id => @project.id
+        it "redirects to project item path after update" do
+          @character = Factory(:character)
+          post :create, :item => Factory.attributes_for(:item, :project => @project, :character => @character), :project_id => @project.id
+          response.should redirect_to(project_path(assigns(:project)))
         end
-        it { should redirect_to(project_item_path(@project, assigns(:item))) }
+        it "renders new if new item has errors" do
+          post :create, :item => Factory.attributes_for(:item, :project => @project), :project_id => @project.id
+          assigns(:item).errors[:character_id].should == ["can't be blank"]
+          response.should render_template("new")
+        end
+        it "prevents unauthorized user from adding items to the project" do
+          @project.stub!('can_edit?').and_return(false)
+          Project.stub(:find) { @project }
+          post :create, :item => Factory.attributes_for(:item, :project => @project), :project_id => @project.id
+          response.should redirect_to(project_path(@project))
+        end
       end
       describe "csv create" do
         before(:each) do            
@@ -78,18 +90,103 @@ describe ItemsController do
     describe "PUT to update" do
       before(:each) do
         @item = Factory(:item, :project => @project)
-        post :create, :id => @item.id, :item => Factory.attributes_for(:item), :project_id => @project.id
       end
-      it { should redirect_to(project_items_path(@project)) }
-      
-      @item = Item.find(params[:id])
-      @item.parse_event_date_time(params)
-
-      respond_to do |format|
-        if @item.update_attributes(params[:item])
-          
+      describe "html" do
+        it "redirects to project items path after update" do
+          Item.stub(:find) { @item }
+          @item.stub!(:update_attributes).and_return(true)
+          @item.stub!(:parse_event_date_time)
+          @project.stub!('can_edit?').and_return(true)
+          put :update, :id => @item.id, :item => Factory.attributes_for(:item)
+          response.should redirect_to(project_items_path(@project))
+        end
+        it "finds the item" do
+          Item.should_receive(:find).with(@item.to_param).and_return(@item)
+          put :update, :id => @item.to_param, :item => Factory.attributes_for(:item)
+          assigns(:item).should be(@item)
+        end
+        it "updates the item" do
+          Item.stub(:find) { @item }
+          attributes = {'anything' => 'goes'}
+          @item.should_receive(:update_attributes).with(attributes)
+          @project.stub!('can_edit?').and_return(true)
+          @item.stub!(:parse_event_date_time)
+          put :update, :id => @item.id, :item => attributes
+        end
+        it "only allows specific users to update the item" do
+          Item.stub(:find) { @item }
+          @item.stub!(:update_attributes).and_return(true)
+          @item.stub!(:parse_event_date_time)
+          @item.stub!(:project).and_return(@project)
+          @project.should_receive('can_edit?').with(@user).and_return(true)
+          put :update, :id => @item.id
+        end
+        it "parses the event date/time" do
+          Item.stub(:find) { @item }
+          @item.stub!(:update_attributes).and_return(true)
+          @project.stub!('can_edit?').and_return(true)
+          @item.should_receive(:parse_event_date_time)
+          put :update, :id => @item.id
+        end
+      end
+      describe "js" do
+        it "responds with js" do
+          Item.stub(:find) { @item }
+          @item.stub!(:parse_event_date_time)
+          @item.stub!(:update_attributes).and_return(true)
+          @project.stub!('can_edit?').and_return(true)
+          put :update, :id => @item.to_param, :format => 'js'
+          response.code.should == '200'
+        end
+      end
+      describe "with invalid params" do
+        it "responds to html and re-renders the 'edit' template" do
+          Item.stub(:find) { @item }
+          @item.stub!(:parse_event_date_time)
+          @item.stub!(:save).and_return(false)
+          put :update, :id => @item.to_param
+          response.should render_template("edit")
+        end
+        it "responds with js" do
+          Item.stub(:find) { @item }
+          @item.stub!(:parse_event_date_time)
+          @item.stub!(:save).and_return(false)
+          put :update, :id => @item.to_param, :format => 'js'
+          response.code.should == '200'
+        end
+      end
     end
   
+    describe "DELETE destroy" do
+      before(:each) do
+        @item = Factory(:item, :project => @project)
+      end
+      describe "html" do
+        it "destroys the requested item" do
+          Item.stub(:find) { @item }
+          @item.should_receive(:project).and_return(@project)
+          @project.should_receive('can_edit?').with(@user).and_return(true)          
+          @item.should_receive(:destroy)
+          delete :destroy, :id => @item
+        end
+        it "only allows specific users to delete the item" do
+          Item.stub(:find) { @item }
+          @project.should_receive('can_edit?').with(@user).and_return(true)
+          @item.stub!(:parse_event_date_time)
+          delete :destroy, :id => @item
+        end
+        it "redirects to the project items list" do
+          delete :destroy, :id => @item
+          response.should redirect_to(project_items_path(@item.project))
+        end
+      end
+      describe "js request" do
+        it "destroys the requested item" do
+          delete :destroy, :id => @item, :format => 'js'
+          response.code.should == '200'
+        end
+      end
+    end
   end
   
 end

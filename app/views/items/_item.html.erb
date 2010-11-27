@@ -1,4 +1,4 @@
-<div class="item hidden-admin_links">
+<div id="<%=@item.dom_id%>" class="item hidden-admin_links">
   <div class="visual">
     <%= image_tag item.character.photo.url(:icon) if item.character.photo_file_name %>
   </div>
