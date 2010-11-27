@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101124053316) do
+ActiveRecord::Schema.define(:version => 20101127181710) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20101124053316) do
     t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "time_zone",  :default => "UTC"
   end
 
   add_index "broadcasts", ["project_id"], :name => "index_broadcasts_on_project_id"

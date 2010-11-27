@@ -173,7 +173,7 @@ GEM
       muck-engine
       muck-users
     muck-solr (3.0.1)
-    muck-users (3.1.1)
+    muck-users (3.1.2)
       authlogic
       bcrypt-ruby
       friendly_id

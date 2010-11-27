@@ -14,6 +14,8 @@ Twhistory::Application.routes.draw do
   match '/auth/:provider/callback' => 'authentications#create', :controller => 'authentications'
   match '/auth/failure' => 'authentications#failure', :controller => 'authentications'
 
+  #match '/profiles/:id' => 'profiles#show', :as => :public_user
+  
   resources :comments  
   resources :items
   resources :scheduled_items

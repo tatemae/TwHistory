@@ -36,7 +36,7 @@ class BroadcastsController < ApplicationController
     if @first_item
       current = DateTime.now + 1.day
       start_at = DateTime.new(current.year, current.month, current.day, @first_item.event_date_time.hour, @first_item.event_date_time.min) 
-      @broadcast = @project.broadcasts.build(:start_at => start_at)
+      @broadcast = @project.broadcasts.build(:start_at => start_at, :time_zone => current_user.time_zone)
     end
     respond_to do |format|
       format.html

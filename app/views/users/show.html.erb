@@ -1,20 +1,32 @@
 <div id="user" class="common-content">
-
-<!--
-  <h1>My Timezone:</h1>
-  <%#= time_zone_select :time_zone, @user.time_zone, nil, :default => "Mountain Time (US & Canada)" %>
--->
-  <h1>Re-enactments I'm in charge of</h1>
-  <% if @user.projects.any? -%>
-    <%= render :partial => 'projects/project', :collection => @user.projects %>
-  <% else -%>
-    None yet. Have a great idea? <%= link_to 'Create a new re-enactment.', new_project_path %>
-  <% end -%>
   
-  <h1>Re-enactments I'm working on</h1>
-  <% if @user.authorized_projects.any? -%>
-    <%= render :partial => 'projects/project', :collection => @user.authorized_projects %>
-  <% else -%>
-    None yet. <%= link_to 'Browse re-enactments to see what you find.', projects_path %>
-  <% end -%>
+  <div class="block">
+    <h1>Re-enactments I'm in charge of</h1>
+    <% if @user.projects.any? -%>
+      <%= render :partial => 'projects/project', :collection => @user.projects %>
+    <% else -%>
+      None yet. Have a great idea? <%= link_to 'Create a new re-enactment.', new_project_path %>
+    <% end -%>
+  </div>
+  
+  <div class="block">
+    <h1>Re-enactments I'm working on</h1>
+    <% if @user.authorized_projects.any? -%>
+      <%= render :partial => 'projects/project', :collection => @user.authorized_projects %>
+    <% else -%>
+      None yet. <%= link_to 'Browse re-enactments to see what you find.', projects_path %>
+    <% end -%>
+  </div>
+  
+  <div class="block">
+    <h2>My Timezone:</h2>
+    <%= muck_form_for @user, :url => user_path(@user), :html => {:id => "edit-user-form", :name => 'edit-user-form', :method => :put, :multipart => true } do |f| -%>
+     <%= output_errors(t('muck.users.problem_editing_account'), {:class => 'help-box'}, @user) %>
+     <%= f.time_zone_select :time_zone, nil, { :label => 'Time Zone' } %>
+  	 <div class="button form-row">
+  	  <%= f.submit 'Change' %>
+  	  </div>
+  	<% end %>
+	</div>
+	
 </div>
