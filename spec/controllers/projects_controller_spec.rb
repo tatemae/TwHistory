@@ -87,7 +87,6 @@ describe ProjectsController do
         @project.should_not_receive(:destroy)
         delete :destroy, :id => @project.id, :items => true
         should redirect_to(project_path(assigns(:project)))
-        Project.find(@project.id).should_not be_nil
       end
       it "it deletes the project's characters" do
         characters = mock
@@ -96,9 +95,8 @@ describe ProjectsController do
         @project.should_receive(:characters).and_return(characters)
         @project.should_not_receive(:items)
         @project.should_not_receive(:destroy)   
-        delete :destroy, :id => @project.id
+        delete :destroy, :id => @project.id, :characters => true
         should redirect_to(project_path(assigns(:project)))
-        Project.find(@project.id).should_not be_nil
       end
     end
     

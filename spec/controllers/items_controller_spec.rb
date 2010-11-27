@@ -45,7 +45,7 @@ describe ItemsController do
     
     describe "GET new" do
       before(:each) do
-        get :new, :project_id => @project
+        get :new, :project_id => @project.id
       end
       it { should respond_with :success }
       it { should render_template :new }
@@ -54,13 +54,13 @@ describe ItemsController do
     describe "POST to create" do
       describe "standard create" do
         before(:each) do
-          post :create, :item => Factory.attributes_for(:item, :project => @project), :project_id => @project
+          post :create, :item => Factory.attributes_for(:item, :project => @project), :project_id => @project.id
         end
-        it { should redirect_to(item_path(assigns(:item))) }
+        it { should redirect_to(project_item_path(@project, assigns(:item))) }
       end
       describe "csv create" do
         before(:each) do            
-          post :create, :item => { :csv => fixture_file_upload("#{::Rails.root}/spec/fixtures/items.csv", 'text/csv') }, :project_id => @project
+          post :create, :item => { :csv => fixture_file_upload("#{::Rails.root}/spec/fixtures/items.csv", 'text/csv') }, :project_id => @project.id
         end
         it { should redirect_to(project_path(assigns(:project))) }        
       end
@@ -78,9 +78,16 @@ describe ItemsController do
     describe "PUT to update" do
       before(:each) do
         @item = Factory(:item, :project => @project)
-        post :create, :id => @item.id, :item => Factory.attributes_for(:item), :project_id => @project
+        post :create, :id => @item.id, :item => Factory.attributes_for(:item), :project_id => @project.id
       end
-      it { should redirect_to(item_path(assigns(:item))) }
+      it { should redirect_to(project_items_path(@project)) }
+      
+      @item = Item.find(params[:id])
+      @item.parse_event_date_time(params)
+
+      respond_to do |format|
+        if @item.update_attributes(params[:item])
+          
     end
   
   end

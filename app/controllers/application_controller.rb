@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
     
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  #before_filter :set_timezone
   
   protected
     
@@ -27,5 +28,9 @@ class ApplicationController < ActionController::Base
       @can_edit_project = false
       @can_edit_project = @project.can_edit?(current_user) if @project
     end
+    
+#    def set_timezone
+#      Time.zone = current_user.time_zone
+#    end
     
 end

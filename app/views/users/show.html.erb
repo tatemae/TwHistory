@@ -1,4 +1,9 @@
 <div id="user" class="common-content">
+
+<!--
+  <h1>My Timezone:</h1>
+  <%#= time_zone_select :time_zone, @user.time_zone, nil, :default => "Mountain Time (US & Canada)" %>
+-->
   <h1>Re-enactments I'm in charge of</h1>
   <% if @user.projects.any? -%>
     <%= render :partial => 'projects/project', :collection => @user.projects %>
