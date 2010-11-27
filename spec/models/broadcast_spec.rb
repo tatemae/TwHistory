@@ -117,7 +117,8 @@ describe Broadcast do
   
   describe "twitter_update" do
     before do
-      @broadcast = Factory(:broadcast)
+      @project = Factory(:project, :location => 'Some where in TwHistory')
+      @broadcast = Factory(:broadcast, :project => @project)
       @broadcast.authentication = nil
     end
     describe "authentication is nil" do
@@ -127,15 +128,14 @@ describe Broadcast do
     end
     describe "authentication is valid" do
       before do
-        @project = Factory(:project, :location => 'Some where in TwHistory')
-        @broadcast.authentication = Factory(:authentication, :token => 'token', :secret => 'secret', :project => @project)
+        @broadcast.authentication = Factory(:authentication, :token => 'token', :secret => 'secret')
         @client = mock_model('TwitterClient')
         @broadcast.stub!(:client).and_return(@client)
       end
       it "should update the profile image and profile details" do
         #@client.should_receive(:update_profile_image).with(@broadcast.photo.url(:medium) )
         @client.should_receive(:update_profile).with(:name => @broadcast.name, 
-                                                     :location => broadcast.project.location, 
+                                                     :location => @broadcast.project.location, 
                                                      :url => @broadcast.project_url, 
                                                      :description => @broadcast.twitter_description)
         @broadcast.twitter_update
