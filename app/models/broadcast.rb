@@ -20,7 +20,7 @@ class Broadcast < ActiveRecord::Base
   scope :older_than, lambda { |*args| where("broadcasts.created_at < ?", args.first || 1.day.ago.to_s(:db)) }
   
   def parse_start_at(params)
-    self.start_at = DateTime.parse("#{params[:start_date]} #{params[:start_time]}")
+    self.start_at = Time.zone.parse("#{params[:start_date]} #{params[:start_time]}")
   end
   
   def twitter_update
