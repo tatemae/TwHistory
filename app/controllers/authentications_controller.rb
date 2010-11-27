@@ -1,5 +1,6 @@
 class AuthenticationsController < ApplicationController
 
+  before_filter :login_required
   before_filter :store_parent, :only => [:new]
   before_filter :recover_parent, :only => [:create, :failure]
 
