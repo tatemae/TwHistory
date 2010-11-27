@@ -2,13 +2,14 @@ class CharactersController < ApplicationController
   
   before_filter :login_required, :except => [:index, :show]
   before_filter :setup_project, :except => [:index, :show, :destroy]
-  before_filter :setup_project_not_protected, :only => [:show, :index]
+  before_filter :setup_project_not_protected, :only => [:index]
   
   def index
     if @project
       @characters = @project.characters
     else
       redirect_to root_path
+      return
     end
     respond_to do |format|
       format.html
@@ -44,7 +45,7 @@ class CharactersController < ApplicationController
     @character = @project.characters.build(params[:character])
     respond_to do |format|
       if @character.save
-        format.html { redirect_to(@project, :notice => translate('characters.create_success')) }
+        format.html { redirect_to(project_characters_path(@project), :notice => translate('characters.create_success')) }
         format.xml  { render :xml => @character, :status => :created, :location => @character }
       else
         format.html { render :action => "new" }

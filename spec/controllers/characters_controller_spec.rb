@@ -14,10 +14,17 @@ describe CharactersController do
   it { should require_login 'edit', :get, '/login' }
   it { should require_login 'update', :put, '/login' }
   
+  describe "GET index without project" do
+    before(:each) do
+      get :index
+    end
+    it { should redirect_to root_path }
+  end
+  
   describe "GET index" do
     before(:each) do
-      @character = Factory(:character)
-      get :index
+      @project = Factory(:project)
+      get :index, :project_id => @project
     end
     it { should respond_with :success }
     it { should render_template :index }
@@ -51,7 +58,7 @@ describe CharactersController do
       before(:each) do
         post :create, :character => Factory.attributes_for(:character), :project_id => @project
       end
-      it { should redirect_to(character_path(assigns(:character))) }
+      it { should redirect_to(project_characters_path(assigns(:project))) }
     end
 
     describe "GET edit" do
@@ -68,7 +75,7 @@ describe CharactersController do
         @character = Factory(:character, :project => @project)
         post :create, :id => @character.id, :character => Factory.attributes_for(:character), :project_id => @project
       end
-      it { should redirect_to(character_path(assigns(:character))) }
+      it { should redirect_to(project_characters_path(assigns(:project))) }
     end
   
     describe "DELETE to destroy" do
