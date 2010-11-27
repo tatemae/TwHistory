@@ -33,10 +33,11 @@ class BroadcastsController < ApplicationController
 
   def new
     @first_item = @project.items.by_event_date_time.first
-    current = DateTime.now + 1.day
-    start_at = DateTime.new(current.year, current.month, current.day, @first_item.event_date_time.hour, @first_item.event_date_time.min) 
-    @broadcast = @project.broadcasts.build(:start_at => start_at)
-    check_permissions
+    if @first_item
+      current = DateTime.now + 1.day
+      start_at = DateTime.new(current.year, current.month, current.day, @first_item.event_date_time.hour, @first_item.event_date_time.min) 
+      @broadcast = @project.broadcasts.build(:start_at => start_at)
+    end
     respond_to do |format|
       format.html
       format.xml  { render :xml => @broadcast }
@@ -75,8 +76,11 @@ class BroadcastsController < ApplicationController
   def update
     @broadcast = Broadcast.find(params[:id])
     check_permissions
+    @broadcast.attributes = params[:broadcast]
+    @broadcast.parse_start_at(params)
+    success = @broadcast.save
     respond_to do |format|
-      if @broadcast.update_attributes(params[:broadcast])
+      if success
         format.html { redirect_to(@broadcast, :notice => 'Broadcast was successfully updated.') }
         format.xml  { head :ok }
       else

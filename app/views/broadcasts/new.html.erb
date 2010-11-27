@@ -1,3 +1,4 @@
+<% if @first_item -%>
 <div id="new-broadcast" class="common-form">
   <h1>Add Broadcast</h1>
   <div>
@@ -17,3 +18,11 @@
     </div>
   <% end -%>
 </div>
+<% else -%>
+<div id="new-broadcast" class="common-form">
+  <h1>Unable to Add Broadcast</h1>
+  <div>
+    <p>The re-enactment '<%= @project.title %>' does not currently have any historical events associated with it. Please add some events before setting up a broadcast.</p>
+  </div>
+</div>  
+<% end -%>
