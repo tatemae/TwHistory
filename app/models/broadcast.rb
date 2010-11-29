@@ -57,12 +57,15 @@ class Broadcast < ActiveRecord::Base
   
   # Builds scheduled tweets based on scheduling parameters provided by the user
   def build_schedule
+    now_date_item = Time.zone.now
     items = self.project.items.chronological
     first_event_date_time = items.first.event_date_time
     broadcast_date_time = nil
     items.each do |item|
       broadcast_date_time = self.start_at + (item.event_date_time - first_event_date_time)
-      BroadcastTweetJob.enqueue(self.id, item.id, broadcast_date_time)      
+      if broadcast_date_time >= now_date_item
+        BroadcastTweetJob.enqueue(self.id, item.id, broadcast_date_time)
+      end
     end
     self.end_at = broadcast_date_time # Record the broadcast end date/time
     self.save

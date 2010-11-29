@@ -32,7 +32,7 @@ class BroadcastsController < ApplicationController
   end
 
   def new
-    @first_item = @project.items.by_event_date_time.first
+    @first_item = @project.items.chronological.first
     if @first_item
       current = DateTime.now + 1.day
       start_at = DateTime.new(current.year, current.month, current.day, @first_item.event_date_time.hour, @first_item.event_date_time.min) 
