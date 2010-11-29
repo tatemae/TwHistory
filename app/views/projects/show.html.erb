@@ -36,6 +36,7 @@
     <% else -%>
       No current broadcasts
     <% end -%>
+    <p><%= link_to 'View All Broadcasts', project_broadcasts_path(@project) %></p>
 	</div>
 	<p><%= @project.description %></p> 
 </div>
