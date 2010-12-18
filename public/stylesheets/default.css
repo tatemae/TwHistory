@@ -87,6 +87,7 @@ a:hover{text-decoration:none;}
 #content .broadcast-title a{color:#4B3013;font-size:1.6em;text-decoration:none;}
 #content .broadcast-title a:hover;{text-decoration:underline;}
 .feature .img-holder{float:left;width:332px;}
+.feature .img-holder a img{width:332px;}
 .img-holder img{display:block;}
 .feature .options-list{position:absolute;top:2px;right:23px;}
 .feature .options-list li{float:left;padding-left:7px;}
