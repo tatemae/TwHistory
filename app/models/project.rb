@@ -75,7 +75,10 @@ class Project < ActiveRecord::Base
   end
   
   def next_broadcast
-    @next ||= (self.broadcasts.in_progress.by_start || self.broadcasts.future.by_start).first
+    @next_broadcast ||= (self.broadcasts.in_progress.by_start || self.broadcasts.future.by_start).first
   end
   
+  def last_broadcast
+    @last_broadcast ||= (self.broadcasts.past.by_old).first
+  end
 end

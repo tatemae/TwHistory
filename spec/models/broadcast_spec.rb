@@ -27,6 +27,20 @@ describe Broadcast do
       end
     end
     
+    describe "by_old" do
+      before do
+        Broadcast.delete_all
+        @old_item = Factory(:broadcast, :start_at => 1.month.ago)
+        @new_item = Factory(:broadcast, :start_at => 1.day.ago)
+        @future_item = Factory(:broadcast, :start_at => 1.day.from_now)
+      end
+      it "should order broadcasts by start date" do
+        Broadcast.by_start[0].should == @old_item
+        Broadcast.by_start[1].should == @new_item
+        Broadcast.by_start[2].should == @future_item
+      end
+    end
+    
     describe "past" do
       before do
         Broadcast.delete_all

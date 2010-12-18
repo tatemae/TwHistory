@@ -7,6 +7,7 @@ class Broadcast < ActiveRecord::Base
   has_many :scheduled_items, :dependent => :destroy
   
   scope :by_start, order("broadcasts.start_at DESC")
+  scope :by_old, order("broadcasts.start_at ASC")
   scope :past, where("broadcasts.end_at <= ?", DateTime.now)
   scope :in_progress, where("broadcasts.start_at <= ? AND broadcasts.end_at >= ?", DateTime.now, DateTime.now)
   scope :future, where("broadcasts.start_at >= ?", DateTime.now)

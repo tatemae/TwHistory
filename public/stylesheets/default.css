@@ -93,9 +93,12 @@ a:hover{text-decoration:none;}
 .feature .options-list li{float:left;padding-left:7px;}
 .feature .options-list li a{float:left;width:27px;height:27px;text-indent:-9999px;overflow:hidden;}
 .options-list .twitter{background:url(/images/ico-twitter.gif) no-repeat;}
+.options-list .follow{background:url(/images/ico-twitter.gif) no-repeat;}
 .options-list .comments{background:url(/images/ico-comments.gif) no-repeat;}
 .options-list .my-space{background:url(/images/ico-myspace.gif) no-repeat;}
 .options-list .doc{background:url(/images/ico-doc.gif) no-repeat;}
+.options-list .people{background:url(/images/ico-people3.gif) no-repeat;}
+
 .cite-list{float:right;width:305px;}
 .cite-list li{width:100%;vertical-align:top;overflow:hidden;font:11px/13px "Trebuchet MS",Helvetica,sans-serif;padding-bottom:6px;}
 .cite-list li .visual{float:left;padding-right:6px;}

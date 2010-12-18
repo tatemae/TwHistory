@@ -2,7 +2,7 @@
   <div class="feature-indicator" style="left:<%=calculate_indicator_position(@featured_project_items[featured_project.id].first, @featured_project_first_items)%>px"></div>
   <div class="feature"> 
   	<div class="feature-holder">
-  	  <%= render 'projects/options_list', :project => featured_project, :broadcast => featured_project.next_broadcast, :css => 'options-list' %>
+  	  <%= render 'projects/options_list', :project => featured_project, :broadcast => featured_project.next_broadcast || featured_project.last_broadcast, :css => 'options-list' %>
   		<h2 class="text-feature">featured re-enactment</h2>
   		<div class="row">
   		  <h3 class="text-sinking"><%= link_to featured_project.title, featured_project %></h3>
