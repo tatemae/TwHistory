@@ -9,7 +9,7 @@
     <div id="main">
       <%= render :partial => 'layouts/global/timeline' %>
       <div class="main-holder"> 
-    		<div id="content" <%='style="width:888px;'.html_safe if @sidebar_off %>">
+    		<div id="content" <%='style="width:888px;"'.html_safe if @sidebar_off %>>
           <%= yield :layout %>
         </div>
     		<%= render :partial => 'layouts/global/side_bar' unless @sidebar_off %>

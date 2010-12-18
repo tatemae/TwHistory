@@ -1,8 +1,8 @@
-  class Upload < ActiveRecord::Base
+class Upload < ActiveRecord::Base
+
+  include Uploader::Models::Upload
   
-    include Uploader::Models::Upload
-    
-    validates_attachment_presence :local
-    validates_attachment_size :local, :less_than => 10.megabytes
-    
-  end
+  validates_attachment_presence :local
+  validates_attachment_size :local, :less_than => 10.megabytes
+  
+end
