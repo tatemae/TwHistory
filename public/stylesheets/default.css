@@ -2,6 +2,7 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,hr,button{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:none;}
 ol,ul{list-style:none;}
 h1,h2,h3,h4,h5,h6,li{line-height:100%;}
+h1,h2,h3,h4,h5,h6{font-family:'IM Fell DW Pica',arial,serif;}
 h1{font-size:2em;}
 h1 a{text-decoration:none;}
 h1 span a,
@@ -105,7 +106,7 @@ a:hover{text-decoration:none;}
 .cite-list li .name{font-size:12px;color:#fff;}
 .cite-list li .date{color:#93d9d5;display:block;}
 #content h3,
-#content h2{font:36px "Trebuchet MS",Helvetica,sans-serif;color:#f15a24;margin-bottom:10px;}
+#content h2{font-size:36px;color:#f15a24;margin-bottom:10px;}
 #content h3{font-size:28px;line-height:36px;}
 #content h2 span{font-size:14px;color:#9d6d2c;}
 #content h4{font-size:18px;color:#9d6d2c;font-weight:normal;line-height:20px;margin-bottom:8px;}
@@ -349,3 +350,5 @@ a:hover{text-decoration:none;}
 #csv-instructions .header-instructions{margin:25px 1px;}
 #csv-instructions .header-info{font-weight:bold;font-size:12px;}
 #csv-instructions .header-example{text-align:center;margin:15px auto;}
+/*Calendar*/
+#calendar, #calendar .fc-header-center h2{font-family:'IM Fell DW Pica',arial,serif !important;}
