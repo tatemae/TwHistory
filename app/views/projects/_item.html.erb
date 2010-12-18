@@ -1,6 +1,7 @@
 <li> 
-	<div class="visual"> 
-		<%= image_tag item.photo.url(:icon) if item.photo_file_name %>
+	<div class="visual">
+	  <%= image_tag item.character.photo.url(:icon) if item.character.photo_file_name %>
+		<%#= image_tag item.photo.url(:icon) if item.photo_file_name %>
 	</div>
 	<div class="text-holder">
 		<p><strong class="name"><%= link_to(item.character.name, project_character_path(project, item.character)) %></strong> <%= item.content %></p> 
