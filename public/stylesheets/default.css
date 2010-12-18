@@ -66,8 +66,8 @@ a:hover{text-decoration:none;}
 #content{padding:34px 0 0 25px;width:678px;line-height:17px;float:left;}
 .feature{width:703px;margin:-20px 0 24px -25px;position:relative;padding-top:22px;background:url(/images/bg-feature-top.gif) no-repeat;}
 .feature-indicator{top:53px;width:59px;height:16px;position:absolute;z-index:1000;background:url(/images/bg-feature-arrow.png) no-repeat;}
-.feature-holder{height:1%;padding:0 25px 20px;position:relative;background:url(/images/bg-feature-bottom.gif) no-repeat 0 100%;}
-#content .text-feature{width:235px;height:40px;text-indent:-9999px;overflow:hidden;margin:0 0 -3px -18px;background:url(/images/text-featured.gif) no-repeat;}
+.feature-holder{height:1%;padding:20px 25px 20px;position:relative;background:url(/images/bg-feature-bottom.gif) no-repeat 0 100%;}
+#content .text-feature{width:235px;height:40px;text-indent:-9999px;overflow:hidden;background:url(/images/text-featured.gif) no-repeat;position:absolute;top:-16px;}
 .feature .row{height:1%;overflow:hidden;}
 #content .text-first,
 #content .text-cuban2,
