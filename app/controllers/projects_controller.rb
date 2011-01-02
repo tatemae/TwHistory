@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :login_required, :except => [:index, :show]
+  before_filter :setup_project, :only => [:destroy, :update, :edit]
   
   def index
     @per_page = 5
@@ -32,7 +33,6 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def create
@@ -49,8 +49,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
-    
     if(params[:mark_featured])
       if current_user.admin?
         if @project.items.length > 0
@@ -84,7 +82,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+    
     stuff_deleted = false
 
     if params[:items]

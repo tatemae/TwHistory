@@ -63,7 +63,7 @@ describe ProjectsController do
     describe "PUT to update" do
       before(:each) do
         @project = Factory(:project, :user => @user)
-        post :create, :id => @project.id, :project => Factory.attributes_for(:project)
+        put :update, :id => @project.id, :project => Factory.attributes_for(:project)
       end
       it { should redirect_to(project_path(assigns(:project))) }
     end

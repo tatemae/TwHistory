@@ -53,6 +53,7 @@ module ApplicationHelper
 
 	def calculate_start_year(featured_project_first_items)
 	  return 1830 if featured_project_first_items.blank?
+	  featured_project_first_items.compact!
 	  @start_year ||= featured_project_first_items.collect{|item| decade_floor(item.event_date_time.to_s(:year).to_i)}.sort.first
   end
   
@@ -78,6 +79,7 @@ module ApplicationHelper
   end
   
   def calculate_item_position(featured_project_first_items, item)
+    return 0 if item.blank?
     start_year, end_year, step = calculate_time_periods(featured_project_first_items)
     item_year = item.event_date_time.to_s(:year).to_i
     distance = item_year - start_year
