@@ -43,11 +43,13 @@ class Project < ActiveRecord::Base
   end
   
   def import_items(file)
+    file = file.tempfile # have to get to the actual file inside the upload
     results = []
     items = []
     return [items, results] if file.nil?
     has_headers = false
-    if file.readlines[0].include?('Event Date')
+    first_line = file.readlines[0]
+    if first_line && first_line.include?('Event Date')
       has_headers = true
     end
     file.rewind
@@ -57,14 +59,18 @@ class Project < ActiveRecord::Base
       if !character.save
         results << "FAILED to save character image for character id: #{character.id}. Error: #{character.errors.full_messages.to_sentence}"
       end
-      item = {:event_date_time => DateTime.parse("#{row[0]} #{row[1]}"), :character_id => character.id, :content => row[3]}
-      item[:location] = row[4] if row[4]
-      item[:source] = row[5] if row[5]
-      new_item = self.items.build(item)
-      if !new_item.save
-        results << "FAILED: #{row}"
-      else
-        items << new_item
+      begin
+        item = {:event_date_time => DateTime.parse("#{row[0]} #{row[1]}"), :character_id => character.id, :content => row[3]}
+        item[:location] = row[4] if row[4]
+        item[:source] = row[5] if row[5]
+        new_item = self.items.build(item)
+        if !new_item.save
+          results << "FAILED: #{row}"
+        else
+          items << new_item
+        end
+      rescue => ex
+        results << "FAILED: #{row}. Error was: #{ex}"
       end
     end
     [items, results]

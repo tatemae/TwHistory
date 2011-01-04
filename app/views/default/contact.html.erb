@@ -1,5 +1,7 @@
 <div id="contact">
 
+  <%= output_errors('', {:class => 'help-box'}) %>
+  
 	<h2><%= I18n.t('contact.contact_us') %></h2>
 
 	<% form_tag('/contact', :id => "contact_form") do -%>
