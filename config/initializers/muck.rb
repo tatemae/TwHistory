@@ -17,8 +17,8 @@ MuckEngine.configure do |config|
   # Global application values.  These are used to display the app name, send emails, and configure where system emails go.
   config.application_name = 'TwHistory'       # Common name for your application.  i.e. My App, Billy Bob, etc
   config.from_email = 'support@twhistory.org'  # Emails will come from this address i.e. noreply@example.com, support@example.com, system@example.com, etc
-  config.from_email_name = 'TODO Name'          # This will show up as the name on emails.  i.e. support@example.com <Example>
-  config.support_email = 'support@twhistory.org'  # Support email for your application.  This is used for contact us etc.
+  config.from_email_name = 'TwHistory'          # This will show up as the name on emails.  i.e. support@example.com <Example>
+  config.support_email = 'marionjensen@gmail.com' #'support@twhistory.org'  # Support email for your application.  This is used for contact us etc.
   config.admin_email = 'admin@twhistory.org'      # Admin email for your application
   config.customer_service_number = '1-800-'     # Phone number if you have one (optional)
 

@@ -356,3 +356,10 @@ a:hover{text-decoration:none;}
 #csv-instructions .header-example{text-align:center;margin:15px auto;}
 /*Calendar*/
 #calendar, #calendar .fc-header-center h2{font-family:'IM Fell DW Pica',arial,serif !important;}
+/*contact */
+#contact{margin:0 auto;color:#646464;}
+#contact h2{font-size:3em;margin:10px 0;color:#646464;}
+#contact label{font-weight:bold;font-size:1.4em;}
+#contact input[type="text"]{width:450px;}
+#contact textarea{width:500px;height:300px;}
+#contact .button{margin:10px 0 5px 433px;font-size:1.5em;}
