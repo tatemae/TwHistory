@@ -19,8 +19,9 @@
   <div class="main-edit">
     <%= button_to translate('general.edit'), edit_project_path(@project), :method => :get, :class => 'pretty-button green' %>
     <%= button_to translate('general.delete'), project_path(@project), :confirm => translate('projects.delete_confirmation'), :method => :delete, :class => 'confirm pretty-button green' %> 
-    <%= button_to translate('projects.delete_items'), project_path(@project, :items => true), :confirm => translate('projects.delete_items_confirmation'), :method => :delete, :class => 'confirm pretty-button green' %> 
-    <%= button_to translate('projects.delete_characters'), project_path(@project, :characters => true), :confirm => translate('projects.delete_characters_confirmation'), :method => :delete, :class => 'confirm pretty-button green' %>    
+    <%= button_to translate('projects.delete_items'), project_path(@project, :items => true), :confirm => translate('projects.delete_items_confirmation'), :method => :delete, :class => 'confirm pretty-button green wait-button' %> 
+    <%= button_to translate('projects.delete_characters'), project_path(@project, :characters => true), :confirm => translate('projects.delete_characters_confirmation'), :method => :delete, :class => 'confirm pretty-button green wait-button' %>
+    <div class="waiting" style="display:none;clear:both;margin:10px 0;"><%=translate('projects.delete_wait') %></div>
   </div>
 <% end -%>
 

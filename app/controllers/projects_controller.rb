@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :login_required, :except => [:index, :show]
-  before_filter :setup_project, :only => [:destroy, :update, :edit]
+  before_filter :protect_project, :only => [:edit, :update, :destroy]
   
   def index
     @per_page = 5
@@ -84,7 +84,6 @@ class ProjectsController < ApplicationController
   def destroy
     
     stuff_deleted = false
-
     if params[:items]
       @project.items.destroy_all
       stuff_deleted = true
@@ -108,4 +107,16 @@ class ProjectsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+  
+    # Used to get the project id and ensure the user has permission to modify it.
+    def protect_project
+      @project = Project.find(params[:id])
+      if !@project.can_edit?(current_user)
+        flash[:notice] = translate('general.inline_edit_permission_denied', :project_title => @project.title)
+        redirect_to @project
+      end
+    end
+  
 end

@@ -14,8 +14,15 @@ jQuery(document).ready(function(){
 	);
 
 	jQuery(".confirm").live('click',function(){
+		if(jQuery(this).is('a') && jQuery(this).hasClass('pretty-button')){
+			// Hack we have to have in place to deal with the pretty buttons. 
+			// Without it the confirm dialogs get shown twice.
+			return true;
+		}			
 		var message = jQuery(this).attr('data-confirm');
 		if (!confirm(message)){
+			jQuery('.waiting').hide();
+	    jQuery(".wait-button").show();
 			return false;
 		}
 	});

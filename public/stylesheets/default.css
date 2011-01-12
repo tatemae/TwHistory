@@ -121,7 +121,7 @@ a:hover{text-decoration:none;}
 .twitter-ico{color:#4B3013;padding:4px 0 0 38px;background:url(/images/ico-twitter2.gif) no-repeat;display:inline-block;height:27px;}
 .column-holder{width:708px;margin:0 0 8px -30px;overflow:hidden;}
 .column-holder .cite-list{float:none;padding:0 0 4px 8px;}
-.column-holder .column{width:325px;float:left;padding-left:20px;}
+.column-holder .column{width:333px;float:left;padding-left:20px;}
 .column-holder .links{text-align:right;}
 .column-holder .links li{line-height:20px;}
 .ico-doc,

@@ -51,6 +51,7 @@ en:
     delete_characters: Delete all Characters
     delete_items_confirmation: Are you sure you want to delete all events for this re-enactment? This cannot be undone.
     delete_characters_confirmation: Are you sure you want to remove all characters from this re-enactment? This will delete all the character's event as well and cannot be undone.
+    delete_wait: Please wait. It can take a few minutes for everything to be deleted.
   authentications: 
     failure: Could not connect to Twitter account. Please try again.
     already_connected: You've already connected to this Twitter account.
