@@ -15,6 +15,15 @@
 	</div>
 	<div id="csv">
     <div id="event-upload-form" class="common-form">
+      
+      <% if @results -%>
+        <ul>
+          <% @results.each do |result| -%>
+            <li><%= result %></li>
+          <% end -%>
+        </ul>
+      <% end -%>
+      
       <h1>Upload a CSV file</h1>
       
       <%= form_for :item, :url => project_items_path(@project), :html => { :multipart => true } do |f| -%>
@@ -32,3 +41,12 @@
     </div>
 	</div>
 </div>
+
+<% if @results -%>
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function(){	
+  	jQuery("#tabs").tabs("option", "selected", 1);
+  });
+</script>
+<% end -%>
+

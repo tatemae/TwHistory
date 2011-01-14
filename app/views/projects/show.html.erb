@@ -56,7 +56,9 @@
 		  <%= render :partial => 'projects/item', :collection => @items, :locals => { :project => @project } %> 
 		</ul>
 		<ul class="links">
-		  <li><%= link_to 'Download all events for this re-enactment', project_items_path(@project, :format => 'csv') %></li>
+		  <% if !@items.empty? -%>
+		    <li><%= link_to 'Download all events for this re-enactment', project_items_path(@project, :format => 'csv') %></li>
+		  <% end -%>
 		</ul> 
 	</div>
 </div>

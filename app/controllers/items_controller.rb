@@ -47,8 +47,12 @@ class ItemsController < ApplicationController
           format.xml  { render :xml => @items, :status => :created }
         end
       else
-        format.html { render :action => "new", :notice => translate('items.csv_import_failure') }
-        format.xml  { render :xml => @results, :status => :unprocessable_entity }
+        @sidebar_off = true
+        @item = @project.items.new
+        respond_to do |format|
+          format.html { render :action => "new", :notice => translate('items.csv_import_failure') }
+          format.xml  { render :xml => @results, :status => :unprocessable_entity }
+        end
       end
     else
       @item = @project.items.build(params[:item])

@@ -74,6 +74,9 @@ class Project < ActiveRecord::Base
       end
     end
     [items, results]
+  rescue => ex
+    t = 0
+    debugger
   end
 
   def authentication_name
