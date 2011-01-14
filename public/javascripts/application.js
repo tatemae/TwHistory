@@ -14,11 +14,6 @@ jQuery(document).ready(function(){
 	);
 
 	jQuery(".confirm").live('click',function(){
-		if(jQuery(this).is('a') && jQuery(this).hasClass('pretty-button')){
-			// Hack we have to have in place to deal with the pretty buttons. 
-			// Without it the confirm dialogs get shown twice.
-			return true;
-		}			
 		var message = jQuery(this).attr('data-confirm');
 		if (!confirm(message)){
 			jQuery('.waiting').hide();
@@ -35,29 +30,6 @@ jQuery(document).ready(function(){
 		return false;
 	});
 	
-});
-
-jQuery(document).ready(function(){
-	jQuery('.pretty-button').each(function(){
-		var tag = jQuery(this).get(0).tagName.toLowerCase();
-		if(jQuery.inArray(tag, ['a', 'input', 'button']) < 0){
-			return;
-		}
-	 	var original_button = jQuery(this);
-		var new_button = jQuery(this);
-	 	var tt = original_button.text() || original_button.val();
-	 	if(jQuery.inArray(tag, ['input', 'button']) >= 0) {
-	 		new_button = jQuery('<a>').insertAfter(this).addClass(this.className).attr('id',this.id + "_pretty").click(function(){
-				if(jQuery(this).hasClass('wait-button')){
-					jQuery(this).hide();
-				}
-				original_button.click();
-			});
-	 		jQuery(this).hide();
-	 	}
-	 	new_button.text('').css({cursor:'pointer'}). prepend('<i></i>').append(jQuery('<span>').
-		text(tt).append('<i></i><span></span>'));
-	});
 });
 
 function show_message(message){

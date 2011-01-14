@@ -5,22 +5,22 @@
   <% if @project.featured_at.blank? -%>
     <%= form_for(@project) do |f| %>
       <%= hidden_field_tag :mark_featured, true %>
-      <%= f.submit translate('projects.feature', :project => @project.title), :class => 'pretty-button green' %>
+      <%= f.submit translate('projects.feature', :project => @project.title), :class => 'clean-green' %>
     <% end %>
   <% else -%>
     <%= form_for(@project) do |f| %>
       <p>Project was marked featured on: <%= @project.featured_at.to_s(:short_date) %></p>
       <%= hidden_field_tag :unmark_featured, true %>
-      <%= f.submit translate('projects.unfeature', :project => @project.title), :class => 'pretty-button green' %>
+      <%= f.submit translate('projects.unfeature', :project => @project.title), :class => 'clean-green' %>
     <% end %>
   <% end -%>
 <% end -%>
 <% if @project.can_edit?(current_user) %>
   <div class="main-edit">
-    <%= button_to translate('general.edit'), edit_project_path(@project), :method => :get, :class => 'pretty-button green' %>
-    <%= button_to translate('general.delete'), project_path(@project), :confirm => translate('projects.delete_confirmation'), :method => :delete, :class => 'confirm pretty-button green' %> 
-    <%= button_to translate('projects.delete_items'), project_path(@project, :items => true), :confirm => translate('projects.delete_items_confirmation'), :method => :delete, :class => 'confirm pretty-button green wait-button' %> 
-    <%= button_to translate('projects.delete_characters'), project_path(@project, :characters => true), :confirm => translate('projects.delete_characters_confirmation'), :method => :delete, :class => 'confirm pretty-button green wait-button' %>
+    <%= button_to translate('general.edit'), edit_project_path(@project), :method => :get, :class => 'clean-green' %>
+    <%= button_to translate('general.delete'), project_path(@project), :confirm => translate('projects.delete_confirmation'), :method => :delete, :class => 'confirm clean-green' %> 
+    <%= button_to translate('projects.delete_items'), project_path(@project, :items => true), :confirm => translate('projects.delete_items_confirmation'), :method => :delete, :class => 'confirm clean-green wait-button' %> 
+    <%= button_to translate('projects.delete_characters'), project_path(@project, :characters => true), :confirm => translate('projects.delete_characters_confirmation'), :method => :delete, :class => 'confirm clean-green wait-button' %>
     <div class="waiting" style="display:none;clear:both;margin:10px 0;"><%=translate('projects.delete_wait') %></div>
   </div>
 <% end -%>
@@ -29,7 +29,7 @@
 <div class="broadcast"> 
 	<div class="heading">
 	  <h3 class="ico-brodcasts">Upcoming Broadcasts: 
-	    <span><%= link_to translate('general.add'), new_project_broadcast_path(@project), :class => 'pretty-button green inline-button add-button' if @project.can_edit?(current_user) %></span></h3>
+	    <span><%= link_to translate('general.add'), new_project_broadcast_path(@project), :class => 'clean-green inline-button add-button' if @project.can_edit?(current_user) %></span></h3>
 	  <% if @upcoming_broadcasts.any? -%>
       <ul class="progress-list">
         <%= render :partial => 'broadcasts/broadcast', :collection => @upcoming_broadcasts %>
@@ -44,14 +44,14 @@
 <div class="column-holder"> 
 	<div class="column"> 
 		<h3 class="ico-peoples"><%= link_to 'Historical Figures', project_characters_path(@project) %> 
-		  <span><%= link_to translate('general.add'), new_project_character_path(@project), :class => 'pretty-button green inline-button add-button' if @project.can_edit?(current_user) %></span></h3> 
+		  <span><%= link_to translate('general.add'), new_project_character_path(@project), :class => 'clean-green inline-button add-button' if @project.can_edit?(current_user) %></span></h3> 
 		<ul class="cite-list light"> 
 			<%= render :partial => 'projects/character', :collection => @characters %>
 		</ul>
 	</div>
 	<div class="column"> 
 		<h3 class="ico-comments"><%= link_to 'Historical Timeline', project_items_path(@project) %> 
-		  <span><%= link_to translate('general.add'), new_project_item_path(@project), :class => 'pretty-button green inline-button add-button' if @project.can_edit?(current_user) %></span></h3> 
+		  <span><%= link_to translate('general.add'), new_project_item_path(@project), :class => 'clean-green inline-button add-button' if @project.can_edit?(current_user) %></span></h3> 
 		<ul class="cite-list">
 		  <%= render :partial => 'projects/item', :collection => @items, :locals => { :project => @project } %> 
 		</ul>

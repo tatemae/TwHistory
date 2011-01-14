@@ -6,13 +6,13 @@
       </p>
       <% if @can_edit_project -%>
         <p>(All tweets for <%= @broadcast.name %> will be sent to this account).</p>
-        <%= button_to translate('general.delete_twitter_connection'), authentication_path(@broadcast.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'pretty-button green' %>
+        <%= button_to translate('general.delete_twitter_connection'), authentication_path(@broadcast.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'clean-green' %>
       <% end -%>
     </div>
   <% elsif @can_edit_project -%>
     <div class="link-twitter">
       <div>
-        <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "pretty-button green" %>
+        <%= link_to translate('broadcasts.link_twitter_account'), new_broadcast_authentication_path(@broadcast), :class => "clean-green" %>
       </div>
       <p><%= translate('general.twitter_logout_warning') %></p>
     </div>

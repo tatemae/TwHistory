@@ -15,10 +15,10 @@
         <%= text_field_tag :run_date, just_date(scheduled_item.run_at), { :class => "date_pick" } -%>
         <label class="time">At</label>
         <%= text_field_tag :run_time, just_time(scheduled_item.run_at), { :class => 'time_pick' } %>
-        <%= f.submit t('general.update') %>
+        <%= f.submit t('general.update'), :class => 'clean-blue' %>
       <% end -%>
       <%= form_for scheduled_item, :html => { :class => 'ajax', :method => :delete } do |f| -%>
-        <%= f.submit t('general.delete'), :confirm => translate('general.delete_confirmation') %>
+        <%= f.submit t('general.delete'), :confirm => translate('general.delete_confirmation'), :class => 'clean-blue' %>
       <% end -%>
     </div>
 	<% end -%>

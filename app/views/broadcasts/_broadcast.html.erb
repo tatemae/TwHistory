@@ -4,8 +4,8 @@
   <%= render 'projects/options_list', :project => broadcast.project, :broadcast => broadcast, :css => 'follow-list' %>
   <% if broadcast.project.can_edit?(current_user) -%>
     <span class="edit admin-links">
-      <%= button_to translate('general.edit'), edit_project_broadcast_path(broadcast.project, broadcast), :method => :get, :class => 'pretty-button green pretty-button-blue-back' %>
-      <%= button_to translate('general.delete'), broadcast_path(broadcast), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'pretty-button green pretty-button-blue-back' %>    
+      <%= button_to translate('general.edit'), edit_project_broadcast_path(broadcast.project, broadcast), :method => :get, :class => 'clean-blue' %>
+      <%= button_to translate('general.delete'), broadcast_path(broadcast), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'clean-blue' %>    
     </span>
   <% end -%>
 </li>
