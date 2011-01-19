@@ -4,7 +4,7 @@
   </div>
   <div class="text-holder"> 
     <p><strong class="name"><%= item.character.name %></strong> <%= item.content %></p> 
-		<em class="date"> <%= item.event_date_time.zone.to_s(:date_and_time) %></em>
+		<em class="date"> <%= item.event_date_time.to_s(:date_and_time) %></em>
   </div>
   <div class="visual">
     <%= image_tag item.photo.url(:icon) if item.photo_file_name %>
