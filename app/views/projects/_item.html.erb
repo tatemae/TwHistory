@@ -4,7 +4,7 @@
 		<%#= image_tag item.photo.url(:icon) if item.photo_file_name %>
 	</div>
 	<div class="text-holder">
-		<p><strong class="name"><%= link_to(item.character.name, project_character_path(project, item.character)) %></strong> <%= item.content %></p> 
+		<p><strong class="name"><%= link_to(item.character.name, project_character_path(project, item.character)) %></strong> <%= item.content %></p>
 		<em class="date"> <%= item.event_date_time.to_s(:date_and_time) %></em>
 	</div>
 </li>
