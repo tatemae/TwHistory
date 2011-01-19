@@ -26,7 +26,7 @@ class Broadcast < ActiveRecord::Base
   
   def twitter_update
     return false unless self.authentication
-    client.update_profile(:name => self.name, 
+    client.update_profile(:name => self.name[0...20], 
                           :location => self.project.location, 
                           :url => self.project_url, 
                           :description => twitter_description)
