@@ -5,6 +5,6 @@
 	</div>
 	<div class="text-holder">
 		<p><strong class="name"><%= link_to(item.character.name, project_character_path(project, item.character)) %></strong> <%= item.content %></p> 
-		<em class="date"> <%= item.event_date_time %></em>
+		<em class="date"> <%= item.event_date_time.to_s(:date_and_time) %></em>
 	</div>
 </li>

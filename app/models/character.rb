@@ -26,9 +26,9 @@ class Character < ActiveRecord::Base
   
   def twitter_update
     return false unless self.authentication
-    client.update_profile(:name => self.name, 
+    client.update_profile(:name => self.name[0...20], 
                           :location => 'Somewhere in TwHistory', 
-                          :url => character_url, 
+                          :url => character_url,
                           :description => twitter_description)
     # client.update_profile_image(self.photo.to_file(:medium)) # TODO this isn't working right now. Uncomment when you have time to debug the twitter gem
   end
