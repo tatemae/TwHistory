@@ -60,7 +60,10 @@ class Project < ActiveRecord::Base
         results << "FAILED to save character image for character id: #{character.id}. Error: #{character.errors.full_messages.to_sentence}"
       end
       begin
-        item = {:event_date_time => Time.zone.parse("#{row[0]} #{row[1]}").utc, :character_id => character.id, :content => row[3]}
+        content = row[3]
+        content.gsub!('“', '"')
+        content.gsub!('”', '"')
+        item = {:event_date_time => Time.zone.parse("#{row[0]} #{row[1]}").utc, :character_id => character.id, :content => content}
         item[:location] = row[4] if row[4]
         item[:source] = row[5] if row[5]
         new_item = self.items.build(item)
