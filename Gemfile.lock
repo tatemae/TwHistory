@@ -340,15 +340,15 @@ DEPENDENCIES
   geokit
   hoptoad_notifier
   launchy
-  muck-activities (>= 3.1.0)
-  muck-comments (>= 3.1.0)
-  muck-contents (>= 3.1.0)
-  muck-engine (>= 3.1.0)
-  muck-friends (>= 3.1.0)
-  muck-invites (>= 3.1.0)
-  muck-profiles (>= 3.1.0)
-  muck-shares (>= 3.1.0)
-  muck-users (>= 3.1.0)
+  muck-activities
+  muck-comments
+  muck-contents
+  muck-engine
+  muck-friends
+  muck-invites
+  muck-profiles
+  muck-shares
+  muck-users
   mysql
   nested_set
   newrelic_rpm
