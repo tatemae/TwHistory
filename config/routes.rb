@@ -16,6 +16,7 @@ Twhistory::Application.routes.draw do
 
   #match '/profiles/:id' => 'profiles#show', :as => :public_user
   
+  resources :contents
   resources :comments  
   resources :items
   resources :scheduled_items

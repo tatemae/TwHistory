@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101127181710) do
+ActiveRecord::Schema.define(:version => 20110226174321) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
     t.datetime "code_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "access_code_requests", ["email"], :name => "index_access_code_requests_on_email"
@@ -82,7 +83,6 @@ ActiveRecord::Schema.define(:version => 20101127181710) do
     t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "time_zone",  :default => "UTC"
   end
 
   add_index "broadcasts", ["project_id"], :name => "index_broadcasts_on_project_id"
@@ -159,8 +159,10 @@ ActiveRecord::Schema.define(:version => 20101127181710) do
     t.datetime "updated_at"
     t.string   "layout"
     t.integer  "comment_count",    :default => 0
+    t.string   "cached_slug"
   end
 
+  add_index "contents", ["cached_slug"], :name => "index_contents_on_cached_slug"
   add_index "contents", ["creator_id"], :name => "index_contents_on_creator_id"
   add_index "contents", ["parent_id"], :name => "index_contents_on_parent_id"
 
