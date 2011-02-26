@@ -133,21 +133,21 @@ GEM
       muck-users
       nested_set
       sanitize
-    muck-contents (3.1.0)
+    muck-contents (3.1.2)
       acts-as-taggable-on
       awesome_nested_set
       babelphish
-      friendly_id
+      friendly_id (>= 3.2.0)
       muck-comments
       muck-engine
       muck-users
       sanitize
       tiny_mce
       uploader
-    muck-engine (0.4.34)
-      overlord (= 0.1.22)
-      validation_reflection (= 0.3.8)
-      will_paginate
+    muck-engine (3.2.5)
+      overlord
+      validation_reflection
+      will_paginate (~> 3.0.beta)
     muck-friends (3.1.0)
       muck-engine
       muck-profiles
@@ -175,11 +175,11 @@ GEM
       muck-engine
       muck-users
     muck-solr (3.0.1)
-    muck-users (3.0.2)
+    muck-users (3.1.8)
       authlogic
       bcrypt-ruby
       friendly_id
-      muck-engine
+      muck-engine (>= 3.0.3)
     multi_json (0.0.5)
     multipart-post (1.1.0)
     mysql (2.8.1)
@@ -222,8 +222,9 @@ GEM
       oa-enterprise (= 0.1.6)
       oa-oauth (= 0.1.6)
       oa-openid (= 0.1.6)
-    overlord (0.1.22)
+    overlord (3.0.2)
       httparty
+      json
     paperclip (2.3.8)
       activerecord
       activesupport
@@ -312,8 +313,8 @@ GEM
       mime-types
       paperclip
       rack
-    validation_reflection (0.3.8)
-    will_paginate (2.3.15)
+    validation_reflection (1.0.0)
+    will_paginate (3.0.pre2)
     xml-simple (1.0.14)
     xpath (0.1.3)
       nokogiri (~> 1.3)
@@ -366,4 +367,4 @@ DEPENDENCIES
   tiny_mce
   twitter (= 0.9.12)
   uploader
-  will_paginate
+  will_paginate (~> 3.0.pre2)
