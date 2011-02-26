@@ -133,7 +133,7 @@ GEM
       muck-users
       nested_set
       sanitize
-    muck-contents (3.1.2)
+    muck-contents (3.1.3)
       acts-as-taggable-on
       awesome_nested_set
       babelphish
@@ -144,10 +144,10 @@ GEM
       sanitize
       tiny_mce
       uploader
-    muck-engine (3.2.5)
+    muck-engine (3.2.6)
       overlord
       validation_reflection
-      will_paginate (~> 3.0.beta)
+      will_paginate (~> 3.0.pre2)
     muck-friends (3.1.0)
       muck-engine
       muck-profiles
