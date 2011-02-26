@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -35,16 +35,16 @@ gem 'sunspot_rails', '1.2.rc4'
 
 gem "babelphish"
 gem "uploader"
-gem "muck-engine", ">=3.1.0"
-gem "muck-users", ">=3.1.0"
+gem "muck-engine"
+gem "muck-users"
 #gem "muck-solr", :require => "acts_as_solr"
-gem "muck-comments", ">=3.1.0"
-gem "muck-contents", ">=3.1.0"
-gem "muck-profiles", ">=3.1.0"
-gem "muck-activities", ">=3.1.0"
-gem "muck-friends", ">=3.1.0"
-gem "muck-shares", ">=3.1.0"
-gem "muck-invites", ">=3.1.0"
+gem "muck-comments"
+gem "muck-contents"
+gem "muck-profiles"
+gem "muck-activities"
+gem "muck-friends"
+gem "muck-shares"
+gem "muck-invites"
 
 #gem "muck-solr", :require => "acts_as_solr", :path => "~/projects/acts_as_solr"
 #gem "muck-engine", :path => "~/projects/muck-engine"
