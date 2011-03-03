@@ -69,7 +69,7 @@ a:hover{text-decoration:none;}
 #content .text-sinking3 a{color:#4B3013;text-decoration:none;}
 #content .text-battle{height:27px;}
 #content .text-cuban{height:27px;}
-#content .broadcast-title{height:25px;width:270px;float:left;font-family: 'IM Fell DW Pica',arial,serif;}
+#content .broadcast-title{height:25px;width:300px;float:left;font-family: 'IM Fell DW Pica',arial,serif;}
 #content .broadcast-title a{color:#4B3013;font-size:1.6em;text-decoration:none;}
 #content .broadcast-title a:hover;{text-decoration:underline;}
 .feature .img-holder{float:left;width:332px;}
@@ -281,7 +281,7 @@ a:hover{text-decoration:none;}
 #event-form{margin:40px auto;}
 #event-form textarea{height:60px;width:620px;}
 #event-form label{font-size:14px;}
-.broadcast-form .date-time #date{width:230px;}
+.broadcast-form .date-time #date{width:240px;}
 #new-item-form .chooseMenu label{width:166px;}
 #edit-character-form textarea{width:640px;}
 #edit-character-form .form-row label,

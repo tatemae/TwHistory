@@ -19,6 +19,11 @@
   </div>
   
   <div class="block">
+    <h2>My Account</h2>
+    <p><a href="<%=edit_user_path(@user)%>">Edit Email, Password, etc</a></p>
+  </div>
+  
+  <div class="block">
     <h2>My Timezone:</h2>
     <%= muck_form_for @user, :url => user_path(@user), :html => {:id => "edit-user-form", :name => 'edit-user-form', :method => :put, :multipart => true } do |f| -%>
      <%= output_errors(t('muck.users.problem_editing_account'), {:class => 'help-box'}, @user) %>

@@ -7,7 +7,7 @@
   
   <% if @broadcast.project.can_edit?(current_user) -%>
   <div class="edit">
-    <%= button_to translate('broadcasts.edit'), edit_broadcast_path(@broadcast.project, @broadcast), :method => :get, :class => 'clean-green' %>
+    <%#= button_to translate('broadcasts.edit'), edit_broadcast_path(@broadcast.project, @broadcast), :method => :get, :class => 'clean-green' %>
     <%= button_to translate('broadcasts.delete'), broadcast_path(@broadcast), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'clean-green' %>
   </div>
   <% end -%>
