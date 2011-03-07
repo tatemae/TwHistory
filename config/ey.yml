@@ -1,0 +1,5 @@
+environments:
+ TwHistory:
+   branch: master
+   copy_exclude:
+     - .git
