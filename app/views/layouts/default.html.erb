@@ -17,6 +17,7 @@
     </div>
   </div>
   <%= render :partial => 'layouts/global/footer' %>
+  <%= include_javascripts :common %>
   <%= yield :javascript %>
   <%= render :partial => 'layouts/global/google_analytics' %>
 </body>

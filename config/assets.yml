@@ -1,0 +1,43 @@
+embed_assets: datauri # on off datauri
+allow_debugging: on
+javascript_compressor: closure
+#package_assets: on # off always
+#gzip_assets: off # on 
+
+javascripts:
+  common:
+    - public/javascripts/jquery/jquery-1.5.1.js
+    - public/javascripts/jquery/jquery-ui-1.8.11.custom.js
+    - public/javascripts/jquery/jquery.form.js
+    - public/javascripts/rails.js
+    - public/javascripts/jquery/jquery.tips.js
+    - public/javascripts/jquery/jquery.easing.js
+    - public/javascripts/jquery/jquery.fancybox.js
+    - public/javascripts/jquery/jquery.timers.js
+    - public/javascripts/jquery/jquery.timepicker.min.js
+    - public/javascripts/jquery/fullcalendar.js
+    - public/javascripts/muck.js
+    - public/javascripts/application.js
+  admin:
+    - public/javascripts/jquery/jquery-1.5.1.js
+    - public/javascripts/jquery/jquery-ui-1.8.11.custom.js
+    - public/javascripts/jquery/jquery.form.js
+    - public/javascripts/jquery/jquery.tips.js
+    - public/javascripts/jquery/jquery.cookie.js
+    - public/javascripts/jquery/jquery.easing.js
+    - public/javascripts/jquery/jquery.fancybox.js
+    - public/javascripts/rails.js
+    - public/javascripts/muck.js
+    - public/javascripts/muck_admin.js
+stylesheets:
+  common:
+    - public/stylesheets/jquery/smoothness/jquery-ui-1.8.11.custom.css
+    - public/stylesheets/jquery/jquery.fancybox.css
+    - public/stylesheets/jquery/jquery.timepicker.css
+    - public/stylesheets/fullcalendar.css
+    - public/stylesheets/default.css
+  admin:
+    - public/stylesheets/blueprint/screen.css
+    - public/stylesheets/jquery/smoothness/jquery-ui-1.8.11.custom.css
+    - public/stylesheets/jquery/jquery.fancybox.css
+    - public/stylesheets/admin.css

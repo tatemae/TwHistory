@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.4'
+gem 'rails', '3.0.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -32,6 +32,7 @@ gem "geokit"
 gem "delayed_job", "2.1.1"
 gem "twitter", "0.9.12"    #, :git => 'http://github.com/jnunemaker/twitter.git', :tag => 'v1.0.0.rc.2'
 gem 'sunspot_rails', '1.2.rc4'
+gem "jammit"
 
 gem "babelphish"
 gem "uploader"
