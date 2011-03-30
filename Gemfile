@@ -46,6 +46,7 @@ gem "muck-activities"
 gem "muck-friends"
 gem "muck-shares"
 gem "muck-invites"
+#gem "muck-resources"
 
 #gem "muck-solr", :require => "acts_as_solr", :path => "~/projects/acts_as_solr"
 #gem "muck-engine", :path => "~/projects/muck-engine"
