@@ -374,6 +374,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth
   paperclip
+  rack (>= 1.2.2)
   rails (= 3.0.5)
   rcov
   recaptcha

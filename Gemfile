@@ -10,6 +10,7 @@ if RUBY_VERSION < '1.9'
 end
 
 gem "mysql"
+gem "rack", ">=1.2.2"
 
 # gem 'authlogic'
 # TODO this is temporary until the official authlogic gem is updated for rails 3
