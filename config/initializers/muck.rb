@@ -19,7 +19,7 @@ MuckEngine.configure do |config|
   config.from_email = 'support@twhistory.org'  # Emails will come from this address i.e. noreply@example.com, support@example.com, system@example.com, etc
   config.from_email_name = 'TwHistory'          # This will show up as the name on emails.  i.e. support@example.com <Example>
   config.support_email = 'marionjensen@gmail.com' #'support@twhistory.org'  # Support email for your application.  This is used for contact us etc.
-  config.admin_email = 'admin@twhistory.org'      # Admin email for your application
+  config.admin_email = 'marionjensen@gmail.com'      # Admin email for your application
   config.customer_service_number = '1-800-'     # Phone number if you have one (optional)
 
   # Email charset.  No need to change this unless you have a good reason to change the encoding.
