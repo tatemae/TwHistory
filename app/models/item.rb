@@ -32,6 +32,20 @@ class Item < ActiveRecord::Base
   def export_to_twitter
     return false unless self.character && self.character.authentication
     self.character.client.update(self.content)
+    # TODO we've added a pivotal tracker entry for this:
+    # https://www.pivotaltracker.com/story/show/13032653
+    # We need to rescue this error: 
+    # {(403): Forbidden - Status is a duplicate.
+    # throw it away and then find the id of the previously tweeted item and set that 
+    # begin
+    # self.character.client.update(self.content)
+    # rescue => ex
+    #   if ex
+    #     
+    #   else
+    #     raise ex
+    #   end
+    # end    
   end
   
 end
