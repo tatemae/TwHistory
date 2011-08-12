@@ -1,0 +1,9 @@
+www:
+  type: ruby
+  config:
+    ruby-version: ree
+db:
+  type: mysql
+search:
+  type: solr
+  approot: solr

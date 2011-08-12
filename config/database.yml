@@ -14,5 +14,14 @@ test: &test
   host: localhost
   encoding: utf8
 
+production:
+  adapter: mysql
+  database: twhistory_production
+  username: twhistory
+  password: 
+  host:  
+  port: 10241
+  encoding: utf8
+    
 cucumber: 
   <<: *test
