@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.10'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,7 +16,7 @@ gem "rack", ">=1.2.2"
 # TODO this is temporary until the official authlogic gem is updated for rails 3
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 
-gem "will_paginate", "~> 3.0.pre2"
+gem "will_paginate", "~> 3.0.0"
 gem "bcrypt-ruby", ">=2.1.1", :require => "bcrypt"
 gem "nested_set"
 gem "sanitize"
