@@ -1,0 +1,4 @@
+#!/bin/sh
+ln -nfs /home/dotcloud/shared/secrets.yml /home/dotcloud/current/config/secrets.yml
+ln -nfs /home/dotcloud/shared/database.yml /home/dotcloud/current/config/database.yml
+ln -nfs /home/dotcloud/shared/system /home/dotcloud/current/public/system

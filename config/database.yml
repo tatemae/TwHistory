@@ -18,10 +18,10 @@ production:
   adapter: mysql
   database: twhistory_production
   username: twhistory
-  password: 
-  host:  
-  port: 10241
+  password: DR760y5sjedEZdyjlq0A
+  host: 3e5b69be.dotcloud.com
+  port: 13041
   encoding: utf8
-    
+      
 cucumber: 
   <<: *test
