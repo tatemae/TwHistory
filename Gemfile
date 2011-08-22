@@ -56,19 +56,20 @@ gem "muck-portablecontacts"
 #gem "muck-contents", :path => "~/projects/muck-contents"
 
 group :test, :development do
-  gem "rspec-rails", ">=2.1.0"
-  gem "cucumber-rails"
+  gem "rspec-rails"
 end
 
 group :test do
-  gem "autotest"
-  gem "capybara"
-  gem "shoulda"
+  gem "spork", "~> 0.9.0.rc2"
+  gem 'rb-fsevent'
+  gem 'growl'
+  gem 'guard-rspec'
   gem "factory_girl"
-  gem "cucumber"
+  gem "shoulda"
   gem "rcov"
-  gem "rspec", ">=2.1.0"
+  gem "rspec"
   gem "database_cleaner"
-  gem "spork"
-  gem "launchy"
+  gem "launchy", "~>0.3.5"
+  gem "capybara"
+  gem "fakeweb"
 end
