@@ -28,11 +28,11 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem "tiny_mce"
 gem "acts-as-taggable-on"
 gem "fastercsv"
-gem "omniauth"
+gem "omniauth", ">=0.2.6"
 gem "geokit"
 gem "delayed_job", "2.1.1"
-gem "twitter", "0.9.12"    #, :git => 'http://github.com/jnunemaker/twitter.git', :tag => 'v1.0.0.rc.2'
-gem 'sunspot_rails', '1.2.rc4'
+gem "twitter", ">=1.6.0"
+gem 'sunspot_rails', '1.2.1'
 gem "jammit"
 
 gem "babelphish"
