@@ -1,1 +1,4 @@
 rvm ree@twhistory
+
+# This is for dotcloud setup
+export DOTCLOUD_CONFIG_FILE=twhistory.conf
