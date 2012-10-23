@@ -2,14 +2,14 @@
   <% if @character.authentication -%>
     <div>
       <p>
-        <%= translate('general.connected_to_twitter_msg') %> <%= link_to(@character.authentication.nickname, "http://www.twitter.com/#{@character.authentication.nickname}", :target => '_blank', :class => 'clean-green') %>
+        <%= translate('general.connected_to_twitter_msg') %> <%= link_to(@character.authentication.nickname, "http://www.twitter.com/#{@character.authentication.nickname}", :target => '_blank', :class => 'pretty-button green') %>
       </p>
       <% if @can_edit_project -%>
         <p>(All tweets for <%= @character.name %> will be sent to this account).</p>
-        <%= button_to translate('general.delete_twitter_connection'), authentication_path(@character.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'clean-green' %>
+        <%= button_to translate('general.delete_twitter_connection'), authentication_path(@character.authentication), :confirm => translate('general.delete_confirmation'), :method => :delete, :class => 'pretty-button green' %>
       <% end -%>
     </div>
   <% elsif @can_edit_project -%>
-    <%= link_to translate('characters.link_twitter_account'), new_character_authentication_path(@character), :class => "clean-green" %> <%= translate('general.twitter_logout_warning') %>
+    <%= link_to translate('characters.link_twitter_account'), new_character_authentication_path(@character), :class => "pretty-button green" %> <%= translate('general.twitter_logout_warning') %>
   <% end -%>
 </div>
