@@ -61,7 +61,6 @@ end
 
 group :test do
   gem "spork", "~> 0.9.0.rc2"
-  gem 'rb-fsevent'
   gem 'growl'
   gem 'guard-rspec'
   gem "factory_girl"

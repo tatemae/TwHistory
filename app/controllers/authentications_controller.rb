@@ -12,13 +12,13 @@ class AuthenticationsController < ApplicationController
       redirect_to "/auth/twitter"
     end
   end
-  
+
   def create
     @omniauth = request.env["omniauth.auth"]
     if @parent.authentication
       flash[:notice] = translate('authentications.already_connected')
     else
-      @authentication = @parent.build_authentication(:provider => @omniauth['provider'], 
+      @authentication = @parent.build_authentication(:provider => @omniauth['provider'],
                                      :uid => @omniauth['uid'],
                                      :name => @omniauth['user_info']['name'],
                                      :nickname => @omniauth['user_info']['nickname'],
@@ -41,7 +41,7 @@ class AuthenticationsController < ApplicationController
       format.html { redirect_to([@parent.project, @parent]) }
     end
   end
-  
+
   def destroy
     @authentication = Authentication.find(params[:id])
     @parent = @authentication.authenticatable
@@ -51,13 +51,13 @@ class AuthenticationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   protected
     def store_parent
       setup_parent
       session[:parent] = make_parent_params(@parent)
     end
-    
+
     def recover_parent
       if session[:parent].any?
         klass = session[:parent][:parent_type].to_s.constantize
@@ -66,5 +66,5 @@ class AuthenticationsController < ApplicationController
       end
       redirect_to(root_path, :notice => translate('authentications.no_parent_error')) unless @parent
     end
-    
+
 end

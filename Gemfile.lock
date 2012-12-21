@@ -285,7 +285,6 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.4)
     rake (0.9.2.2)
-    rb-fsevent (0.4.3.1)
     rbx-require-relative (0.0.5)
     rcov (0.9.11)
     rdoc (3.11)
@@ -319,7 +318,7 @@ GEM
     rubyntlm (0.1.1)
     rubyzip (0.9.4)
     sanitize (2.0.3)
-      nokogiri (< 1.6, >= 1.4.4)
+      nokogiri (>= 1.4.4, < 1.6)
     selenium-webdriver (2.9.1)
       childprocess (>= 0.2.1)
       ffi (= 1.0.9)
@@ -403,7 +402,6 @@ DEPENDENCIES
   paperclip
   rack (>= 1.2.2)
   rails (= 3.0.10)
-  rb-fsevent
   rcov
   recaptcha
   rspec
