@@ -20,18 +20,19 @@ gem "will_paginate", "~> 3.0.0"
 gem "bcrypt-ruby", ">=2.1.1", :require => "bcrypt"
 gem "nested_set"
 gem "sanitize"
-gem "paperclip"
-gem "friendly_id", ">=3.1.7"
+gem "paperclip", "~>2.4.5"
+gem "friendly_id", "3.1.7"
 gem "hoptoad_notifier"
 gem 'newrelic_rpm'
 gem "recaptcha", :require => "recaptcha/rails"
 gem "tiny_mce"
 gem "acts-as-taggable-on"
 gem "fastercsv"
-gem "omniauth", ">=0.2.6"
+gem "omniauth", "~>1.1.1"
+gem 'omniauth-twitter'
 gem "geokit"
 gem "delayed_job", "2.1.1"
-gem "twitter", ">=1.6.0"
+gem "twitter", "~>4.4.2"
 gem 'sunspot_rails', '1.2.1'
 gem "jammit"
 
@@ -63,7 +64,7 @@ group :test do
   gem "spork", "~> 0.9.0.rc2"
   gem 'growl'
   gem 'guard-rspec'
-  gem "factory_girl"
+  gem "factory_girl", "~>2.6.4"
   gem "shoulda"
   gem "rcov"
   gem "rspec"

@@ -9,7 +9,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = translate('authentications.already_connected')
       redirect_to(@parent)
     else
-      redirect_to "/auth/twitter"
+      redirect_to "/auth/twitter?force_login=true"
     end
   end
 
@@ -20,8 +20,8 @@ class AuthenticationsController < ApplicationController
     else
       @authentication = @parent.build_authentication(:provider => @omniauth['provider'],
                                      :uid => @omniauth['uid'],
-                                     :name => @omniauth['user_info']['name'],
-                                     :nickname => @omniauth['user_info']['nickname'],
+                                     :name => @omniauth['info']['name'],
+                                     :nickname => @omniauth['info']['nickname'],
                                      :token => @omniauth['credentials']['token'],
                                      :secret => @omniauth['credentials']['secret'])
       if @authentication.save
