@@ -1,3 +1,4 @@
+# rm -rf ~/.bundle/ ~/.gem/; rm -rf $GEM_HOME/bundler/ $GEM_HOME/cache/bundler/; rm -rf .bundle/; rm -rf vendor/cache/; rm -rf Gemfile.lock
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.10'
@@ -33,12 +34,12 @@ gem 'omniauth-twitter'
 gem "geokit"
 gem "delayed_job", "2.1.1"
 gem "twitter", "~>4.4.2"
-gem 'sunspot_rails', '1.2.1'
+gem 'sunspot_rails'
 gem "jammit"
 
 gem "babelphish"
 gem "uploader"
-gem "muck-engine"
+gem "muck-engine", "~>3.4.0"
 gem "muck-users"
 #gem "muck-solr", :require => "acts_as_solr"
 gem "muck-comments"
@@ -58,6 +59,7 @@ gem "muck-portablecontacts"
 
 group :test, :development do
   gem "rspec-rails"
+  gem 'sunspot_solr'
 end
 
 group :test do
