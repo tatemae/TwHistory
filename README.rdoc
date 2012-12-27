@@ -19,6 +19,6 @@ TwHistory is funded and supported by Talis[http://www.talis.com/]
 TwHistory uses delayed job. Make sure delayed job is running in the background
 
 Broadcasts require rake task to be run as a cron job
-  rake twhistory:broadcast
+  nohup rake jobs:work RAILS_ENV=production &
 
 Copyright (c) 2009-2010 Tatemae[http://www.tatemae.com/], released under the MIT license
