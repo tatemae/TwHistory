@@ -2,3 +2,5 @@
 ln -nfs /home/dotcloud/data/secrets.yml /home/dotcloud/current/config/secrets.yml
 ln -nfs /home/dotcloud/data/database.yml /home/dotcloud/current/config/database.yml
 ln -nfs /home/dotcloud/data/system /home/dotcloud/current/public/system
+
+rake jobs:work
