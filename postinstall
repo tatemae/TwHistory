@@ -1,4 +1,5 @@
 #!/bin/sh
 ln -nfs /home/dotcloud/data/secrets.yml /home/dotcloud/current/config/secrets.yml
 ln -nfs /home/dotcloud/data/database.yml /home/dotcloud/current/config/database.yml
+ln -nfs /home/dotcloud/data/newrelic.yml /home/dotcloud/current/config/newrelic.yml
 ln -nfs /home/dotcloud/data/system /home/dotcloud/current/public/system
